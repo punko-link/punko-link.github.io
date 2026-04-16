@@ -2,3 +2,5 @@
 src
 build.js
 package.json
+.idea
+./src-old

@@ -19,12 +19,39 @@
     <span class="logo-dot"></span>
     punkolink
   </a>
-  <nav class="nav">
-    <a href="#problem">The Problem</a>
-    <a href="#approach">Our Way</a>
-    <a href="https://research.punkolink.com" rel="noopener" class="nav-cta">Start Research</a>
+  <nav class="nav" id="mainNav">
+    <a href="https://chat.punkolink.com">Xmpp</a>
+    <a href="https://mail.punkolink.com">Mail</a>
+    <a href="https://research.punkolink.com">Search</a>
+    <a href="#" id="signupModalOpen" class="nav-cta">Sign up</a>
   </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </header>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var toggle = document.getElementById('navToggle');
+    var nav = document.getElementById('mainNav');
+    if (!toggle || !nav) return;
+    toggle.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      toggle.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      document.body.classList.toggle('nav-open', open);
+    });
+    nav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        nav.classList.remove('open');
+        toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('nav-open');
+      });
+    });
+  });
+</script>
 
 
   <main>
@@ -178,6 +205,351 @@
     <div class="footer-copy">© 2025 Punkolink — Abstractions are dead</div>
   </div>
 </footer>
+
+
+  <div class="modal-backdrop" id="signupModal" role="dialog" aria-modal="true" aria-labelledby="signupModalTitle">
+  <div class="modal">
+    <button class="modal-close" id="signupModalClose" aria-label="Close">&times;</button>
+
+    <div class="modal-form-wrapper" id="signupFormWrapper">
+      <div class="modal-header">
+        <h2 id="signupModalTitle">Join Punkolink</h2>
+        <p>
+          We don't ask for your phone number or email to verify your identity —
+          that's your business, not ours. If we don't already know each other and
+          you'd like to introduce yourself, feel free to leave a contact and tell
+          us a bit about who you are. Entirely optional.
+        </p>
+      </div>
+
+      <div class="modal-notice">
+        Applications are reviewed manually. Please be patient — this is deliberate,
+        not a glitch. If you've left contact info and we need to reach out, we will.
+        The clearest sign your application was approved: you can log in to your mail
+        and XMPP account.
+      </div>
+
+      <form id="signupForm" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="fieldUsername">Username</label>
+          <input
+            class="form-input"
+            type="text"
+            id="fieldUsername"
+            name="username"
+            autocomplete="username"
+            placeholder="your_handle_42"
+            spellcheck="false"
+          >
+          <span class="form-hint">Lowercase letters, digits and underscores only — no spaces, no other symbols.</span>
+          <span class="form-error" id="errUsername">Only lowercase Latin letters (a–z), digits (0–9) and underscores ( _ ) are allowed.</span>
+          <span class="form-error" id="errUsernameTaken">Username is already taken.</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="fieldPassword">Password</label>
+          <div class="input-with-toggle">
+            <input
+              class="form-input"
+              type="password"
+              id="fieldPassword"
+              name="password"
+              autocomplete="new-password"
+              placeholder="••••••••"
+            >
+            <button type="button" class="toggle-password" id="togglePassword" aria-label="Show password">
+              <svg id="iconEye" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              <svg id="iconEyeOff" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+            </button>
+          </div>
+          <span class="form-hint">At least 8 characters, one uppercase letter, one digit, one special character (punctuation, $, brackets, etc.).</span>
+          <span class="form-error" id="errPassword">Password must be 8+ chars and contain an uppercase letter, a digit, and a special character.</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="fieldContact">
+            Contact info
+            <span class="optional">(optional)</span>
+          </label>
+          <input
+            class="form-input"
+            type="text"
+            id="fieldContact"
+            name="contact"
+            autocomplete="off"
+            placeholder="email, phone, nickname — whatever you prefer"
+          >
+          <span class="form-hint">No strict format. Share whatever you're comfortable with.</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="fieldAbout">
+            About you
+            <span class="optional">(optional)</span>
+          </label>
+          <textarea
+            class="form-textarea"
+            id="fieldAbout"
+            name="about"
+            rows="4"
+            placeholder="Who are you? What draws you here? What do you intend to use this for?"
+          ></textarea>
+        </div>
+
+        <div class="form-checks">
+          <label class="form-check">
+            <input type="checkbox" id="checkTerms" name="terms" checked>
+            <span>
+              I have read and agree to the
+              <a href="/terms.html" target="_blank" rel="noopener">Terms of Use</a>
+            </span>
+          </label>
+          <span class="form-error" id="errTerms">You must accept the Terms of Use.</span>
+
+          <label class="form-check">
+            <input type="checkbox" id="checkPrivacy" name="privacy" checked>
+            <span>
+              I have read and agree to the
+              <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
+            </span>
+          </label>
+          <span class="form-error" id="errPrivacy">You must accept the Privacy Policy.</span>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn-submit" id="signupSubmit">Submit Application</button>
+          <p class="modal-notice-bottom">
+            Your data is stored only to process this application and run your account.
+            No tracking. No marketing. No BS.
+          </p>
+        </div>
+      </form>
+    </div>
+
+    <div class="modal-success" id="signupSuccess">
+      <div class="success-icon">
+        <span class="logo-dot"></span>
+        punkolink
+      </div>
+      <h3>Application received.</h3>
+      <p>
+        We'll review it manually. No ETA — that's intentional.<br>
+        If you left contact info and we need to reach you, we will.<br><br>
+        When you can log in to mail and XMPP — you're in.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var backdrop = document.getElementById('signupModal');
+  var form     = document.getElementById('signupForm');
+  var wrapper  = document.getElementById('signupFormWrapper');
+  var success  = document.getElementById('signupSuccess');
+
+  // ── open / close ──────────────────────────────────────────────────────────
+  function openModal() {
+    backdrop.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('fieldUsername').focus();
+  }
+
+  function closeModal() {
+    backdrop.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('signupModalOpen').addEventListener('click', function (e) {
+    e.preventDefault();
+    openModal();
+  });
+
+  document.getElementById('signupModalClose').addEventListener('click', closeModal);
+
+  backdrop.addEventListener('click', function (e) {
+    if (e.target === backdrop) closeModal();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && backdrop.classList.contains('is-open')) closeModal();
+  });
+
+  // ── validation helpers ────────────────────────────────────────────────────
+  function showError(inputEl, errorEl) {
+    inputEl.classList.add('invalid');
+    errorEl.classList.add('visible');
+  }
+
+  function clearError(inputEl, errorEl) {
+    inputEl.classList.remove('invalid');
+    errorEl.classList.remove('visible');
+  }
+
+  var reUsername = /^[a-z0-9_]+$/;
+  var rePassword = {
+    minLen:  /.{8,}/,
+    upper:   /[A-Z]/,
+    digit:   /[0-9]/,
+    special: /[^a-zA-Z0-9]/
+  };
+
+  function validateUsername(val) {
+    return val.length > 0 && reUsername.test(val);
+  }
+
+  function validatePassword(val) {
+    return rePassword.minLen.test(val) &&
+           rePassword.upper.test(val) &&
+           rePassword.digit.test(val) &&
+           rePassword.special.test(val);
+  }
+
+  // ── live hints ────────────────────────────────────────────────────────────
+  // ── password visibility toggle ────────────────────────────────────────────
+  document.getElementById('togglePassword').addEventListener('click', function () {
+    var input   = document.getElementById('fieldPassword');
+    var eye     = document.getElementById('iconEye');
+    var eyeOff  = document.getElementById('iconEyeOff');
+    var showing = input.type === 'text';
+    input.type  = showing ? 'password' : 'text';
+    eye.style.display    = showing ? '' : 'none';
+    eyeOff.style.display = showing ? 'none' : '';
+    this.setAttribute('aria-label', showing ? 'Show password' : 'Hide password');
+  });
+
+  var usernameAvailable = true;
+  var checkTimer = null;
+  var errUsernameTaken = document.getElementById('errUsernameTaken');
+
+  document.getElementById('fieldUsername').addEventListener('input', function () {
+    var input = this;
+    var err   = document.getElementById('errUsername');
+
+    clearTimeout(checkTimer);
+    errUsernameTaken.classList.remove('visible');
+
+    if (this.value && !validateUsername(this.value)) {
+      showError(input, err);
+      usernameAvailable = true; // reset so format error takes priority
+      return;
+    }
+
+    clearError(input, err);
+
+    if (!this.value) { usernameAvailable = true; return; }
+
+    var username = this.value;
+    checkTimer = setTimeout(function () {
+      fetch('https://core.punkolink.com/api/check_username_availability/' + encodeURIComponent(username))
+        .then(function (r) {
+          if (input.value !== username) return; // stale
+          if (r.status === 409) {
+            usernameAvailable = false;
+            showError(input, errUsernameTaken);
+          } else {
+            usernameAvailable = true;
+            clearError(input, errUsernameTaken);
+          }
+        })
+        .catch(function () { usernameAvailable = true; }); // fail open
+    }, 450);
+  });
+
+  document.getElementById('fieldPassword').addEventListener('input', function () {
+    var err = document.getElementById('errPassword');
+    if (this.value && !validatePassword(this.value)) {
+      showError(this, err);
+    } else {
+      clearError(this, err);
+    }
+  });
+
+  // ── submit ────────────────────────────────────────────────────────────────
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var username = document.getElementById('fieldUsername');
+    var password = document.getElementById('fieldPassword');
+    var terms    = document.getElementById('checkTerms');
+    var privacy  = document.getElementById('checkPrivacy');
+
+    var valid = true;
+
+    if (!validateUsername(username.value)) {
+      showError(username, document.getElementById('errUsername'));
+      valid = false;
+    } else {
+      clearError(username, document.getElementById('errUsername'));
+    }
+
+    if (validateUsername(username.value) && !usernameAvailable) {
+      showError(username, errUsernameTaken);
+      valid = false;
+    }
+
+    if (!validatePassword(password.value)) {
+      showError(password, document.getElementById('errPassword'));
+      valid = false;
+    } else {
+      clearError(password, document.getElementById('errPassword'));
+    }
+
+    if (!terms.checked) {
+      terms.classList.add('invalid');
+      document.getElementById('errTerms').classList.add('visible');
+      valid = false;
+    } else {
+      terms.classList.remove('invalid');
+      document.getElementById('errTerms').classList.remove('visible');
+    }
+
+    if (!privacy.checked) {
+      privacy.classList.add('invalid');
+      document.getElementById('errPrivacy').classList.add('visible');
+      valid = false;
+    } else {
+      privacy.classList.remove('invalid');
+      document.getElementById('errPrivacy').classList.remove('visible');
+    }
+
+    if (!valid) return;
+
+    var btn = document.getElementById('signupSubmit');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    var data = new FormData(form);
+
+    fetch('https://core.punkolink.com/api/sign_up', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: username.value,
+        password: password.value,
+        contact:  data.get('contact') || '',
+        about:    data.get('about')   || ''
+      })
+    })
+    .then(function (res) {
+      if (res.status === 409) {
+        usernameAvailable = false;
+        showError(username, errUsernameTaken);
+        btn.disabled = false;
+        btn.textContent = 'Submit Application';
+        return;
+      }
+      if (!res.ok) throw new Error('server error');
+      wrapper.classList.add('hidden');
+      success.classList.add('visible');
+    })
+    .catch(function () {
+      btn.disabled = false;
+      btn.textContent = 'Submit Application';
+    });
+  });
+})();
+</script>
 
 
 </body>
