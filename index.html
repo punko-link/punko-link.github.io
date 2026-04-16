@@ -296,32 +296,8 @@
           ></textarea>
         </div>
 
-        <div class="form-checks">
-          <label class="form-check">
-            <input type="checkbox" id="checkTerms" name="terms" checked>
-            <span>
-              I have read and agree to the
-              <a href="/terms.html" target="_blank" rel="noopener">Terms of Use</a>
-            </span>
-          </label>
-          <span class="form-error" id="errTerms">You must accept the Terms of Use.</span>
-
-          <label class="form-check">
-            <input type="checkbox" id="checkPrivacy" name="privacy" checked>
-            <span>
-              I have read and agree to the
-              <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
-            </span>
-          </label>
-          <span class="form-error" id="errPrivacy">You must accept the Privacy Policy.</span>
-        </div>
-
         <div class="modal-footer">
           <button type="submit" class="btn-submit" id="signupSubmit">Submit Application</button>
-          <p class="modal-notice-bottom">
-            Your data is stored only to process this application and run your account.
-            No tracking. No marketing. No BS.
-          </p>
         </div>
       </form>
     </div>
@@ -471,8 +447,6 @@
 
     var username = document.getElementById('fieldUsername');
     var password = document.getElementById('fieldPassword');
-    var terms    = document.getElementById('checkTerms');
-    var privacy  = document.getElementById('checkPrivacy');
 
     var valid = true;
 
@@ -493,24 +467,6 @@
       valid = false;
     } else {
       clearError(password, document.getElementById('errPassword'));
-    }
-
-    if (!terms.checked) {
-      terms.classList.add('invalid');
-      document.getElementById('errTerms').classList.add('visible');
-      valid = false;
-    } else {
-      terms.classList.remove('invalid');
-      document.getElementById('errTerms').classList.remove('visible');
-    }
-
-    if (!privacy.checked) {
-      privacy.classList.add('invalid');
-      document.getElementById('errPrivacy').classList.add('visible');
-      valid = false;
-    } else {
-      privacy.classList.remove('invalid');
-      document.getElementById('errPrivacy').classList.remove('visible');
     }
 
     if (!valid) return;
