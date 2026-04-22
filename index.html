@@ -319,6 +319,7 @@
 
 <script>
 (function () {
+  var API = "https://core.punkolink.com";
   var backdrop = document.getElementById('signupModal');
   var form     = document.getElementById('signupForm');
   var wrapper  = document.getElementById('signupFormWrapper');
@@ -417,7 +418,7 @@
 
     var username = this.value;
     checkTimer = setTimeout(function () {
-      fetch('https://core.punkolink.com/api/check_username_availability/' + encodeURIComponent(username))
+      fetch(API + '/check_username_availability/' + encodeURIComponent(username))
         .then(function (r) {
           if (input.value !== username) return; // stale
           if (r.status === 409) {
@@ -477,7 +478,7 @@
 
     var data = new FormData(form);
 
-    fetch('https://core.punkolink.com/api/sign_up', {
+    fetch(API + '/sign_up', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

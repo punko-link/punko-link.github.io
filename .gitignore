@@ -1,6 +1,7 @@
 .claude
-src
+srcv1
 build.js
 package.json
 .idea
 ./src-old
+./src
