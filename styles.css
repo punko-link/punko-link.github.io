@@ -27,6 +27,9 @@
 
   /* Transitions */
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Layout */
+  --content-max: 1100px;
 }
 
 /* ── base.css ─────────── */
@@ -295,7 +298,6 @@ a {
 
   .nav a.nav-cta {
     margin-top: var(--space-sm);
-    margin-bottom: var(--space-sm);
     text-align: center;
     padding: 12px 14px;
     width: 100%;
@@ -586,8 +588,16 @@ a {
   position: relative;
 }
 
+.problem > .section-marker {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .problem-content {
   max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .problem-stats {
@@ -782,6 +792,9 @@ a {
 
 .closing-content {
   max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .closing-title {
@@ -800,6 +813,37 @@ a {
   color: var(--color-text-muted);
   margin-bottom: var(--space-xl);
   line-height: 1.7;
+}
+
+.closing-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.closing-alt {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+.closing-alt-title {
+  font-size: .875rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-red);
+}
+
+.btn-secondary:hover {
+  background: var(--color-red);
+  color: var(--color-bg);
+  box-shadow: 0 0 20px var(--color-red-glow);
 }
 
 .closing-status {
@@ -824,22 +868,6 @@ a {
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50%       { opacity: .3; }
-}
-
-.closing a.nav-cta {
-  display: inline-block;
-  color: var(--color-text);
-  border: 1px solid var(--color-red);
-  padding: 6px 14px;
-  font-size: .875rem;
-  letter-spacing: .05em;
-  transition: all var(--transition);
-}
-
-.closing a.nav-cta:hover {
-  color: var(--color-bg);
-  background: var(--color-red);
-  box-shadow: 0 0 20px var(--color-red-glow);
 }
 
 /* ── footer.css ─────────── */
@@ -884,8 +912,16 @@ a {
   color: var(--color-text-muted);
 }
 
-/* ── signup-modal.css ─────────── */
-/* ── Signup Modal ──────────────────────────────────────────────────────────── */
+/* ── contact-modal.css ─────────── */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 
 .modal-backdrop {
   position: fixed;
@@ -965,16 +1001,6 @@ a {
   line-height: 1.7;
 }
 
-.modal-notice {
-  border-left: 2px solid var(--color-red);
-  padding: var(--space-xs) var(--space-sm);
-  margin-bottom: var(--space-md);
-  background: var(--color-red-soft);
-  font-size: .78rem;
-  color: var(--color-text-muted);
-  line-height: 1.7;
-}
-
 .form-group {
   margin-bottom: var(--space-sm);
 }
@@ -994,37 +1020,6 @@ a {
   margin-left: 4px;
   text-transform: none;
   letter-spacing: 0;
-}
-
-.input-with-toggle {
-  position: relative;
-  display: flex;
-  align-items: stretch;
-}
-
-.input-with-toggle .form-input {
-  flex: 1;
-  padding-right: 42px;
-}
-
-.toggle-password {
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  border: none;
-  color: var(--color-text-muted);
-  cursor: pointer;
-  transition: color var(--transition);
-}
-
-.toggle-password:hover {
-  color: var(--color-text);
 }
 
 .form-input,
@@ -1053,13 +1048,6 @@ a {
   border-color: #ef4444;
 }
 
-.form-hint {
-  display: block;
-  margin-top: 4px;
-  font-size: .72rem;
-  color: var(--color-text-muted);
-}
-
 .form-error {
   display: none;
   margin-top: 4px;
@@ -1076,78 +1064,11 @@ a {
   min-height: 100px;
 }
 
-.form-checks {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: var(--space-sm);
-}
-
-.form-check {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: .8rem;
-  color: var(--color-text-muted);
-  cursor: pointer;
-  line-height: 1.5;
-}
-
-.form-check input[type="checkbox"] {
-  appearance: none;
-  -webkit-appearance: none;
-  flex-shrink: 0;
-  width: 16px;
-  height: 16px;
-  margin-top: 2px;
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  cursor: pointer;
-  transition: background var(--transition), border-color var(--transition);
-  position: relative;
-}
-
-.form-check input[type="checkbox"]:checked {
-  background: var(--color-red);
-  border-color: var(--color-red);
-}
-
-.form-check input[type="checkbox"]:checked::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 10px;
-}
-
-.form-check input[type="checkbox"].invalid {
-  border-color: #ef4444;
-}
-
-.form-check a {
-  color: var(--color-red);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.form-check a:hover {
-  opacity: .8;
-}
-
 .modal-footer {
   margin-top: var(--space-sm);
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
-}
-
-.modal-notice-bottom {
-  font-size: .72rem;
-  color: var(--color-text-muted);
-  line-height: 1.7;
-  text-align: center;
 }
 
 .btn-submit {
@@ -1286,11 +1207,4 @@ a {
     text-align: center;
   }
 
-  .closing {
-    text-align: center;
-  }
-
-  .closing-content {
-    margin: 0 auto;
-  }
 }
