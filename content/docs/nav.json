@@ -1,0 +1,18 @@
+[
+  {
+    "group": "Introduction",
+    "items": [
+      { "title": "Overview", "file": "overview.md" },
+      { "title": "Quickstart", "file": "quickstart.md" },
+      { "title": "First Login", "file": "first-login.md" },
+      { "title": "New route", "file": "new-route.md" }
+    ]
+  },
+  {
+    "group": "Reference",
+    "items": [
+      { "title": "Cheat Sheet", "file": "cheat-sheet.md" },
+      { "title": "Alternatives", "file": "alternatives.md" }
+    ]
+  }
+]

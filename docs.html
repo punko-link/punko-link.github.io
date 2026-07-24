@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="pageTitle">Docs — Punkolink</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="noise-overlay"></div>
+
+  <header class="header">
+    <a href="index.html" class="logo">
+      <span class="logo-dot"></span>
+      punkolink
+    </a>
+    <nav class="nav" id="mainNav">
+      <a href="docs.html" class="active">Docs</a>
+      <a href="index.html#contact" class="nav-cta">Contact Sales</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <main>
+    <div class="docs-layout">
+      <div>
+        <button class="docs-mobile-toggle" id="docsMobileToggle">Menu</button>
+        <aside class="docs-sidebar" id="docsSidebar">
+          <div class="blog-state">Loading navigation…</div>
+        </aside>
+      </div>
+      <div class="docs-content" id="docsContent">
+        <div class="blog-state">Loading docs…</div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="logo-dot"></span>
+        punkolink
+      </div>
+      <div class="footer-links">
+        <a href="docs.html">Docs</a>
+      </div>
+      <div class="footer-copy">© 2026 Punkolink — L7 routing. Full stop.</div>
+    </div>
+  </footer>
+
+  <div class="modal-backdrop" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+    <div class="modal">
+      <button class="modal-close" id="contactModalClose" aria-label="Close">&times;</button>
+
+      <div class="modal-form-wrapper" id="contactFormWrapper">
+        <div class="modal-header">
+          <h2 id="contactModalTitle">Contact Sales</h2>
+          <p>Tell us what you're routing and at what scale. An engineer reads this, not a bot.</p>
+        </div>
+
+        <form id="contactForm" novalidate>
+          <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off">
+
+          <div class="form-group">
+            <label class="form-label" for="fieldCompany">Company Name</label>
+            <input
+              class="form-input"
+              type="text"
+              id="fieldCompany"
+              name="company"
+              autocomplete="organization"
+              placeholder="Acme Inc."
+            >
+            <span class="form-error" id="errCompany">Company name is required.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="fieldEmail">Contact Email</label>
+            <input
+              class="form-input"
+              type="email"
+              id="fieldEmail"
+              name="email"
+              autocomplete="email"
+              placeholder="you@company.com"
+            >
+            <span class="form-error" id="errEmail">Enter a valid email address.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="fieldPhone">
+              Phone Number
+              <span class="optional">(optional)</span>
+            </label>
+            <input
+              class="form-input"
+              type="tel"
+              id="fieldPhone"
+              name="phone"
+              autocomplete="tel"
+              placeholder="+1 555 000 0000"
+            >
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="fieldWebsite">
+              Website
+              <span class="optional">(optional)</span>
+            </label>
+            <input
+              class="form-input"
+              type="text"
+              id="fieldWebsite"
+              name="website"
+              autocomplete="url"
+              placeholder="company.com"
+            >
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="fieldRequest">What can we help with?</label>
+            <textarea
+              class="form-textarea"
+              id="fieldRequest"
+              name="request"
+              rows="4"
+              placeholder="What are you routing, at what scale, and what do you need from us?"
+            ></textarea>
+            <span class="form-error" id="errRequest">Let us know what you need help with.</span>
+          </div>
+
+          <div class="modal-footer">
+            <button type="submit" class="btn-submit" id="contactSubmit">Send to Sales</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-success" id="contactSuccess">
+        <div class="success-icon">
+          <span class="logo-dot"></span>
+          punkolink
+        </div>
+        <h3>Message sent.</h3>
+        <p>We'll get back to you at the email you gave us.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/markdown.js"></script>
+  <script src="assets/contact-modal.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var toggle = document.getElementById('navToggle');
+      var nav = document.getElementById('mainNav');
+      if (toggle && nav) {
+        toggle.addEventListener('click', function () {
+          var open = nav.classList.toggle('open');
+          toggle.classList.toggle('open', open);
+          toggle.setAttribute('aria-expanded', String(open));
+          document.body.classList.toggle('nav-open', open);
+        });
+      }
+
+      var sidebarEl = document.getElementById('docsSidebar');
+      var contentEl = document.getElementById('docsContent');
+      var mobileToggle = document.getElementById('docsMobileToggle');
+      var navData = [];
+      var fileBySlug = {};
+
+      mobileToggle.addEventListener('click', function () {
+        sidebarEl.classList.toggle('open');
+      });
+
+      function slugify(file) {
+        return file.replace(/\.md$/, '');
+      }
+
+      function renderSidebar(activeSlug) {
+        sidebarEl.innerHTML = navData.map(function (group) {
+          var links = group.items.map(function (item) {
+            var slug = slugify(item.file);
+            var activeClass = slug === activeSlug ? ' active' : '';
+            return '<a class="docs-nav-link' + activeClass + '" href="#' + slug + '">' + PunkoMarkdown.escapeHtml(item.title) + '</a>';
+          }).join('');
+          return '<div class="docs-nav-group"><div class="docs-nav-group-title">' + PunkoMarkdown.escapeHtml(group.group) + '</div>' + links + '</div>';
+        }).join('');
+      }
+
+      function loadDoc(slug) {
+        var file = fileBySlug[slug];
+        if (!file) {
+          var first = navData[0] && navData[0].items[0];
+          if (!first) return;
+          slug = slugify(first.file);
+          file = first.file;
+        }
+
+        fetch('content/docs/pages/' + file)
+          .then(function (res) {
+            if (!res.ok) throw new Error('missing doc: ' + file);
+            return res.text();
+          })
+          .then(function (raw) {
+            var parsed = PunkoMarkdown.parseFrontmatter(raw);
+            var data = parsed.data;
+
+            document.getElementById('pageTitle').textContent = (data.title || 'Docs') + ' — Punkolink Docs';
+
+            var nextHtml = '';
+            if (data.next) {
+              var nextSlug = slugify(data.next);
+              nextHtml =
+                '<div class="docs-next"><a href="#' + nextSlug + '">' +
+                '<span class="docs-next-label">Next</span>' + PunkoMarkdown.escapeHtml(data.nextTitle || '') + ' &rarr;' +
+                '</a></div>';
+            }
+
+            contentEl.innerHTML =
+              '<div class="docs-content-header">' +
+                '<h1 class="docs-content-title">' + PunkoMarkdown.escapeHtml(data.title || '') + '</h1>' +
+                '<p class="docs-content-description">' + PunkoMarkdown.escapeHtml(data.description || '') + '</p>' +
+              '</div>' +
+              '<div class="prose">' + PunkoMarkdown.renderMarkdown(parsed.content) + '</div>' +
+              nextHtml;
+
+            renderSidebar(slug);
+            sidebarEl.classList.remove('open');
+            window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+          })
+          .catch(function (err) {
+            console.error(err);
+            contentEl.innerHTML = '<div class="blog-state">Couldn\'t load that page. Pick another one from the sidebar.</div>';
+          });
+      }
+
+      fetch('content/docs/nav.json')
+        .then(function (res) { return res.json(); })
+        .then(function (groups) {
+          navData = groups;
+          groups.forEach(function (group) {
+            group.items.forEach(function (item) {
+              fileBySlug[slugify(item.file)] = item.file;
+            });
+          });
+
+          renderSidebar(null);
+
+          var initialSlug = location.hash.replace('#', '') || slugify(groups[0].items[0].file);
+          loadDoc(initialSlug);
+        })
+        .catch(function (err) {
+          sidebarEl.innerHTML = '<div class="blog-state">Couldn\'t load navigation.</div>';
+          contentEl.innerHTML = '';
+          console.error(err);
+        });
+
+      window.addEventListener('hashchange', function () {
+        loadDoc(location.hash.replace('#', ''));
+      });
+
+      sidebarEl.addEventListener('click', function (e) {
+        if (window.matchMedia('(max-width: 768px)').matches && e.target.tagName === 'A') {
+          sidebarEl.classList.remove('open');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
