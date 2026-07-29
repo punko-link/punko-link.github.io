@@ -1,6 +1,16 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CPW4JR8S2K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-CPW4JR8S2K');
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Punkolink — L7 Routing, Built to Hold</title>
@@ -207,6 +217,8 @@
     </div>
     <div class="footer-links">
       <a href="docs.html">Docs</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
     </div>
     <div class="footer-copy">© 2026 Punkolink — L7 routing. Full stop.</div>
   </div>
@@ -291,6 +303,22 @@
               placeholder="What are you routing, at what scale, and what do you need from us?"
             ></textarea>
             <span class="form-error" id="errRequest">Let us know what you need help with.</span>
+          </div>
+
+          <div class="form-group form-checkbox-group">
+            <label class="form-checkbox-label">
+              <input
+                type="checkbox"
+                class="form-checkbox"
+                id="fieldConsent"
+                name="consent"
+              >
+              <span>
+                I agree to the <a href="terms-of-use.html" target="_blank" rel="noopener">Terms of Use</a>
+                and <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.
+              </span>
+            </label>
+            <span class="form-error" id="errConsent">Please accept the Terms of Use and Privacy Policy to continue.</span>
           </div>
 
           <div class="modal-footer">
@@ -379,6 +407,22 @@
             >
           </div>
 
+          <div class="form-group form-checkbox-group">
+            <label class="form-checkbox-label">
+              <input
+                type="checkbox"
+                class="form-checkbox"
+                id="trialConsent"
+                name="consent"
+              >
+              <span>
+                I agree to the <a href="terms-of-use.html" target="_blank" rel="noopener">Terms of Use</a>
+                and <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.
+              </span>
+            </label>
+            <span class="form-error" id="trialErrConsent">Please accept the Terms of Use and Privacy Policy to continue.</span>
+          </div>
+
           <div class="modal-footer">
             <button type="submit" class="btn-submit" id="trialSubmit">Get Free Trial</button>
           </div>
@@ -450,8 +494,10 @@
       if (!f.errId) return;
       var input = document.getElementById(f.id);
       var err   = document.getElementById(f.errId);
-      input.addEventListener('input', function () {
-        if (this.value.trim()) clearError(this, err);
+      var evt   = f.isCheckbox ? 'change' : 'input';
+      input.addEventListener(evt, function () {
+        var ok = f.isCheckbox ? this.checked : this.value.trim();
+        if (ok) clearError(this, err);
       });
     });
 
@@ -467,10 +513,10 @@
 
       opts.fields.forEach(function (f) {
         var input = document.getElementById(f.id);
-        var val   = input.value.trim();
+        var val   = f.isCheckbox ? '' : input.value.trim();
 
         if (f.required) {
-          var ok = f.isEmail ? reEmail.test(val) : !!val;
+          var ok = f.isCheckbox ? input.checked : (f.isEmail ? reEmail.test(val) : !!val);
           if (!ok) {
             showError(input, document.getElementById(f.errId));
             valid = false;
@@ -479,7 +525,11 @@
           }
         }
 
-        payload[f.name] = val;
+        if (f.isCheckbox) {
+          payload[f.name] = input.checked ? 'Yes' : 'No';
+        } else {
+          payload[f.name] = val;
+        }
       });
 
       if (!valid) return;
@@ -532,7 +582,8 @@
       { id: 'fieldEmail',   name: 'email',   errId: 'errEmail',   required: true, isEmail: true },
       { id: 'fieldPhone',   name: 'phone' },
       { id: 'fieldWebsite', name: 'website' },
-      { id: 'fieldRequest', name: 'request', errId: 'errRequest', required: true }
+      { id: 'fieldRequest', name: 'request', errId: 'errRequest', required: true },
+      { id: 'fieldConsent', name: 'consent', errId: 'errConsent', required: true, isCheckbox: true }
     ]
   });
 
@@ -554,12 +605,14 @@
       { id: 'trialCompany', name: 'company', errId: 'trialErrCompany', required: true },
       { id: 'trialEmail',   name: 'email',   errId: 'trialErrEmail',   required: true, isEmail: true },
       { id: 'trialPhone',   name: 'phone' },
-      { id: 'trialWebsite', name: 'website' }
+      { id: 'trialWebsite', name: 'website' },
+      { id: 'trialConsent', name: 'consent', errId: 'trialErrConsent', required: true, isCheckbox: true }
     ]
   });
 })();
 </script>
 
+  <script src="assets/cookie-banner.js"></script>
 
 </body>
 </html>

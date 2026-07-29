@@ -1,8 +1,8 @@
 ---
 title: New Route
 description: Adding your first route from the admin panel.
-next: cheat-sheet.md
-nextTitle: Cheat Sheet
+next: servers.md
+nextTitle: Servers
 ---
 
 In this section, we will delve a bit deeper into the philosophy of L7 routing.
@@ -40,4 +40,4 @@ Click Apply and verify that it works.
 
 ## Next
 
-That's a request routed end to end through the admin panel. The [Cheat Sheet](#cheat-sheet) has the commands and config blocks you'll reach for most from here.
+That's a request routed end to end through the admin panel. For a closer look at each panel you just used, start with [Servers](#servers).

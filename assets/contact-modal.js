@@ -25,7 +25,8 @@
       { id: 'fieldEmail',   name: 'email',   errId: 'errEmail',   required: true, isEmail: true },
       { id: 'fieldPhone',   name: 'phone' },
       { id: 'fieldWebsite', name: 'website' },
-      { id: 'fieldRequest', name: 'request', errId: 'errRequest', required: true }
+      { id: 'fieldRequest', name: 'request', errId: 'errRequest', required: true },
+      { id: 'fieldConsent', name: 'consent', errId: 'errConsent', required: true, isCheckbox: true }
     ];
 
     function openModal() {
@@ -70,8 +71,10 @@
       if (!f.errId) return;
       var input = document.getElementById(f.id);
       var err = document.getElementById(f.errId);
-      input.addEventListener('input', function () {
-        if (this.value.trim()) clearError(this, err);
+      var evt = f.isCheckbox ? 'change' : 'input';
+      input.addEventListener(evt, function () {
+        var ok = f.isCheckbox ? this.checked : this.value.trim();
+        if (ok) clearError(this, err);
       });
     });
 
@@ -87,10 +90,10 @@
 
       fields.forEach(function (f) {
         var input = document.getElementById(f.id);
-        var val = input.value.trim();
+        var val = f.isCheckbox ? '' : input.value.trim();
 
         if (f.required) {
-          var ok = f.isEmail ? reEmail.test(val) : !!val;
+          var ok = f.isCheckbox ? input.checked : (f.isEmail ? reEmail.test(val) : !!val);
           if (!ok) {
             showError(input, document.getElementById(f.errId));
             valid = false;
@@ -99,7 +102,7 @@
           }
         }
 
-        payload[f.name] = val;
+        payload[f.name] = f.isCheckbox ? (input.checked ? 'Yes' : 'No') : val;
       });
 
       if (!valid) return;

@@ -9,6 +9,17 @@
     ]
   },
   {
+    "group": "Entities",
+    "items": [
+      { "title": "Servers", "file": "servers.md" },
+      { "title": "Pools", "file": "pools.md" },
+      { "title": "Roles", "file": "roles.md" },
+      { "title": "Routes", "file": "routes.md" },
+      { "title": "Routers", "file": "routers.md" },
+      { "title": "Settings", "file": "settings.md" }
+    ]
+  },
+  {
     "group": "Reference",
     "items": [
       { "title": "Cheat Sheet", "file": "cheat-sheet.md" },
