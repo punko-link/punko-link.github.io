@@ -390,6 +390,13 @@ a {
   color: var(--color-text);
 }
 
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md);
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -1203,6 +1210,10 @@ a {
   }
 
   .hero-tag {
+    justify-content: center;
+  }
+
+  .hero-actions {
     justify-content: center;
   }
 
