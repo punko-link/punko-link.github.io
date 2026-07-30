@@ -793,6 +793,10 @@ a {
   font-weight: 700;
 }
 
+.vision-text + .vision-text {
+  margin-top: var(--space-md);
+}
+
 /* ── closing.css ─────────── */
 .closing {
   padding: var(--space-3xl) var(--space-lg);
