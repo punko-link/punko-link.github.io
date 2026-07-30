@@ -676,6 +676,10 @@ a {
   gap: var(--space-lg);
 }
 
+.approach-grid.two-col {
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .approach-card {
   padding: var(--space-xl);
   background: var(--color-bg);
@@ -802,6 +806,53 @@ a {
 
 .vision-text + .vision-text {
   margin-top: var(--space-md);
+}
+
+/* ── anatomy.css ─────────── */
+.anatomy {
+  padding: var(--space-3xl) var(--space-lg);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.anatomy-caption {
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+}
+
+.timeline {
+  list-style: none;
+  margin-top: var(--space-xl);
+  border-left: 2px solid var(--color-border);
+}
+
+.timeline li {
+  position: relative;
+  padding: 0 0 var(--space-lg) var(--space-lg);
+  color: var(--color-text-muted);
+}
+
+.timeline li:last-child {
+  padding-bottom: 0;
+}
+
+.timeline li::before {
+  content: '';
+  position: absolute;
+  left: -7px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-red);
+  box-shadow: 0 0 12px var(--color-red-glow);
+}
+
+.timeline li strong {
+  color: var(--color-text);
 }
 
 /* ── closing.css ─────────── */
@@ -1228,7 +1279,8 @@ a {
     justify-content: center;
   }
 
-  .approach-grid {
+  .approach-grid,
+  .approach-grid.two-col {
     grid-template-columns: 1fr;
   }
 
