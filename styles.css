@@ -733,6 +733,13 @@ a {
   line-height: 1.7;
 }
 
+.approach-outro {
+  margin-top: var(--space-xl);
+  font-size: 1.0625rem;
+  color: var(--color-text-muted);
+  max-width: 700px;
+}
+
 /* ── vision.css ─────────── */
 .vision {
   position: relative;
