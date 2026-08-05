@@ -13,7 +13,8 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title id="pageTitle">Docs — Punkolink</title>
+  <title id="pageTitle">Blog — Punkolink</title>
+  <meta name="description" content="Field notes on L7 routing, incident response, and running a boring, staffed core — from the team that builds Punkolink.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -29,8 +30,8 @@
       punkolink
     </a>
     <nav class="nav" id="mainNav">
-      <a href="docs.html" class="active">Docs</a>
-      <a href="blog.html">Blog</a>
+      <a href="docs.html">Docs</a>
+      <a href="blog.html" class="active">Blog</a>
       <a href="index.html#contact" class="nav-cta">Contact Sales</a>
     </nav>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
@@ -41,17 +42,28 @@
   </header>
 
   <main>
-    <div class="docs-layout">
-      <div>
-        <button class="docs-mobile-toggle" id="docsMobileToggle">Menu</button>
-        <aside class="docs-sidebar" id="docsSidebar">
-          <div class="blog-state">Loading navigation…</div>
-        </aside>
+    <section class="blog-section" id="blogList">
+      <div class="section-marker">Blog</div>
+      <h1 class="section-title">Field Notes From The Core</h1>
+      <p class="approach-intro">Writing on L7 routing, incident response, and what it actually takes to keep a routing layer boring.</p>
+
+      <div class="blog-toolbar">
+        <div class="blog-search-wrap">
+          <input type="search" class="form-input blog-search" id="blogSearch" placeholder="Search articles…" aria-label="Search articles">
+        </div>
       </div>
-      <div class="docs-content" id="docsContent">
-        <div class="blog-state">Loading docs…</div>
+
+      <div id="blogResults">
+        <div class="blog-state">Loading articles…</div>
       </div>
-    </div>
+    </section>
+
+    <section class="article-section" id="articleView" style="display:none;">
+      <a class="back-link" href="#">&larr; Back to Blog</a>
+      <div id="articleBody">
+        <div class="blog-state">Loading article…</div>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
@@ -200,108 +212,154 @@
         });
       }
 
-      var sidebarEl = document.getElementById('docsSidebar');
-      var contentEl = document.getElementById('docsContent');
-      var mobileToggle = document.getElementById('docsMobileToggle');
-      var navData = [];
-      var fileBySlug = {};
+      var listSection = document.getElementById('blogList');
+      var articleSection = document.getElementById('articleView');
+      var resultsEl = document.getElementById('blogResults');
+      var searchEl = document.getElementById('blogSearch');
+      var articleBodyEl = document.getElementById('articleBody');
 
-      mobileToggle.addEventListener('click', function () {
-        sidebarEl.classList.toggle('open');
-      });
+      var posts = [];
+      var fileBySlug = {};
+      var searchTerm = '';
 
       function slugify(file) {
         return file.replace(/\.md$/, '');
       }
 
-      function renderSidebar(activeSlug) {
-        sidebarEl.innerHTML = navData.map(function (group) {
-          var links = group.items.map(function (item) {
-            var slug = slugify(item.file);
-            var activeClass = slug === activeSlug ? ' active' : '';
-            return '<a class="docs-nav-link' + activeClass + '" href="#' + slug + '">' + PunkoMarkdown.escapeHtml(item.title) + '</a>';
-          }).join('');
-          return '<div class="docs-nav-group"><div class="docs-nav-group-title">' + PunkoMarkdown.escapeHtml(group.group) + '</div>' + links + '</div>';
-        }).join('');
+      function formatDate(iso) {
+        var d = new Date(iso + 'T00:00:00');
+        if (isNaN(d.getTime())) return iso;
+        return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
       }
 
-      function loadDoc(slug) {
-        var file = fileBySlug[slug];
-        if (!file) {
-          var first = navData[0] && navData[0].items[0];
-          if (!first) return;
-          slug = slugify(first.file);
-          file = first.file;
+      function postCardHtml(post) {
+        var slug = slugify(post.file);
+        return (
+          '<a class="post-card" href="#' + slug + '">' +
+            '<span class="post-tag">' + PunkoMarkdown.escapeHtml(post.tag) + '</span>' +
+            '<h3>' + PunkoMarkdown.escapeHtml(post.title) + '</h3>' +
+            '<p>' + PunkoMarkdown.escapeHtml(post.description) + '</p>' +
+            '<div class="post-meta">' + formatDate(post.date) + ' &middot; ' + PunkoMarkdown.escapeHtml(post.author) + ' &middot; ' + PunkoMarkdown.escapeHtml(post.readingTime) + '</div>' +
+          '</a>'
+        );
+      }
+
+      function featuredHtml(post) {
+        var slug = slugify(post.file);
+        return (
+          '<a class="blog-featured" href="#' + slug + '">' +
+            '<div class="blog-featured-label">FEATURED &mdash; ' + PunkoMarkdown.escapeHtml(post.tag) + '</div>' +
+            '<h2>' + PunkoMarkdown.escapeHtml(post.title) + '</h2>' +
+            '<p>' + PunkoMarkdown.escapeHtml(post.description) + '</p>' +
+            '<div class="post-meta">' + formatDate(post.date) + ' &middot; ' + PunkoMarkdown.escapeHtml(post.author) + ' &middot; ' + PunkoMarkdown.escapeHtml(post.readingTime) + '</div>' +
+          '</a>'
+        );
+      }
+
+      function matchesFilter(post) {
+        if (!searchTerm) return true;
+        var haystack = (post.title + ' ' + post.description + ' ' + post.tag).toLowerCase();
+        return haystack.indexOf(searchTerm.toLowerCase()) !== -1;
+      }
+
+      function renderList() {
+        var filtered = posts.filter(matchesFilter);
+        var isDefaultView = !searchTerm;
+        var featured = isDefaultView ? posts.filter(function (p) { return p.featured; })[0] : null;
+        var gridPosts = featured ? filtered.filter(function (p) { return p !== featured; }) : filtered;
+
+        if (!filtered.length) {
+          resultsEl.innerHTML = '<div class="blog-state">No articles match your search.</div>';
+          return;
         }
 
-        fetch('content/docs/pages/' + file)
+        var html = '<div class="blog-results-count">' + filtered.length + (filtered.length === 1 ? ' article' : ' articles') + '</div>';
+        if (featured) html += featuredHtml(featured);
+        html += '<div class="blog-grid">' + gridPosts.map(postCardHtml).join('') + '</div>';
+        resultsEl.innerHTML = html;
+      }
+
+      function showList() {
+        articleSection.style.display = 'none';
+        listSection.style.display = '';
+        document.getElementById('pageTitle').textContent = 'Blog — Punkolink';
+        renderList();
+        window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+      }
+
+      function showArticle(slug) {
+        listSection.style.display = 'none';
+        articleSection.style.display = '';
+        articleBodyEl.innerHTML = '<div class="blog-state">Loading article…</div>';
+
+        var meta = posts.filter(function (p) { return slugify(p.file) === slug; })[0];
+        var file = fileBySlug[slug];
+
+        if (!file) {
+          articleBodyEl.innerHTML = '<div class="blog-state">That article doesn\'t exist. Pick another one from the <a href="blog.html">blog</a>.</div>';
+          return;
+        }
+
+        fetch('content/blog/pages/' + file)
           .then(function (res) {
-            if (!res.ok) throw new Error('missing doc: ' + file);
+            if (!res.ok) throw new Error('missing post: ' + file);
             return res.text();
           })
           .then(function (raw) {
             var parsed = PunkoMarkdown.parseFrontmatter(raw);
             var data = parsed.data;
+            var tag = data.tag || (meta && meta.tag) || '';
+            var author = data.author || (meta && meta.author) || '';
+            var readingTime = data.readingTime || (meta && meta.readingTime) || '';
+            var date = data.date || (meta && meta.date) || '';
 
-            document.getElementById('pageTitle').textContent = (data.title || 'Docs') + ' — Punkolink Docs';
+            document.getElementById('pageTitle').textContent = (data.title || 'Blog') + ' — Punkolink Blog';
 
-            var nextHtml = '';
-            if (data.next) {
-              var nextSlug = slugify(data.next);
-              nextHtml =
-                '<div class="docs-next"><a href="#' + nextSlug + '">' +
-                '<span class="docs-next-label">Next</span>' + PunkoMarkdown.escapeHtml(data.nextTitle || '') + ' &rarr;' +
-                '</a></div>';
-            }
-
-            contentEl.innerHTML =
-              '<div class="docs-content-header">' +
-                '<h1 class="docs-content-title">' + PunkoMarkdown.escapeHtml(data.title || '') + '</h1>' +
-                '<p class="docs-content-description">' + PunkoMarkdown.escapeHtml(data.description || '') + '</p>' +
+            articleBodyEl.innerHTML =
+              '<div class="article-header">' +
+                (tag ? '<span class="post-tag">' + PunkoMarkdown.escapeHtml(tag) + '</span>' : '') +
+                '<h1 class="article-title">' + PunkoMarkdown.escapeHtml(data.title || '') + '</h1>' +
+                '<div class="article-meta">' + (date ? formatDate(date) + ' &middot; ' : '') + PunkoMarkdown.escapeHtml(author) + (readingTime ? ' &middot; ' + PunkoMarkdown.escapeHtml(readingTime) : '') + '</div>' +
               '</div>' +
-              '<div class="prose">' + PunkoMarkdown.renderMarkdown(parsed.content) + '</div>' +
-              nextHtml;
+              '<div class="prose">' + PunkoMarkdown.renderMarkdown(parsed.content) + '</div>';
 
-            renderSidebar(slug);
-            sidebarEl.classList.remove('open');
             window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
           })
           .catch(function (err) {
             console.error(err);
-            contentEl.innerHTML = '<div class="blog-state">Couldn\'t load that page. Pick another one from the sidebar.</div>';
+            articleBodyEl.innerHTML = '<div class="blog-state">Couldn\'t load that article. Pick another one from the <a href="blog.html">blog</a>.</div>';
           });
       }
 
-      fetch('content/docs/nav.json')
+      function route() {
+        var hash = location.hash.replace('#', '');
+        if (hash) {
+          showArticle(hash);
+        } else {
+          showList();
+        }
+      }
+
+      searchEl.addEventListener('input', function () {
+        searchTerm = searchEl.value.trim();
+        renderList();
+      });
+
+      fetch('content/blog/posts.json')
         .then(function (res) { return res.json(); })
-        .then(function (groups) {
-          navData = groups;
-          groups.forEach(function (group) {
-            group.items.forEach(function (item) {
-              fileBySlug[slugify(item.file)] = item.file;
-            });
+        .then(function (data) {
+          posts = data;
+          posts.forEach(function (post) {
+            fileBySlug[slugify(post.file)] = post.file;
           });
-
-          renderSidebar(null);
-
-          var initialSlug = location.hash.replace('#', '') || slugify(groups[0].items[0].file);
-          loadDoc(initialSlug);
+          route();
         })
         .catch(function (err) {
-          sidebarEl.innerHTML = '<div class="blog-state">Couldn\'t load navigation.</div>';
-          contentEl.innerHTML = '';
+          resultsEl.innerHTML = '<div class="blog-state">Couldn\'t load articles.</div>';
           console.error(err);
         });
 
-      window.addEventListener('hashchange', function () {
-        loadDoc(location.hash.replace('#', ''));
-      });
-
-      sidebarEl.addEventListener('click', function (e) {
-        if (window.matchMedia('(max-width: 768px)').matches && e.target.tagName === 'A') {
-          sidebarEl.classList.remove('open');
-        }
-      });
+      window.addEventListener('hashchange', route);
     });
   </script>
 

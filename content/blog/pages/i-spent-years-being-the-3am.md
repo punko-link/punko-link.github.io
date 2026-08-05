@@ -1,0 +1,42 @@
+---
+title: 'I Spent Years Being the 3 A.M. Call for Companies That Couldn’t Fix Their Own Networks'
+description: It’s a situation familiar to many system administrators. It’s noon, the busiest part of the workday — and everything has gone down.
+tag: Business
+date: 2026-06-22
+author: Punkolink Team
+readingTime: 6 min read
+---
+
+It’s a situation familiar to many system administrators. It’s noon, the busiest part of the workday—and everything has gone down. Or a call at 3 a.m.—the email service is offline. With varying frequency, computer networks experience outages. This is especially true in those areas where the service interacts with users who lack technical expertise. Over the years of working at the intersection of non-technical clients and IT infrastructure, I’ve learned an important lesson. Users are much more creative than developers assume, and this prompted me to create the engineering architecture and technical support model that I’ll describe in this article.
+
+Before we move on, I feel I should point out that English is my second language—please forgive any occasional rough edges.
+
+A company is growing. At some point, it needs a proper infrastructure—a way to route traffic, connect systems, and ensure uninterrupted operation. By “infrastructure,” we mean anything from a shared file storage system to a fully closed network with a complex access control system, redundancy, cold backups, and in-house software. So when a company isn’t tech-savvy, it buys it. Someone sets it up. And then they let it run on its own.
+On good days, that looks like savings: you paid for a box, not for people. On bad days, you discover that a box is not an answer to the question "what do we do when everything stops?" Especially when the cause of the breakdown isn’t the equipment but human error.
+Technology companies answer that question with their own engineers, on call through the night. But a bakery chain, a logistics firm, a network of clinics, a packaging manufacturer — these aren't technology companies. Infrastructure isn't their craft. Keeping a full engineering team on staff for rare-but-devastating incidents makes no economic sense for them, and leaning on "our one IT person," who is asleep, is riskiest at exactly the moment the risk is highest.
+That's the gap. On one side, a box that calls no one when it breaks. On the other, a business that depends on that box but can't afford to keep someone nearby who understands it. The 3 a.m. calls live in that gap.
+
+It’s worth clarifying that “infrastructure” is used here in the context of a company not related to the IT sector. It almost never refers to a single website. It is an entire network: an order-taking portal, integration between the sales floor and the warehouse, ERP, internal services, access to production facilities, the server room in the building, as well as the points of interaction between all these components.
+However, the resources allocated to ensuring fault tolerance are mainly directed toward the “periphery,” because that is where visible threats originate. This makes sense, but it leaves a “blind spot”: while everyone is watching the front door, the core—where the business logic resides, where an order is converted into a warehouse task—remains unattended. It keeps running until it stops. And when that happens, whoever comes to the rescue must first get their bearings. These are the most costly hours of any downtime, and they’re spent on orientation rather than on troubleshooting.
+
+The cost of this phenomenon is not hypothetical. Independent surveys estimate the cost of downtime for small and medium-sized businesses to range from thousands to tens of thousands of dollars per hour (https://itic-corp.com/itic-2024-hourly-cost-of-downtime-report), and this has the greatest impact on small companies, where an hour of downtime is felt much more acutely than it is for a giant that can weather it.
+
+The solution I kept coming back to turns the usual approach on its head. Instead of installing yet another standalone device in the control center, a powerful router is installed there and specialists who configured it are constantly on duty right next to it. The core ceases to be merely a device; it becomes a diagnostic and control panel for the vessel—the main vantage point for the specialists responsible for resolving crisis situations.
+Imagine the difference between a fire extinguisher on the wall and a fire brigade inside the building. A fire extinguisher is a tool that you still need to know how to use properly in a panic. But the fire brigade already knows the floor plan, is already on site, and rushes to tackle the fire, preventing it from spreading. In this model, the router is both the fire extinguisher and the door through which the firefighting team enters. It doesn’t just route traffic; it provides the team with a constant, legitimate foothold at the heart of the system.
+And it is precisely this support that provides access to three things that no external specialist can offer. Thus, the value of this approach isn’t that help arrives—it’s that help doesn’t have to come from far away.
+Context without the chaos. External assistance—regardless of who provides it—begins with an assessment in every incident. Those first few hours are the most costly, because business operations are at a standstill during that time. The team that built and maintains the system’s core does not incur such costs. It is already on the inside and already has all the necessary information.
+Since the team manages the routing layer, it can modify the system’s behavior in real time, right in the middle of an incident. Redirect traffic to bypass a failed node. Isolate a compromised segment. Gradually reduce the load on non-critical components so that the core functions—order acceptance and fulfillment—continue to operate. Not “we’ll release a patch in a week.” Managing the crisis while it’s still a crisis.
+Being right at the center, you can see not just packets, but the meaning behind the traffic—which service, which route, which integration, and how it all behaves. From there, you notice a decline in performance even before it escalates into a failure: a gradually increasing delay, a strange spike, or a failure of one of the integration components. Some incidents in this model never lead to downtime because they’re caught early on. These are the unnoticed rescues that no one outside the system ever sees.
+And there’s another point, less technical but crucial for non-technical businesses: someone has to act as a translator between the world of routes and segments and the world of shipment tracking.
+
+This model has a limitation that is worth highlighting.
+Readiness costs money — even when nothing is on fire. Someone has to be awake, on call, ready.
+It makes sense only in cases where the cost of downtime is so high that the damage it helps prevent is several times greater than the cost of the position itself.
+
+This isn’t just fine print. It’s part of the model. A true “emergency service” deserves its name only if it delivers more value than it costs. Translated into business terms, this boils down to a simple equation: the service costs less than what the customer would lose by solving the problem on their own, plus the cost of downtime. Where this condition is met with room to spare, such a position pays for itself many times over. Where this is not the case, calling it “emergency assistance” would be nothing more than a marketing ploy—and it would be more honest to abandon the idea altogether.
+
+What it changes for the person in charge?
+
+Reduce it all to what the owner feels, and the model changes one thing: it takes away the dread of that 3 a.m. night. The core is no longer an unattended box that will one day go quiet. It's a position with someone on it — someone who knows the system and is personally accountable for keeping the outage short, or for keeping it from happening at all. Instead of an unpredictable invoice in the middle of a fire, a clear arrangement. Instead of a ticket queue, a specific person. Instead of "it works until it doesn't," "it works — and if something goes wrong, someone's already here."
+
+That's the shift worth making: infrastructure stops being a box you're left alone with, and becomes a staffed position. A core with someone on it.
