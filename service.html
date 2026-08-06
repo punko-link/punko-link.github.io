@@ -13,14 +13,14 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title id="pageTitle">Blog — Punkolink</title>
-  <meta name="description" content="Field notes on L7 routing, incident response, and running a boring, staffed core — from the team that builds Punkolink.">
+  <title id="pageTitle">Services — Punkolink</title>
+  <meta name="description" content="Ten concrete pieces of work one router and the team behind it can do — from deployment and incident response to cost audits and on-prem delivery.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="page-service">
 
   <div class="noise-overlay"></div>
 
@@ -30,9 +30,9 @@
       punkolink
     </a>
     <nav class="nav" id="mainNav">
-      <a href="service.html">Services</a>
+      <a href="service.html" class="active">Services</a>
       <a href="docs.html">Docs</a>
-      <a href="blog.html" class="active">Blog</a>
+      <a href="blog.html">Blog</a>
       <a href="index.html#contact" class="nav-cta">Contact Sales</a>
     </nav>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
@@ -43,26 +43,28 @@
   </header>
 
   <main>
-    <section class="blog-section" id="blogList">
-      <div class="section-marker">Blog</div>
-      <h1 class="section-title">Field Notes From The Core</h1>
-      <p class="approach-intro">Writing on L7 routing, incident response, and what it actually takes to keep a routing layer boring.</p>
+    <section class="blog-section" id="serviceList">
+      <div class="section-marker">Services</div>
+      <h1 class="section-title">The Work, Unbundled.</h1>
+      <p class="approach-intro">Ten concrete pieces of work one router and the team behind it can do. Pick one to see the full picture.</p>
 
-      <div class="blog-toolbar">
-        <div class="blog-search-wrap">
-          <input type="search" class="form-input blog-search" id="blogSearch" placeholder="Search articles…" aria-label="Search articles">
-        </div>
-      </div>
-
-      <div id="blogResults">
-        <div class="blog-state">Loading articles…</div>
+      <div class="approach-grid" id="serviceListGrid">
+        <div class="blog-state">Loading services…</div>
       </div>
     </section>
 
-    <section class="article-section" id="articleView" style="display:none;">
-      <a class="back-link" href="#">&larr; Back to Blog</a>
-      <div id="articleBody">
-        <div class="blog-state">Loading article…</div>
+    <section class="article-section" id="serviceView" style="display:none;">
+      <a class="back-link" href="service.html">&larr; Back to Services</a>
+      <div id="serviceBody">
+        <div class="blog-state">Loading service…</div>
+      </div>
+
+      <div class="related-services">
+        <h2 class="section-title">Other Services</h2>
+        <div class="related-row" id="relatedRow"></div>
+        <div class="services-toggle-wrap">
+          <button type="button" class="btn btn-secondary" id="relatedToggle" aria-expanded="false" aria-controls="relatedRow">Show All</button>
+        </div>
       </div>
     </section>
   </main>
@@ -214,150 +216,138 @@
         });
       }
 
-      var listSection = document.getElementById('blogList');
-      var articleSection = document.getElementById('articleView');
-      var resultsEl = document.getElementById('blogResults');
-      var searchEl = document.getElementById('blogSearch');
-      var articleBodyEl = document.getElementById('articleBody');
+      var listSection = document.getElementById('serviceList');
+      var viewSection = document.getElementById('serviceView');
+      var listGridEl = document.getElementById('serviceListGrid');
+      var serviceBodyEl = document.getElementById('serviceBody');
+      var relatedRowEl = document.getElementById('relatedRow');
+      var relatedToggleEl = document.getElementById('relatedToggle');
+      var backLinkEl = document.querySelector('.back-link');
 
-      var posts = [];
+      var services = [];
       var fileBySlug = {};
-      var searchTerm = '';
+      var metaBySlug = {};
 
       function slugify(file) {
         return file.replace(/\.md$/, '');
       }
 
-      function formatDate(iso) {
-        var d = new Date(iso + 'T00:00:00');
-        if (isNaN(d.getTime())) return iso;
-        return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-      }
-
-      function postCardHtml(post) {
-        var slug = slugify(post.file);
+      function cardHtml(service) {
+        var slug = slugify(service.file);
         return (
-          '<a class="post-card" href="#' + slug + '">' +
-            '<span class="post-tag">' + PunkoMarkdown.escapeHtml(post.tag) + '</span>' +
-            '<h3>' + PunkoMarkdown.escapeHtml(post.title) + '</h3>' +
-            '<p>' + PunkoMarkdown.escapeHtml(post.description) + '</p>' +
-            '<div class="post-meta">' + formatDate(post.date) + ' &middot; ' + PunkoMarkdown.escapeHtml(post.author) + ' &middot; ' + PunkoMarkdown.escapeHtml(post.readingTime) + '</div>' +
+          '<a class="approach-card service-card" href="#' + slug + '">' +
+            '<div class="card-number">' + PunkoMarkdown.escapeHtml(service.number) + '</div>' +
+            '<h3>' + PunkoMarkdown.escapeHtml(service.title) + '</h3>' +
+            '<p>' + PunkoMarkdown.escapeHtml(service.description) + '</p>' +
+            '<span class="service-card-link" aria-hidden="true">&rarr;</span>' +
           '</a>'
         );
-      }
-
-      function featuredHtml(post) {
-        var slug = slugify(post.file);
-        return (
-          '<a class="blog-featured" href="#' + slug + '">' +
-            '<div class="blog-featured-label">FEATURED &mdash; ' + PunkoMarkdown.escapeHtml(post.tag) + '</div>' +
-            '<h2>' + PunkoMarkdown.escapeHtml(post.title) + '</h2>' +
-            '<p>' + PunkoMarkdown.escapeHtml(post.description) + '</p>' +
-            '<div class="post-meta">' + formatDate(post.date) + ' &middot; ' + PunkoMarkdown.escapeHtml(post.author) + ' &middot; ' + PunkoMarkdown.escapeHtml(post.readingTime) + '</div>' +
-          '</a>'
-        );
-      }
-
-      function matchesFilter(post) {
-        if (!searchTerm) return true;
-        var haystack = (post.title + ' ' + post.description + ' ' + post.tag).toLowerCase();
-        return haystack.indexOf(searchTerm.toLowerCase()) !== -1;
       }
 
       function renderList() {
-        var filtered = posts.filter(matchesFilter);
-        var isDefaultView = !searchTerm;
-        var featured = isDefaultView ? posts.filter(function (p) { return p.featured; })[0] : null;
-        var gridPosts = featured ? filtered.filter(function (p) { return p !== featured; }) : filtered;
+        if (!services.length) return;
+        listGridEl.innerHTML = services.map(cardHtml).join('');
+      }
 
-        if (!filtered.length) {
-          resultsEl.innerHTML = '<div class="blog-state">No articles match your search.</div>';
-          return;
-        }
-
-        var html = '<div class="blog-results-count">' + filtered.length + (filtered.length === 1 ? ' article' : ' articles') + '</div>';
-        if (featured) html += featuredHtml(featured);
-        html += '<div class="blog-grid">' + gridPosts.map(postCardHtml).join('') + '</div>';
-        resultsEl.innerHTML = html;
+      function renderRelated(currentSlug) {
+        var others = services.filter(function (s) { return slugify(s.file) !== currentSlug; });
+        relatedRowEl.innerHTML = others.map(cardHtml).join('');
+        relatedRowEl.classList.remove('expanded');
+        relatedToggleEl.setAttribute('aria-expanded', 'false');
+        relatedToggleEl.textContent = 'Show All';
       }
 
       function showList() {
-        articleSection.style.display = 'none';
+        viewSection.style.display = 'none';
         listSection.style.display = '';
-        document.getElementById('pageTitle').textContent = 'Blog — Punkolink';
+        document.getElementById('pageTitle').textContent = 'Services — Punkolink';
         renderList();
         window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
       }
 
-      function showArticle(slug) {
+      function showService(slug) {
         listSection.style.display = 'none';
-        articleSection.style.display = '';
-        articleBodyEl.innerHTML = '<div class="blog-state">Loading article…</div>';
+        viewSection.style.display = '';
+        serviceBodyEl.innerHTML = '<div class="blog-state">Loading service…</div>';
 
-        var meta = posts.filter(function (p) { return slugify(p.file) === slug; })[0];
+        var meta = metaBySlug[slug];
         var file = fileBySlug[slug];
 
         if (!file) {
-          articleBodyEl.innerHTML = '<div class="blog-state">That article doesn\'t exist. Pick another one from the <a href="blog.html">blog</a>.</div>';
+          serviceBodyEl.innerHTML = '<div class="blog-state">That service doesn\'t exist. Pick another one below.</div>';
+          relatedRowEl.innerHTML = '';
+          window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
           return;
         }
 
-        fetch('content/blog/pages/' + file)
+        fetch('content/services/pages/' + file)
           .then(function (res) {
-            if (!res.ok) throw new Error('missing post: ' + file);
+            if (!res.ok) throw new Error('missing service: ' + file);
             return res.text();
           })
           .then(function (raw) {
             var parsed = PunkoMarkdown.parseFrontmatter(raw);
             var data = parsed.data;
-            var tag = data.tag || (meta && meta.tag) || '';
-            var author = data.author || (meta && meta.author) || '';
-            var readingTime = data.readingTime || (meta && meta.readingTime) || '';
-            var date = data.date || (meta && meta.date) || '';
+            var title = data.title || (meta && meta.title) || '';
+            var number = meta && meta.number;
 
-            document.getElementById('pageTitle').textContent = (data.title || 'Blog') + ' — Punkolink Blog';
+            document.getElementById('pageTitle').textContent = title + ' — Punkolink Services';
 
-            articleBodyEl.innerHTML =
+            serviceBodyEl.innerHTML =
               '<div class="article-header">' +
-                (tag ? '<span class="post-tag">' + PunkoMarkdown.escapeHtml(tag) + '</span>' : '') +
-                '<h1 class="article-title">' + PunkoMarkdown.escapeHtml(data.title || '') + '</h1>' +
-                '<div class="article-meta">' + (date ? formatDate(date) + ' &middot; ' : '') + PunkoMarkdown.escapeHtml(author) + (readingTime ? ' &middot; ' + PunkoMarkdown.escapeHtml(readingTime) : '') + '</div>' +
+                (number ? '<span class="post-tag">Service ' + PunkoMarkdown.escapeHtml(number) + '</span>' : '') +
+                '<h1 class="article-title">' + PunkoMarkdown.escapeHtml(title) + '</h1>' +
               '</div>' +
               '<div class="prose">' + PunkoMarkdown.renderMarkdown(parsed.content) + '</div>';
 
+            renderRelated(slug);
             window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
           })
           .catch(function (err) {
             console.error(err);
-            articleBodyEl.innerHTML = '<div class="blog-state">Couldn\'t load that article. Pick another one from the <a href="blog.html">blog</a>.</div>';
+            serviceBodyEl.innerHTML = '<div class="blog-state">Couldn\'t load that service. Pick another one below.</div>';
           });
       }
 
       function route() {
         var hash = location.hash.replace('#', '');
-        if (hash) {
-          showArticle(hash);
+        if (hash && metaBySlug[hash]) {
+          showService(hash);
         } else {
           showList();
         }
       }
 
-      searchEl.addEventListener('input', function () {
-        searchTerm = searchEl.value.trim();
-        renderList();
+      relatedToggleEl.addEventListener('click', function () {
+        var expanded = relatedToggleEl.getAttribute('aria-expanded') === 'true';
+        relatedRowEl.classList.toggle('expanded', !expanded);
+        relatedToggleEl.setAttribute('aria-expanded', String(!expanded));
+        relatedToggleEl.textContent = expanded ? 'Show All' : 'Show Fewer';
       });
 
-      fetch('content/blog/posts.json')
+      if (backLinkEl) {
+        backLinkEl.addEventListener('click', function (e) {
+          if (location.hash) {
+            e.preventDefault();
+            history.pushState('', document.title, window.location.pathname + window.location.search);
+            showList();
+          }
+        });
+      }
+
+      fetch('content/services/services.json')
         .then(function (res) { return res.json(); })
         .then(function (data) {
-          posts = data;
-          posts.forEach(function (post) {
-            fileBySlug[slugify(post.file)] = post.file;
+          services = data;
+          services.forEach(function (service) {
+            var slug = slugify(service.file);
+            fileBySlug[slug] = service.file;
+            metaBySlug[slug] = service;
           });
           route();
         })
         .catch(function (err) {
-          resultsEl.innerHTML = '<div class="blog-state">Couldn\'t load articles.</div>';
+          listGridEl.innerHTML = '<div class="blog-state">Couldn\'t load services.</div>';
           console.error(err);
         });
 

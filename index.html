@@ -21,7 +21,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="page-home">
 
   <div class="noise-overlay"></div>
 
@@ -32,6 +32,7 @@
     punkolink
   </a>
   <nav class="nav" id="mainNav">
+    <a href="service.html">Services</a>
     <a href="docs.html">Docs</a>
     <a href="blog.html">Blog</a>
     <a href="#" class="nav-cta contact-sales-open">Contact Sales</a>
@@ -102,53 +103,11 @@
       <div class="grid-item dead"></div>
       <div class="grid-item dead"></div>
     </div>
-    <div class="visual-label">8 nodes down. traffic doesn't care.</div>
-  </div>
-</section>
-
-    <section class="manifesto">
-  <div class="manifesto-text">
-    <span class="strike">Wrapper.</span>
-    <span class="strike">Plugin.</span>
-    <span class="strike">Sidecar.</span>
-    <span class="highlight">Router.</span>
-  </div>
-</section>
-
-    <section class="problem" id="problem">
-  <div class="section-marker">01</div>
-  <div class="problem-content">
-    <h2 class="section-title">One Core. Never Unattended.</h2>
-
-    <div class="problem-stats">
-      <div class="stat">
-        <span class="stat-number">L7</span>
-        <span class="stat-label">The Only Layer We Route</span>
-      </div>
-      <div class="stat">
-        <span class="stat-number">24/7</span>
-        <span class="stat-label">Engineers Watching It</span>
-      </div>
-      <div class="stat">
-        <span class="stat-number">2</span>
-        <span class="stat-label">The Router. And The Team Behind It.</span>
-      </div>
-    </div>
-
-    <p class="problem-text">
-      Punkolink is an L7 router — full stop. Not a platform, not a suite, not a dozen features
-      bolted on for a pitch deck.
-    </p>
-    <p class="problem-text">
-      <strong class="red">One router. One team behind it.</strong> Built and run by people
-      who route traffic for a living.
-    </p>
-    <p class="problem-text accent">The router gets you in the door. The team is what happens next.</p>
   </div>
 </section>
 
     <section class="approach" id="incident-response">
-  <div class="section-marker">02</div>
+  <div class="section-marker">01</div>
   <h2 class="section-title">Already Inside When It Matters</h2>
   <p class="approach-intro">Being embedded in your core isn't just architecture — it's what lets us act while the incident is still happening, not after.</p>
 
@@ -218,36 +177,153 @@
   </ol>
 </section>
 
-    <section class="approach" id="two-ways">
-  <div class="section-marker">03</div>
-  <h2 class="section-title">Two Ways To Run It</h2>
-  <p class="approach-intro">These are two different products, for two different customers.</p>
+    <section class="approach" id="services">
+  <div class="section-marker">02</div>
+  <h2 class="section-title">The Work, Unbundled.</h2>
+  <p class="approach-intro">These aren't ten products — they're the concrete work one router and the team behind it can do. Hire us for one, or for several.</p>
 
-  <div class="approach-grid two-col">
-    <div class="approach-card">
-      <div class="card-number">A</div>
-      <h3>The Binary</h3>
+  <div class="approach-grid services-grid">
+    <div class="approach-card service-card">
+      <div class="card-number">01</div>
+      <h3>L7 router deployment into your core.</h3>
       <p>
-        Take Punkolink as a binary and run it yourself. Same Rust core, built on top of
-        Cloudflare's Pingora — the same foundation handling some of the busiest traffic on
-        the internet. No team attached, no retainer. Just the router.
+        We set up and configure our router at the center of your network, wired to your
+        real services and routes, handed over in working order. Measured in days.
       </p>
+      <a class="service-card-link" href="service.html#l7-router-deployment" aria-label="Full description: L7 router deployment into your core.">&rarr;</a>
     </div>
 
-    <div class="approach-card featured">
-      <div class="card-number">B</div>
-      <h3>The Staffed Core</h3>
+    <div class="approach-card service-card">
+      <div class="card-number">02</div>
+      <h3>Incident response.</h3>
       <p>
-        Take the router plus the team that built it — embedded in your core, ready to step
-        in the moment something breaks. The router is the mechanism; the people are the
-        offer.
+        When something breaks, an engineer who already knows your system is in within
+        minutes and acts mid-fire: reroutes around the failing node, isolates the segment,
+        gracefully degrades the non-essential so the critical keeps running.
       </p>
+      <a class="service-card-link" href="service.html#incident-response" aria-label="Full description: Incident response.">&rarr;</a>
     </div>
+
+    <div class="approach-card service-card">
+      <div class="card-number">03</div>
+      <h3>Readiness, maintained.</h3>
+      <p>
+        Between incidents we keep an up-to-date map of your infrastructure and a response
+        plan that tracks your changes — so when something fails, the response is measured
+        in minutes instead of starting from scratch.
+      </p>
+      <a class="service-card-link" href="service.html#readiness-maintained" aria-label="Full description: Readiness, maintained.">&rarr;</a>
+    </div>
+
+    <div class="approach-card service-card">
+      <div class="card-number">04</div>
+      <h3>Degradation monitoring.</h3>
+      <p>
+        We watch your traffic and catch problems before they turn into downtime. The
+        visible result: incidents that never reach your users.
+      </p>
+      <a class="service-card-link" href="service.html#degradation-monitoring" aria-label="Full description: Degradation monitoring.">&rarr;</a>
+    </div>
+
+    <div class="approach-card service-card">
+      <div class="card-number">05</div>
+      <h3>Infrastructure &amp; software work.</h3>
+      <p>
+        Correction, extension, and preparation of a system according to what it objectively
+        requires — the course the infrastructure actually needs, even where that means
+        building less rather than more, never what deepens dependence on the provider.
+      </p>
+      <a class="service-card-link" href="service.html#infrastructure-software-work" aria-label="Full description: Infrastructure & software work.">&rarr;</a>
+    </div>
+
+    <div class="approach-card service-card">
+      <div class="card-number">06</div>
+      <h3>Peak-load preparation.</h3>
+      <p>
+        Before a season or a launch, we stress your system, find the weak points, and
+        harden it — so the surge doesn't take you down at your most profitable moment.
+      </p>
+      <a class="service-card-link" href="service.html#peak-load-preparation" aria-label="Full description: Peak-load preparation.">&rarr;</a>
+    </div>
+  </div>
+
+  <div class="approach-grid services-grid services-grid-extra" id="servicesExtra" hidden>
+    <div class="approach-card service-card">
+      <div class="card-number">07</div>
+      <h3>Abuse protection.</h3>
+      <p>
+        We absorb floods, bad bots, and abuse aimed at your services — with a human on it
+        when things escalate. Honest about scale: within the bounds of your infrastructure.
+      </p>
+      <a class="service-card-link" href="service.html#abuse-protection" aria-label="Full description: Abuse protection.">&rarr;</a>
+    </div>
+
+    <div class="approach-card service-card">
+      <div class="card-number">08</div>
+      <h3>Access management.</h3>
+      <p>
+        We bring order to who can reach what: roles, routes, and permissions configured so
+        the right traffic reaches the right place — and kept current.
+      </p>
+      <a class="service-card-link" href="service.html#access-management" aria-label="Full description: Access management.">&rarr;</a>
+    </div>
+
+    <div class="approach-card service-card">
+      <div class="card-number">09</div>
+      <h3>Cost audit.</h3>
+      <p>
+        We show you what's actually flowing through your infrastructure — including
+        runaway automated and AI traffic — and catch cost and load anomalies before they
+        run for months.
+      </p>
+      <a class="service-card-link" href="service.html#cost-audit" aria-label="Full description: Cost audit.">&rarr;</a>
+    </div>
+
+    <div class="approach-card service-card">
+      <div class="card-number">10</div>
+      <h3>On-prem delivery of our software.</h3>
+      <p>
+        Want to take the L7 router and run it yourself — we hand over our software to
+        deploy on your side, with setup help and documentation. The tool without the
+        on-call, for those who only need the tool.
+      </p>
+      <a class="service-card-link" href="service.html#on-prem-delivery" aria-label="Full description: On-prem delivery of our software.">&rarr;</a>
+    </div>
+  </div>
+
+  <div class="services-toggle-wrap">
+    <button type="button" class="btn btn-secondary services-toggle" id="servicesToggle" aria-expanded="false" aria-controls="servicesExtra">Show More</button>
+  </div>
+</section>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var toggle = document.getElementById('servicesToggle');
+    var extra = document.getElementById('servicesExtra');
+    if (!toggle || !extra) return;
+    toggle.addEventListener('click', function () {
+      var expanded = toggle.getAttribute('aria-expanded') === 'true';
+      extra.hidden = expanded;
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.textContent = expanded ? 'Show More' : 'Show Less';
+    });
+  });
+</script>
+
+    <section class="trial-cta">
+  <div class="trial-cta-box">
+    <h2 class="trial-cta-title">Not ready to commit to any of these? Start with a live trial on your own infrastructure.</h2>
+    <p class="trial-cta-text">
+      Give us access to one real part of your setup — we dig in, show you how we work, and
+      you walk away with something concrete: the weak spots we found, a plan, or a problem
+      already fixed. No migration, no commitment, nothing installed. If you like what you
+      see, we talk about what's next.
+    </p>
+    <a href="#" class="btn btn-primary contact-sales-open">Contact Sales</a>
   </div>
 </section>
 
     <section class="problem" id="who-its-for">
-  <div class="section-marker">04</div>
+  <div class="section-marker">03</div>
   <div class="problem-content">
     <h2 class="section-title">Who It's For (And Who It Isn't)</h2>
     <p class="problem-text">
@@ -290,6 +366,7 @@
       punkolink
     </div>
     <div class="footer-links">
+      <a href="service.html">Services</a>
       <a href="docs.html">Docs</a>
       <a href="blog.html">Blog</a>
       <a href="terms-of-use.html">Terms of Use</a>

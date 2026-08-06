@@ -1,0 +1,12 @@
+---
+title: Infrastructure & Software Work
+description: Correction, extension, and preparation of a system according to what it objectively requires — the course the infrastructure actually needs, even where that means building less rather than more, never what deepens dependence on the provider.
+---
+
+Work on infrastructure and software is not confined to the correction of faults. A fault is one occasion for it — a cause located in an application, a database, the manner in which two services communicate, or an architectural decision taken under time pressure whose costs have since accumulated. But the same work is as often undertaken in the absence of any failure: the extension of an existing system, the addition of new functionality, or preparation for a coming increase in load. This service covers both — the correction of what is deficient and the development of what is to grow.
+
+In each case the governing principle is the same, and it defines the service: the course followed is the one the system objectively requires, irrespective of whether it serves the provider's interest. This holds as much for development as for repair, where the temptation runs the other way — toward proposing more than is warranted. Where the appropriate course reduces the organization's dependence on Punkolink, or where the honest recommendation is to build less rather than more, that is what is stated. Recommendations carry weight in proportion to their independence from the provider's commercial interest: an assessment offered by a party with nothing to gain from it is of a different order than one shaped by what it sells.
+
+The outcome is a system made sounder, or larger, or readier, according to what it actually needs — together with judgments that can be relied upon precisely because they are not inclined toward the sale of further work.
+
+The service applies wherever a system requires attention above or around the routing layer: a fault to be corrected, a capability to be added, a component to be extended, or a foreseeable rise in demand to be prepared for. Its governing principle is that the correct course is followed even where that course diminishes future dependence on the provider.

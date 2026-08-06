@@ -1,0 +1,62 @@
+[
+  {
+    "file": "l7-router-deployment.md",
+    "number": "01",
+    "title": "L7 router deployment into your core.",
+    "description": "We set up and configure our router at the center of your network, wired to your real services and routes, handed over in working order. Measured in days."
+  },
+  {
+    "file": "incident-response.md",
+    "number": "02",
+    "title": "Incident response.",
+    "description": "When something breaks, an engineer who already knows your system is in within minutes and acts mid-fire: reroutes around the failing node, isolates the segment, gracefully degrades the non-essential so the critical keeps running."
+  },
+  {
+    "file": "readiness-maintained.md",
+    "number": "03",
+    "title": "Readiness, maintained.",
+    "description": "Between incidents we keep an up-to-date map of your infrastructure and a response plan that tracks your changes — so when something fails, the response is measured in minutes instead of starting from scratch."
+  },
+  {
+    "file": "degradation-monitoring.md",
+    "number": "04",
+    "title": "Degradation monitoring.",
+    "description": "We watch your traffic and catch problems before they turn into downtime. The visible result: incidents that never reach your users."
+  },
+  {
+    "file": "infrastructure-software-work.md",
+    "number": "05",
+    "title": "Infrastructure & software work.",
+    "description": "Correction, extension, and preparation of a system according to what it objectively requires — the course the infrastructure actually needs, even where that means building less rather than more, never what deepens dependence on the provider."
+  },
+  {
+    "file": "peak-load-preparation.md",
+    "number": "06",
+    "title": "Peak-load preparation.",
+    "description": "Before a season or a launch, we stress your system, find the weak points, and harden it — so the surge doesn't take you down at your most profitable moment."
+  },
+  {
+    "file": "abuse-protection.md",
+    "number": "07",
+    "title": "Abuse protection.",
+    "description": "We absorb floods, bad bots, and abuse aimed at your services — with a human on it when things escalate. Honest about scale: within the bounds of your infrastructure."
+  },
+  {
+    "file": "access-management.md",
+    "number": "08",
+    "title": "Access management.",
+    "description": "We bring order to who can reach what: roles, routes, and permissions configured so the right traffic reaches the right place — and kept current."
+  },
+  {
+    "file": "cost-audit.md",
+    "number": "09",
+    "title": "Cost audit.",
+    "description": "We show you what's actually flowing through your infrastructure — including runaway automated and AI traffic — and catch cost and load anomalies before they run for months."
+  },
+  {
+    "file": "on-prem-delivery.md",
+    "number": "10",
+    "title": "On-prem delivery of our software.",
+    "description": "Want to take the L7 router and run it yourself — we hand over our software to deploy on your side, with setup help and documentation. The tool without the on-call, for those who only need the tool."
+  }
+]
