@@ -32,7 +32,7 @@
     punkolink
   </a>
   <nav class="nav" id="mainNav">
-    <a href="service.html">Services</a>
+    <a href="service.html">Solutions</a>
     <a href="docs.html">Docs</a>
     <a href="blog.html">Blog</a>
     <a href="#" class="nav-cta contact-sales-open">Contact Sales</a>
@@ -85,295 +85,97 @@
     </p>
     <div class="hero-actions">
       <a href="#" class="btn btn-primary contact-sales-open">Contact Sales</a>
-      <a href="#incident-response" class="btn btn-secondary">See How It Works</a>
-    </div>
-  </div>
-
-  <div class="hero-visual">
-    <div class="visual-circle"></div>
-    <div class="visual-circle visual-circle-2"></div>
-    <div class="visual-grid">
-      <div class="grid-item dead"></div>
-      <div class="grid-item dead"></div>
-      <div class="grid-item dead"></div>
-      <div class="grid-item dead"></div>
-      <div class="grid-item active"></div>
-      <div class="grid-item dead"></div>
-      <div class="grid-item dead"></div>
-      <div class="grid-item dead"></div>
-      <div class="grid-item dead"></div>
+      <a href="#l7" class="btn btn-secondary">See How It Works</a>
     </div>
   </div>
 </section>
 
-    <section class="approach" id="incident-response">
-  <div class="approach-container">
+    <section class="ladder-step" id="purpose">
+  <div class="ladder-step-container">
   <div class="section-marker">01</div>
-  <h2 class="section-title">Already Inside When It Matters</h2>
-  <p class="approach-intro">Being embedded in your core isn't just architecture — it's what lets us act while the incident is still happening, not after.</p>
-
-  <div class="approach-grid">
-    <div class="approach-card">
-      <div class="card-number">01</div>
-      <h3>Context Without The Scramble</h3>
-      <p>
-        We're already inside your network. When something breaks, we're not reading a
-        runbook for the first time — we already know the topology, the traffic patterns,
-        and what's supposed to happen.
-      </p>
-    </div>
-
-    <div class="approach-card">
-      <div class="card-number">02</div>
-      <h3>Intervention In Runtime</h3>
-      <p>
-        From inside the L7 layer we can reroute, isolate, or gracefully degrade traffic
-        live — while the incident is still happening, not after a postmortem.
-      </p>
-    </div>
-
-    <div class="approach-card featured">
-      <div class="card-number">03</div>
-      <h3>Prevention From The Core</h3>
-      <p>
-        Sitting at L7 means we often see degradation before it becomes an outage. Some
-        incidents never make it to downtime at all.
-      </p>
-    </div>
-  </div>
-
-  <p class="approach-outro">
-    And when it's over, you reach an engineer, not a ticket queue — someone who explains
-    what happened and what's different now, in plain business terms.
-  </p>
-  </div>
-</section>
-
-    <section class="vision">
-  <div class="vision-bg"></div>
-  <div class="vision-content">
-    <blockquote class="vision-quote">
-      "The router should be the most boring part of your stack."
-    </blockquote>
-    <p class="vision-text">
-      That's not an accident. The router is boring because it's staffed — when something
-      starts to go wrong, the excitement gets absorbed by engineers who are already inside,
-      long before it reaches you.
+  <h2 class="section-title">Order At The Edge Of A Chaotic Internet</h2>
+  <div class="ladder-step-body">
+    <p class="ladder-step-text">
+      The internet is inherently unstable, and every business that runs on it eventually
+      meets that instability — as an outage, an attack, a cost that ran unwatched. Large
+      players tame this at global scale. Punkolink does the same work at the scale of a
+      single business, where the chaos wears ordinary names: haste, human error, a shortcut
+      taken under deadline.
     </p>
-    <p class="vision-text">
-      We care about ops <em>peace of mind</em> — freedom from 3am pages, freedom from mystery
-      timeouts, freedom from re-learning the routing layer every time someone new picks it up.
+    <p class="ladder-step-text">
+      The long aim is a system so well-kept that the emergency rarely comes.
     </p>
   </div>
+  </div>
 </section>
 
-    <section class="anatomy">
-  <div class="anatomy-caption">Illustrative — not a real incident.</div>
-  <h2 class="section-title">Anatomy Of A Save</h2>
-  <ol class="timeline">
-    <li><strong>Something degrades.</strong> A node, a route, a dependency — starts to slip.</li>
-    <li><strong>The core sees it first.</strong> L7 notices before your customers do.</li>
-    <li><strong>An engineer is already inside.</strong> No dialing in, no explaining the network from scratch — they're already looking at it.</li>
-    <li><strong>Fixed, live.</strong> Reroute, isolate, or gracefully degrade at L7 while it's happening.</li>
-    <li><strong>The debrief.</strong> What happened and what's different now — in plain business terms.</li>
-  </ol>
-</section>
-
-    <section class="approach" id="services">
-  <div class="approach-container">
+    <section class="ladder-step surface" id="l7">
+  <div class="ladder-step-container">
   <div class="section-marker">02</div>
-  <h2 class="section-title">The Work, Unbundled.</h2>
-  <p class="approach-intro">These aren't ten products — they're the concrete work one router and the team behind it can do. Hire us for one, or for several.</p>
-
-  <div class="approach-grid services-grid">
-    <div class="approach-card service-card">
-      <div class="card-number">01</div>
-      <h3>L7 router deployment into your core.</h3>
-      <p>
-        A layer-7 router or reverse proxy installed and configured at the center of an
-        existing network — services mapped as backends, the routing table defined around
-        real traffic, access rules established. What distinguishes it is not the router but
-        the accountability held by those who built it. Measured in days.
-      </p>
-      <a class="service-card-link" href="service.html#l7-router-deployment" aria-label="Full description: L7 router deployment into your core.">&rarr;</a>
-    </div>
-
-    <div class="approach-card service-card">
-      <div class="card-number">02</div>
-      <h3>Incident response.</h3>
-      <p>
-        When a system fails, an engineer who already knows it is present within minutes and
-        acts while the incident is in progress — rerouting around the failing node,
-        isolating the segment, gracefully degrading the non-essential so the critical path
-        keeps running. The speed follows from already being inside.
-      </p>
-      <a class="service-card-link" href="service.html#incident-response" aria-label="Full description: Incident response.">&rarr;</a>
-    </div>
-
-    <div class="approach-card service-card">
-      <div class="card-number">03</div>
-      <h3>Readiness, maintained.</h3>
-      <p>
-        The continuous work that precedes any incident: a current map of the infrastructure
-        and a response plan kept aligned with the system as it changes. The most expensive
-        part of an outage — reconstructing an unfamiliar environment under pressure — is
-        moved out of the crisis and into calm, so response begins from knowledge rather than
-        from scratch.
-      </p>
-      <a class="service-card-link" href="service.html#readiness-maintained" aria-label="Full description: Readiness, maintained.">&rarr;</a>
-    </div>
-
-    <div class="approach-card service-card">
-      <div class="card-number">04</div>
-      <h3>Degradation monitoring.</h3>
-      <p>
-        Observation of traffic at the routing layer, where the early indications of failure
-        — rising latency, emerging errors, a faltering integration — appear before users
-        feel them. A category of incident is resolved on approach and never becomes an
-        outage at all.
-      </p>
-      <a class="service-card-link" href="service.html#degradation-monitoring" aria-label="Full description: Degradation monitoring.">&rarr;</a>
-    </div>
-
-    <div class="approach-card service-card">
-      <div class="card-number">05</div>
-      <h3>Infrastructure &amp; software work.</h3>
-      <p>
-        Correction, extension, and preparation of a system according to what it objectively
-        requires — a fault repaired, functionality added, or capacity readied for growth.
-        The course followed is the one the infrastructure actually needs, even where that
-        means building less rather than more, never what deepens dependence on the provider.
-      </p>
-      <a class="service-card-link" href="service.html#infrastructure-software-work" aria-label="Full description: Infrastructure & software work.">&rarr;</a>
-    </div>
-
-    <div class="approach-card service-card">
-      <div class="card-number">06</div>
-      <h3>Peak-load preparation.</h3>
-      <p>
-        Ahead of a season or a launch, a system is put under realistic load, its weak
-        points located and reinforced — so a surge does not cause failure at the moment of
-        greatest consequence. The failure point is raised; certainty is not promised.
-      </p>
-      <a class="service-card-link" href="service.html#peak-load-preparation" aria-label="Full description: Peak-load preparation.">&rarr;</a>
-    </div>
+  <h2 class="section-title">The L7 Router At The Core</h2>
+  <div class="ladder-step-body">
+    <p class="ladder-step-text">
+      At the center of it is our layer-7 router — the point every request passes through,
+      and the vantage from which the rest becomes possible. It is the instrument and the
+      door: the thing that routes your traffic, and the place the team steps in through
+      when something breaks.
+    </p>
   </div>
-
-  <div class="approach-grid services-grid services-grid-extra" id="servicesExtra" hidden>
-    <div class="approach-card service-card">
-      <div class="card-number">07</div>
-      <h3>Abuse protection.</h3>
-      <p>
-        Floods, bad bots, and abuse aimed at a set of services are filtered, rate-limited,
-        and blocked at the routing layer, with human intervention where automated defenses
-        prove insufficient. The scope is stated plainly: protection within the bounds of an
-        organization's own infrastructure, not a globally distributed absorption network.
-      </p>
-      <a class="service-card-link" href="service.html#abuse-protection" aria-label="Full description: Abuse protection.">&rarr;</a>
-    </div>
-
-    <div class="approach-card service-card">
-      <div class="card-number">08</div>
-      <h3>Access management.</h3>
-      <p>
-        Roles, routes, and permissions configured so that traffic reaches its intended
-        destination with the intended level of access — and kept current as circumstances
-        change, rather than drifting back into disorder. Access at the routing layer; a
-        complement to existing identity and authentication systems, not a replacement.
-      </p>
-      <a class="service-card-link" href="service.html#access-management" aria-label="Full description: Access management.">&rarr;</a>
-    </div>
-
-    <div class="approach-card service-card">
-      <div class="card-number">09</div>
-      <h3>Cost audit.</h3>
-      <p>
-        What actually flows through an infrastructure — including runaway automated and AI
-        traffic — rendered visible from the point through which it passes, with cost and
-        load anomalies identified before they run for months. Observation and a control
-        point on traffic, not a full financial-operations platform.
-      </p>
-      <a class="service-card-link" href="service.html#cost-audit" aria-label="Full description: Cost audit.">&rarr;</a>
-    </div>
-
-    <div class="approach-card service-card">
-      <div class="card-number">10</div>
-      <h3>On-prem delivery of our software.</h3>
-      <p>
-        For an organization with the competence and the preference to run the router
-        itself: the software provided for deployment on its own infrastructure, with setup
-        assistance and documentation. No retainer and no dependence on the provider — the
-        tool, operated under the organization's own control.
-      </p>
-      <a class="service-card-link" href="service.html#on-prem-delivery" aria-label="Full description: On-prem delivery of our software.">&rarr;</a>
-    </div>
-  </div>
-
-  <div class="services-toggle-wrap">
-    <button type="button" class="btn btn-secondary services-toggle" id="servicesToggle" aria-expanded="false" aria-controls="servicesExtra">Show More</button>
+  <div class="ladder-step-actions">
+    <a href="l7.html" class="btn btn-primary">About L7</a>
+    <a href="docs.html" class="btn btn-secondary">Read The Docs</a>
   </div>
   </div>
 </section>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var toggle = document.getElementById('servicesToggle');
-    var extra = document.getElementById('servicesExtra');
-    if (!toggle || !extra) return;
-    toggle.addEventListener('click', function () {
-      var expanded = toggle.getAttribute('aria-expanded') === 'true';
-      extra.hidden = expanded;
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      toggle.textContent = expanded ? 'Show More' : 'Show Less';
-    });
-  });
-</script>
 
-    <section class="trial-cta">
+    <section class="ladder-step" id="solutions-step">
+  <div class="ladder-step-container">
+  <div class="section-marker">03</div>
+  <h2 class="section-title">And We Stay</h2>
+  <div class="ladder-step-body">
+    <p class="ladder-step-text">
+      The router is where it starts, not where it ends. Around it is a set of engineering
+      solutions — from deployment and incident response to hardening and audits — engaged
+      one at a time, as the system actually needs them.
+    </p>
+  </div>
+  <div class="ladder-step-actions">
+    <a href="service.html" class="btn btn-primary">Explore Solutions</a>
+  </div>
+  </div>
+</section>
+
+    <section class="blog-strip">
+  <div class="blog-strip-container">
+    <div class="blog-strip-header">
+      <h2 class="section-title">From The Field Notes</h2>
+      <a href="blog.html" class="blog-strip-link">View All Posts &rarr;</a>
+    </div>
+    <!--
+      Static excerpt of the latest posts, hand-mirrored from content/blog/posts.json
+      (index.html has no JS blog loader, unlike blog.html). To add a future post:
+      duplicate a .blog-strip-card block below, and fill in its tag/title/excerpt from
+      posts.json, its href as "blog.html#<slug>" (slug = the post's "file" field with
+      ".md" removed), and its date/reading time in .blog-strip-meta.
+    -->
+    <div class="blog-strip-grid">
+      <a class="blog-strip-card" href="blog.html#i-spent-years-being-the-3am">
+        <div class="blog-strip-tag">Business</div>
+        <h3>I Spent Years Being the 3 A.M. Call for Companies That Couldn’t Fix Their Own Networks</h3>
+        <p>It’s a situation familiar to many system administrators. It’s noon, the busiest part of the workday — and everything has gone down.</p>
+        <div class="blog-strip-meta">Jul 1, 2026 &middot; 6 min read</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+    <section class="trial-cta" id="contact">
   <div class="trial-cta-box">
-    <h2 class="trial-cta-title">Not ready to commit to any of these? Start with a live trial on your own infrastructure.</h2>
+    <h2 class="trial-cta-title">Ready To Talk?</h2>
     <p class="trial-cta-text">
-      Give us access to one real part of your setup — we dig in, show you how we work, and
-      you walk away with something concrete: the weak spots we found, a plan, or a problem
-      already fixed. No migration, no commitment, nothing installed. If you like what you
-      see, we talk about what's next.
+      Tell us what you're routing and at what scale — an engineer reads it, not a bot.
     </p>
     <a href="#" class="btn btn-primary contact-sales-open">Contact Sales</a>
-  </div>
-</section>
-
-    <section class="problem" id="who-its-for">
-  <div class="section-marker">03</div>
-  <div class="problem-content">
-    <h2 class="section-title">Who It's For (And Who It Isn't)</h2>
-    <p class="problem-text">
-      The staffed core earns its cost where downtime is expensive — where what we prevent
-      is worth several times what we charge.
-    </p>
-    <p class="problem-text">
-      If an hour offline costs your business next to nothing, take the binary and run it
-      yourself. That's not a lesser option — it's the honest one for where you are.
-    </p>
-    <p class="problem-text accent">We'd rather tell you which one you need than sell you the wrong one.</p>
-  </div>
-</section>
-
-    <section class="closing" id="contact">
-  <div class="closing-content">
-    <h2 class="closing-title">
-      Everything Fails.<br>
-      <span class="red">The Core Shouldn't.</span>
-    </h2>
-    <p class="closing-text">
-      Ready to talk specs? Contact sales — an engineer picks it up, not a queue.
-    </p>
-    <div class="closing-actions">
-      <a href="#" class="btn btn-primary contact-sales-open">Contact Sales</a>
-    </div>
-
-    <div class="closing-alt">
-      <p class="closing-alt-title">Not ready to decide right now?</p>
-      <a href="#" class="btn btn-secondary request-demo-open">Request Demo</a>
-    </div>
   </div>
 </section>
   </main>
@@ -385,7 +187,7 @@
       punkolink
     </div>
     <div class="footer-links">
-      <a href="service.html">Services</a>
+      <a href="service.html">Solutions</a>
       <a href="docs.html">Docs</a>
       <a href="blog.html">Blog</a>
       <a href="terms-of-use.html">Terms of Use</a>
