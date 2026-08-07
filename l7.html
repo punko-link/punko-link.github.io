@@ -30,6 +30,7 @@
       punkolink
     </a>
     <nav class="nav" id="mainNav">
+      <a href="l7.html" class="active">L7</a>
       <a href="service.html">Solutions</a>
       <a href="docs.html">Docs</a>
       <a href="blog.html">Blog</a>
@@ -44,35 +45,119 @@
 
   <main>
     <section class="page-hero">
-      <div class="page-hero-tag">L7 Router</div>
+      <div class="page-hero-tag">Product</div>
       <h1 class="page-hero-title">Punkolink L7</h1>
       <p class="page-hero-description">
-        Punkolink L7 is the layer-7 router at the center of your network — the point every
-        request passes through, and the vantage from which incident response, monitoring,
-        and access control all become possible. It is both the instrument and the door: the
-        thing that routes your traffic, and the place our engineers step in through when
-        something breaks.
+        A layer-7 router built to sit at the core of a network — the point every request
+        passes through, and the control surface for how traffic is routed, secured, and
+        observed. One binary, run yourself or operated for you.
       </p>
+      <div class="hero-actions">
+        <a href="docs.html" class="btn btn-primary">Read The Docs</a>
+        <a href="#" class="btn btn-secondary contact-sales-open">Contact Sales</a>
+      </div>
     </section>
 
-    <div class="l7-content">
-      <section class="l7-section">
-        <h2>How It Works</h2>
-        <p class="todo-note">TODO: walk through request flow — ingress, routing table, backends, and where an engineer intervenes mid-incident.</p>
-      </section>
+    <section class="ladder-step surface" id="what-it-does">
+      <div class="ladder-step-container">
+        <h2 class="section-title">What It Does</h2>
 
-      <section class="l7-section">
-        <h2>Where It Sits In Your Stack</h2>
-        <p class="todo-note">TODO: diagram/explain placement relative to load balancers, existing reverse proxies, and origin services.</p>
-      </section>
+        <div class="feature-group">
+          <div class="feature-group-title">Routing &amp; Reliability</div>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h3>Load balancing</h3>
+              <p>Traffic is distributed across multiple backend servers rather than concentrated on one. This keeps any single node from becoming a bottleneck under load, and lets capacity be added by attaching more backends behind the same route.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Redundancy</h3>
+              <p>When a backend fails, traffic is redirected to the ones still healthy, so the loss of a single server does not take the service down. Failover is handled at the router, without the client noticing which node answered.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Availability monitoring</h3>
+              <p>The router continuously checks the health of the resources it forwards to, so a failing backend is detected as it degrades rather than when a user reports it. Unhealthy nodes are taken out of rotation until they recover.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Status reporting</h3>
+              <p>The state of routed resources is compiled into reports, giving a record of what was healthy, what failed, and when — the raw material for understanding an incident after it happens and for spotting patterns before one does.</p>
+            </div>
+          </div>
+        </div>
 
-      <section class="l7-section">
-        <h2>Running It Yourself vs. Staffed</h2>
-        <p class="todo-note">TODO: compare the on-prem/self-run delivery option against the staffed core offering, and when each makes sense.</p>
-      </section>
+        <div class="feature-group">
+          <div class="feature-group-title">Access &amp; Protection</div>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h3>Layer-7 access control</h3>
+              <p>Access is defined per route, at the application layer, using role-based rules. Rather than an all-or-nothing gate, each route can require the specific role appropriate to it, so the right traffic reaches the right service with the right permission.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Layer-3 access control</h3>
+              <p>Traffic is filtered by IP address through allow and deny lists, at the network layer. This is the coarse first line — admitting known-good sources or excluding known-bad ones before finer rules apply.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Rate limiting</h3>
+              <p>The rate of requests is capped so that a burst — whether an abusive client or an unexpected spike — cannot overwhelm a backend. Limits are applied at the router, protecting services that have no rate control of their own.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Brute-force protection</h3>
+              <p>Repeated credential-guessing attempts against a login or endpoint are detected and blocked, so an automated attack cannot grind against authentication indefinitely.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Bot protection</h3>
+              <p>Automated bot traffic is identified and filtered away from services, separating real users from scripts, scrapers, and probing tools before they reach the backend.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Graphical challenge</h3>
+              <p>A CAPTCHA-style visual challenge can be interposed to separate human users from automated traffic, used where a request pattern is suspicious enough to warrant proof that a person is behind it.</p>
+            </div>
+          </div>
+        </div>
 
-      <a href="docs.html" class="l7-docs-link">Read the technical documentation &rarr;</a>
-    </div>
+        <div class="feature-group">
+          <div class="feature-group-title">Operations</div>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h3>Static file storage</h3>
+              <p>Static assets — for example a site's static markup — can be served directly from the router, without routing those requests to a separate backend at all.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Web GUI</h3>
+              <p>The router is administered through a browser-based panel, so routes, access rules, and backends can be managed without working solely from the command line.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ladder-step" id="run-it-your-way">
+      <div class="ladder-step-container">
+        <h2 class="section-title">Run It Your Way</h2>
+        <p class="ladder-step-text">
+          Punkolink L7 is a single binary. Run it yourself on your own infrastructure — the
+          tool, with setup help and documentation — or have the team that built it operate it
+          and step in when something breaks. The router is the same either way; what differs
+          is who holds responsibility for it.
+        </p>
+        <div class="ladder-step-actions">
+          <a href="index.html#contact" class="btn btn-primary">Run It Yourself</a>
+          <a href="service.html" class="btn btn-secondary">Have It Operated</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="trial-cta">
+      <div class="trial-cta-box">
+        <h2 class="trial-cta-title">Questions About L7?</h2>
+        <p class="trial-cta-text">
+          Read the technical documentation, or tell us what you're routing — an engineer reads it, not a bot.
+        </p>
+        <div class="ladder-step-actions trial-cta-actions">
+          <a href="docs.html" class="btn btn-secondary">Read The Docs</a>
+          <a href="#" class="btn btn-primary contact-sales-open">Contact Sales</a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
@@ -82,6 +167,7 @@
         punkolink
       </div>
       <div class="footer-links">
+        <a href="l7.html">L7</a>
         <a href="service.html">Solutions</a>
         <a href="docs.html">Docs</a>
         <a href="blog.html">Blog</a>

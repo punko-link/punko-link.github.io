@@ -13,7 +13,7 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title id="pageTitle">Services — Punkolink</title>
+  <title id="pageTitle">Solutions — Punkolink</title>
   <meta name="description" content="Ten concrete pieces of work one router and the team behind it can do — from deployment and incident response to cost audits and on-prem delivery.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,6 +30,7 @@
       punkolink
     </a>
     <nav class="nav" id="mainNav">
+      <a href="l7.html">L7</a>
       <a href="service.html" class="active">Solutions</a>
       <a href="docs.html">Docs</a>
       <a href="blog.html">Blog</a>
@@ -44,7 +45,7 @@
 
   <main>
     <section class="blog-section" id="serviceList">
-      <div class="section-marker">Services</div>
+      <div class="section-marker">Solutions</div>
       <h1 class="section-title">The Work, Unbundled.</h1>
       <p class="approach-intro">Ten concrete pieces of work one router and the team behind it can do. Pick one to see the full picture.</p>
 
@@ -54,13 +55,13 @@
     </section>
 
     <section class="article-section" id="serviceView" style="display:none;">
-      <a class="back-link" href="service.html">&larr; Back to Services</a>
+      <a class="back-link" href="service.html">&larr; Back to Solutions</a>
       <div id="serviceBody">
         <div class="blog-state">Loading service…</div>
       </div>
 
       <div class="related-services">
-        <h2 class="section-title">Other Services</h2>
+        <h2 class="section-title">Other Solutions</h2>
         <div class="related-row" id="relatedRow"></div>
         <div class="services-toggle-wrap">
           <button type="button" class="btn btn-secondary" id="relatedToggle" aria-expanded="false" aria-controls="relatedRow">Show All</button>
@@ -76,6 +77,7 @@
         punkolink
       </div>
       <div class="footer-links">
+        <a href="l7.html">L7</a>
         <a href="service.html">Solutions</a>
         <a href="docs.html">Docs</a>
         <a href="blog.html">Blog</a>
@@ -260,7 +262,7 @@
       function showList() {
         viewSection.style.display = 'none';
         listSection.style.display = '';
-        document.getElementById('pageTitle').textContent = 'Services — Punkolink';
+        document.getElementById('pageTitle').textContent = 'Solutions — Punkolink';
         renderList();
         window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
       }
@@ -291,7 +293,7 @@
             var title = data.title || (meta && meta.title) || '';
             var number = meta && meta.number;
 
-            document.getElementById('pageTitle').textContent = title + ' — Punkolink Services';
+            document.getElementById('pageTitle').textContent = title + ' — Punkolink Solutions';
 
             serviceBodyEl.innerHTML =
               '<div class="article-header">' +
