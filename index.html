@@ -103,7 +103,7 @@
     <section class="ladder-step l7demo-section" id="l7-demo">
   <div class="ladder-step-container">
   <div class="section-marker">ROUTING CONSOLE</div>
-  <h2 class="section-title">Routing You Can Read</h2>
+  <h2 class="section-title">See L7 In Action</h2>
   <p class="ladder-step-text">One readable row per route — method, path, target, and access, all in one place. No nested config blocks to reverse-engineer.</p>
 
   <div class="l7demo-panel">
@@ -130,6 +130,69 @@
       </thead>
       <tbody id="l7demo-tbody"></tbody>
     </table>
+  </div>
+
+  <div class="l7reel-divider" aria-hidden="true"></div>
+
+  <div class="l7reel" id="l7reel">
+    <div class="l7reel-marker">Everything it does</div>
+    <div class="l7reel-viewport" id="l7reel-viewport">
+      <div class="l7reel-track" id="l7reel-track">
+        <div class="l7reel-card">
+          <h3>Load balancing</h3>
+          <p>Distributes traffic across backends so no single node carries it all.</p>
+        </div>
+        <div class="l7reel-card">
+          <h3>Rate limiting</h3>
+          <p>Caps request rates to keep abuse and spikes from overwhelming backends.</p>
+        </div>
+        <div class="l7reel-card">
+          <h3>Bot protection</h3>
+          <p>Filters automated bot traffic away from your services.</p>
+        </div>
+        <div class="l7reel-card">
+          <h3>Layer-7 access control</h3>
+          <p>Per-route, role-based access rules at the application layer.</p>
+        </div>
+        <div class="l7reel-card">
+          <h3>Redundancy</h3>
+          <p>Failover across servers so the loss of one doesn't take the service down.</p>
+        </div>
+        <div class="l7reel-card">
+          <h3>Brute-force protection</h3>
+          <p>Blocks repeated credential-guessing attempts.</p>
+        </div>
+        <div class="l7reel-card">
+          <h3>Availability monitoring</h3>
+          <p>Continuous health checks on the resources the router forwards to.</p>
+        </div>
+        <div class="l7reel-card">
+          <h3>Layer-3 access control</h3>
+          <p>IP-based filtering with allow and deny lists.</p>
+        </div>
+        <div class="l7reel-card">
+          <h3>Graphical challenge</h3>
+          <p>A CAPTCHA-style check to separate humans from automated traffic.</p>
+        </div>
+        <div class="l7reel-card">
+          <h3>Status reporting</h3>
+          <p>Automated reports on the state of your routed resources.</p>
+        </div>
+        <div class="l7reel-card">
+          <h3>Static file storage</h3>
+          <p>Serve static assets straight from the router.</p>
+        </div>
+        <div class="l7reel-card">
+          <h3>Web GUI</h3>
+          <p>A browser admin panel for managing the router without the command line.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ladder-step-actions">
+    <a href="l7.html" class="btn btn-primary">Explore L7</a>
+    <a href="docs.html" class="btn btn-secondary">Read The Docs</a>
   </div>
   </div>
 </section>
@@ -231,84 +294,6 @@
     </div>
   </div>
 
-  </div>
-</section>
-
-    <section class="ladder-step surface" id="l7-features">
-  <div class="ladder-step-container">
-  <h2 class="section-title">What The L7 Router Does</h2>
-  <p class="ladder-step-text">One router, twelve jobs — from load balancing to access control to monitoring, run at layer 7.</p>
-
-  <div class="feature-group">
-    <div class="feature-group-title">Routing &amp; Reliability</div>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <h3>Load balancing</h3>
-        <p>Distributes traffic across backends so no single node carries it all.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Redundancy</h3>
-        <p>Failover across servers so the loss of one doesn't take the service down.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Availability monitoring</h3>
-        <p>Continuous health checks on the resources the router forwards to.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Status reporting</h3>
-        <p>Automated reports on the state of your routed resources.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="feature-group">
-    <div class="feature-group-title">Access &amp; Protection</div>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <h3>Layer-7 access control</h3>
-        <p>Per-route, role-based access rules at the application layer.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Layer-3 access control</h3>
-        <p>IP-based filtering with allow and deny lists.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Rate limiting</h3>
-        <p>Caps request rates to keep abuse and spikes from overwhelming backends.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Brute-force protection</h3>
-        <p>Blocks repeated credential-guessing attempts.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Bot protection</h3>
-        <p>Filters automated bot traffic away from your services.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Graphical challenge</h3>
-        <p>A CAPTCHA-style check to separate humans from automated traffic.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="feature-group">
-    <div class="feature-group-title">Operations</div>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <h3>Static file storage</h3>
-        <p>Serve static assets (e.g. a site's static markup) straight from the router.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Web GUI</h3>
-        <p>A browser admin panel for managing the router without the command line.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="ladder-step-actions">
-    <a href="l7.html" class="btn btn-primary">About L7</a>
-    <a href="docs.html" class="btn btn-secondary">Read The Docs</a>
-  </div>
   </div>
 </section>
 
@@ -825,6 +810,7 @@
 
   <script src="assets/cookie-banner.js"></script>
   <script src="assets/l7-demo.js"></script>
+  <script src="assets/l7-reel.js"></script>
 
 </body>
 </html>
