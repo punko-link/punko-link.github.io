@@ -189,7 +189,9 @@ a {
 
 .nav {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: flex-end;
   gap: var(--space-6);
   font-size: var(--text-secondary);
 }
@@ -233,6 +235,18 @@ a {
 
 .nav a.nav-cta::after {
   display: none;
+}
+
+.nav a.nav-cta-primary {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border-color: var(--accent);
+}
+
+.nav a.nav-cta-primary:hover {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  color: var(--accent-contrast);
 }
 
 /* ── Hamburger button (hidden on desktop) ── */
@@ -761,6 +775,62 @@ a {
   line-height: 1.6;
   margin-bottom: var(--space-4);
   flex-grow: 1;
+}
+
+.final-cta-card.featured {
+  border-color: var(--accent);
+  background: var(--surface-2);
+}
+
+/* ── saas grids ─────────── */
+.saas-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+.saas-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+
+.saas-card,
+.saas-detail-card {
+  padding: var(--space-4);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0;
+}
+
+.saas-card h3,
+.saas-detail-card h3 {
+  font-size: var(--text-h3);
+  letter-spacing: -.01em;
+  margin-bottom: var(--space-2);
+}
+
+.saas-card p,
+.saas-detail-card p {
+  font-size: var(--text-body);
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.saas-detail-card p + p {
+  margin-top: var(--space-3);
+}
+
+.saas-detail-card .solution-chips {
+  margin-top: var(--space-4);
+  margin-bottom: 0;
+}
+
+.saas-disclaimer {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: var(--space-4);
+  max-width: var(--measure);
 }
 
 /* ── blog-strip.css ─────────── */
@@ -1405,6 +1475,10 @@ a {
   .related-row.expanded {
     grid-template-columns: 1fr;
   }
+
+  .saas-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
@@ -1429,7 +1503,9 @@ a {
 
   .feature-grid,
   .solutions-grid,
-  .final-cta-grid {
+  .final-cta-grid,
+  .saas-grid,
+  .saas-detail-grid {
     grid-template-columns: 1fr;
   }
 
