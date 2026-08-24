@@ -426,6 +426,21 @@ a {
   gap: var(--space-4);
 }
 
+.hero-promo-note {
+  margin-top: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-secondary);
+  letter-spacing: .02em;
+  color: var(--text-muted);
+}
+
+.hero-promo-amount {
+  color: var(--text);
+  font-weight: var(--weight-bold);
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 2px;
+}
+
 /* Button */
 
 .btn {
