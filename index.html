@@ -271,6 +271,45 @@
   </div>
 </section>
 
+    <section class="ladder-step l7demo-section" id="l7-demo">
+  <div class="ladder-step-container">
+  <div class="section-marker">ROUTING CONSOLE</div>
+  <h2 class="section-title">Routing You Can Read</h2>
+  <p class="ladder-step-text">One readable row per route — method, path, target, and access, all in one place. No nested config blocks to reverse-engineer.</p>
+
+  <div class="l7demo-panel">
+    <div class="l7demo-panel-header">
+      <div class="l7demo-panel-heading">
+        <div class="l7demo-panel-title">Routes</div>
+        <div class="l7demo-panel-subtitle">L7 routing table — method, path, target and access.</div>
+      </div>
+      <button type="button" class="l7demo-btn-new" id="l7demo-add-route">+ New route</button>
+    </div>
+
+    <div class="l7demo-disclaimer">Interface preview — a look at the L7 console, not a live instance.</div>
+
+    <div class="l7demo-table-wrap">
+      <table class="l7demo-table">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Path</th>
+            <th>Type</th>
+            <th>Target</th>
+            <th>Roles Allowed</th>
+            <th>Require Auth</th>
+            <th>IP Blacklist</th>
+            <th>IP Whitelist</th>
+            <th class="l7demo-th-actions"><span class="l7demo-sr-only">Actions</span></th>
+          </tr>
+        </thead>
+        <tbody id="l7demo-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+</section>
+
     <section class="ladder-step" id="solutions-preview">
   <div class="ladder-step-container">
   <h2 class="section-title">Solutions We Provide</h2>
@@ -783,6 +822,7 @@
 </script>
 
   <script src="assets/cookie-banner.js"></script>
+  <script src="assets/l7-demo.js"></script>
 
 </body>
 </html>
