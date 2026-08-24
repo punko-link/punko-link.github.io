@@ -348,32 +348,26 @@ a {
 
 /* ── hero.css ─────────── */
 .hero {
-  min-height: 88vh;
+  min-height: 86vh;
   max-width: var(--content-max);
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: center;
   padding: var(--space-24) var(--space-4);
   position: relative;
-  text-align: center;
 }
 
-.hero-content {
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: var(--space-16);
+  width: 100%;
+}
+
+.hero-intro {
   position: relative;
   z-index: 1;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.hero-tag,
-.hero-actions {
-  justify-content: center;
-}
-
-.hero-description {
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .hero-tag {
@@ -395,10 +389,7 @@ a {
 }
 
 .hero-title {
-  max-width: 1040px;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: clamp(2.75rem, 5.5vw, 4.25rem);
+  font-size: clamp(2rem, 3.4vw, 2.75rem);
   line-height: 1.1;
   letter-spacing: -.02em;
   margin-bottom: var(--space-6);
@@ -413,7 +404,6 @@ a {
 .hero-description {
   font-size: var(--text-body);
   color: var(--text-muted);
-  max-width: 640px;
   margin-bottom: var(--space-8);
 }
 
@@ -429,19 +419,55 @@ a {
   gap: var(--space-4);
 }
 
-.hero-promo-note {
-  margin-top: var(--space-4);
-  font-family: var(--font-mono);
-  font-size: var(--text-secondary);
-  letter-spacing: .02em;
-  color: var(--text-muted);
+.hero-promo {
+  background: var(--surface);
+  border: 1px solid var(--accent);
+  border-radius: 0;
+  padding: var(--space-8);
+  position: relative;
+  z-index: 1;
 }
 
-.hero-promo-amount {
-  color: var(--text);
+.hero-promo-title {
+  font-size: clamp(1.75rem, 2.6vw, 2.25rem);
   font-weight: var(--weight-bold);
-  border-bottom: 1px solid var(--accent);
-  padding-bottom: 2px;
+  line-height: 1.15;
+  letter-spacing: -.01em;
+  margin-bottom: var(--space-2);
+}
+
+.hero-promo-sub {
+  font-size: var(--text-h3);
+  font-weight: var(--weight-regular);
+  color: var(--text-muted);
+  margin-bottom: var(--space-4);
+}
+
+.hero-promo-copy {
+  font-size: var(--text-body);
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-6);
+}
+
+.hero-promo-cta {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .hero-intro,
+  .hero-promo {
+    max-width: 560px;
+  }
+
+  .hero-promo {
+    padding: var(--space-6);
+  }
 }
 
 /* Button */
