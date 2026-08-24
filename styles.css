@@ -348,7 +348,7 @@ a {
 
 /* ── hero.css ─────────── */
 .hero {
-  min-height: 90vh;
+  min-height: 88vh;
   max-width: var(--content-max);
   margin: 0 auto;
   display: flex;
@@ -362,7 +362,7 @@ a {
 .hero-content {
   position: relative;
   z-index: 1;
-  max-width: 700px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -385,7 +385,7 @@ a {
   text-transform: uppercase;
   letter-spacing: .08em;
   color: var(--text-muted);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-6);
 }
 
 .tag-line {
@@ -395,10 +395,13 @@ a {
 }
 
 .hero-title {
-  font-size: var(--text-display);
+  max-width: 1040px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: clamp(2.75rem, 5.5vw, 4.25rem);
   line-height: 1.1;
   letter-spacing: -.02em;
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-6);
 }
 
 .title-accent {
@@ -410,8 +413,8 @@ a {
 .hero-description {
   font-size: var(--text-body);
   color: var(--text-muted);
-  max-width: 500px;
-  margin-bottom: var(--space-6);
+  max-width: 640px;
+  margin-bottom: var(--space-8);
 }
 
 .hero-description strong {
