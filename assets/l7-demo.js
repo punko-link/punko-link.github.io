@@ -2,13 +2,15 @@
   'use strict';
 
   var METHODS = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'];
-  var TYPES = ['Dynamic', 'Authorize', 'Static'];
+  var TYPES = ['Dynamic', 'Static', 'Authorize'];
+  var ROLES = ['Unauthorized', 'Writer'];
 
   var INITIAL_ROUTES = [
-    { method: 'GET', path: '/admin', type: 'Dynamic', authOn: false },
-    { method: 'GET', path: '/admin/api/*', type: 'Dynamic', authOn: true },
-    { method: 'POST', path: '/admin/api/auth/login', type: 'Authorize', authOn: false },
-    { method: 'DELETE', path: '/admin/api/*', type: 'Dynamic', authOn: true }
+    { method: 'GET', path: '/articles', type: 'Dynamic', role: 'Unauthorized', authOn: false },
+    { method: 'GET', path: '/articles/*', type: 'Static', role: 'Unauthorized', authOn: false },
+    { method: 'POST', path: '/articles', type: 'Dynamic', role: 'Writer', authOn: true },
+    { method: 'PUT', path: '/articles/*', type: 'Dynamic', role: 'Writer', authOn: true },
+    { method: 'DELETE', path: '/articles/*', type: 'Dynamic', role: 'Writer', authOn: true }
   ];
 
   function buildOptions(select, values) {
@@ -56,13 +58,15 @@
     tdType.appendChild(typeSelect);
     tr.appendChild(tdType);
 
-    // Access (roles allowed)
+    // Access (role required)
     var tdAccess = document.createElement('td');
     tdAccess.setAttribute('data-label', 'Access');
-    var roleChip = document.createElement('span');
-    roleChip.className = 'l7demo-role-chip';
-    roleChip.textContent = 'admin';
-    tdAccess.appendChild(roleChip);
+    var accessSelect = document.createElement('select');
+    accessSelect.className = 'l7demo-select l7demo-select-access';
+    buildOptions(accessSelect, ROLES);
+    accessSelect.value = route.role || ROLES[0];
+    setAccessRole(accessSelect);
+    tdAccess.appendChild(accessSelect);
     tr.appendChild(tdAccess);
 
     // Require auth toggle
@@ -105,6 +109,10 @@
     label.textContent = on ? 'AUTH ON' : 'AUTH OFF';
   }
 
+  function setAccessRole(select) {
+    select.dataset.role = select.value.toLowerCase();
+  }
+
   function init() {
     var tbody = document.getElementById('l7demo-tbody');
     var addBtn = document.getElementById('l7demo-add-route');
@@ -115,7 +123,13 @@
     });
 
     addBtn.addEventListener('click', function () {
-      tbody.appendChild(buildRow({ method: 'GET', path: '', type: TYPES[0], authOn: false }));
+      tbody.appendChild(buildRow({ method: 'GET', path: '', type: TYPES[0], role: ROLES[0], authOn: false }));
+    });
+
+    tbody.addEventListener('change', function (event) {
+      if (event.target.classList.contains('l7demo-select-access')) {
+        setAccessRole(event.target);
+      }
     });
 
     tbody.addEventListener('click', function (event) {
