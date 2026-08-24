@@ -2798,3 +2798,62 @@ body.page-service .blog-section {
     flex-basis: clamp(180px, 55vw, 240px);
   }
 }
+
+/* ── block-reel.css (isolated: building-blocks carousel, drifts opposite l7-reel) ─── */
+.blockreel-viewport {
+  margin-top: var(--space-8);
+  overflow: hidden;
+  cursor: grab;
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.blockreel-viewport.is-dragging {
+  cursor: grabbing;
+}
+
+.blockreel-track {
+  display: flex;
+  gap: var(--space-4);
+  will-change: transform;
+}
+
+.blockreel-card {
+  flex: 0 0 clamp(200px, 22vw, 260px);
+  padding: var(--space-4);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0;
+}
+
+.blockreel-kind {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.blockreel-kind.is-own {
+  color: var(--accent);
+}
+
+.blockreel-card h3 {
+  font-size: var(--text-h3);
+  letter-spacing: -.01em;
+  margin-bottom: var(--space-2);
+}
+
+.blockreel-card p {
+  font-size: var(--text-body);
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .blockreel-card {
+    flex-basis: clamp(180px, 55vw, 240px);
+  }
+}

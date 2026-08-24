@@ -6,9 +6,9 @@
   var INERTIA_STOP = 8; // px/s — below this, inertia hands back to drift
   var VELOCITY_HALF_LIFE = 400; // ms — how fast a flick's speed decays
 
-  function init() {
-    var viewport = document.getElementById('l7reel-viewport');
-    var track = document.getElementById('l7reel-track');
+  function initReel(viewportId, trackId, direction) {
+    var viewport = document.getElementById(viewportId);
+    var track = document.getElementById(trackId);
     if (!viewport || !track) return;
 
     var originalCards = Array.prototype.slice.call(track.children);
@@ -132,7 +132,7 @@
           inertiaVelocity *= Math.pow(0.5, dt / VELOCITY_HALF_LIFE);
           if (Math.abs(inertiaVelocity) < INERTIA_STOP) inInertia = false;
         } else if (!reduceMotion) {
-          x -= DRIFT_SPEED * (dt / 1000);
+          x += direction * DRIFT_SPEED * (dt / 1000);
         }
         wrap();
         apply();
@@ -151,6 +151,11 @@
     x = -segmentWidth;
     apply();
     requestAnimationFrame(tick);
+  }
+
+  function init() {
+    initReel('l7reel-viewport', 'l7reel-track', -1);
+    initReel('blockreel-viewport', 'blockreel-track', 1);
   }
 
   if (document.readyState === 'loading') {
