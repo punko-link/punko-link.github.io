@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Managed Containers — Punkolink</title>
-  <meta name="description" content="Managed Postgres, Redis, Meilisearch, and Qdrant containers on Punkolink infrastructure — provisioned in minutes, cheap enough to experiment with.">
+  <title>Pricing — Punkolink</title>
+  <meta name="description" content="Punkolink runs on credits: $1 per credit, sold in packs of 5. $20 in free credits on signup, no card required.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
     </a>
     <nav class="nav" id="mainNav">
       <a href="l7.html">L7</a>
-      <a href="saas.html" class="active">Cloud</a>
+      <a href="saas.html">Cloud</a>
       <a href="service.html">Solutions</a>
       <a href="docs.html">Docs</a>
       <a href="blog.html">Blog</a>
@@ -37,86 +37,65 @@
 
   <main>
     <section class="page-hero">
-      <div class="page-hero-tag">Managed Containers</div>
-      <h1 class="page-hero-title">Managed Containers</h1>
+      <div class="page-hero-tag">Pricing</div>
+      <h1 class="page-hero-title">Pricing</h1>
       <p class="page-hero-description">
-        Databases and search engines running on our infrastructure — provisioned in minutes,
-        cheap enough to experiment with, and yours to grow from.
+        Simple and transparent. One thing to buy, priced by the credit.
       </p>
-      <div class="hero-actions">
-        <a href="https://cloud.punkolink.com" class="btn btn-primary">Try It Out</a>
-      </div>
     </section>
 
-    <section class="ladder-step surface" id="services">
+    <section class="ladder-step surface" id="what-you-buy">
       <div class="ladder-step-container">
-        <h2 class="section-title">What We Host</h2>
+        <div class="section-marker">Pricing</div>
+        <h2 class="section-title">What you buy</h2>
 
-        <div class="saas-detail-grid">
-          <div class="saas-detail-card">
-            <h3>Postgres</h3>
-            <p>The default relational database for most projects. A managed PostgreSQL instance is provisioned and kept running, so a small project or prototype gets a real database without operating one.</p>
-            <div class="solution-chips">
-              <span class="chip">Application data</span>
-              <span class="chip">Prototypes</span>
-              <span class="chip">Side projects</span>
+        <div class="pricing-buy-grid">
+          <div class="pricing-buy-copy">
+            <p class="ladder-step-text">
+              Punkolink runs on credits. Credits are priced at $1 each and sold in packs of 5 ($5); you can buy any
+              multiple of a pack. On signup you receive $20 in free credits to start — no card required.
+            </p>
+            <div class="ladder-step-actions">
+              <a href="https://cloud.punkolink.com" class="btn btn-primary">Get Started</a>
             </div>
           </div>
 
-          <div class="saas-detail-card">
-            <h3>Redis</h3>
-            <p>An in-memory store for the jobs a relational database is wrong for. A managed Redis instance handles caching, session state, queues, and rate counters.</p>
-            <div class="solution-chips">
-              <span class="chip">Caching</span>
-              <span class="chip">Background job queues</span>
-              <span class="chip">Ephemeral state</span>
-            </div>
-          </div>
-
-          <div class="saas-detail-card">
-            <h3>Meilisearch</h3>
-            <p>A search engine built for speed and forgiving queries. A managed Meilisearch instance adds fast, typo-tolerant full-text search to a project without running search infrastructure.</p>
-            <div class="solution-chips">
-              <span class="chip">Site and docs search</span>
-              <span class="chip">Autocomplete</span>
-              <span class="chip">Product search</span>
-            </div>
-          </div>
-
-          <div class="saas-detail-card">
-            <h3>Qdrant</h3>
-            <p>A vector database for similarity and embeddings. A managed Qdrant instance stores and searches vectors for semantic and AI-driven features.</p>
-            <div class="solution-chips">
-              <span class="chip">Semantic search</span>
-              <span class="chip">Recommendations</span>
-              <span class="chip">Retrieval for AI features</span>
-            </div>
+          <div class="price-card">
+            <div class="price-card-figure">$1<span class="price-card-unit">/ credit</span></div>
+            <p class="price-card-row">Sold in packs of 5 <strong>($5)</strong> — buy any multiple of a pack.</p>
+            <div class="price-card-divider"></div>
+            <p class="price-card-row price-card-highlight">$20 free credit on signup. No card required.</p>
           </div>
         </div>
-
-        <p class="saas-disclaimer">Postgres, Redis, Meilisearch, and Qdrant are trademarks of their respective owners. We provide managed hosting of these open-source projects and are not affiliated with or endorsed by them.</p>
       </div>
     </section>
 
-    <section class="ladder-step" id="bridge">
+    <section class="ladder-step" id="how-credits-work">
       <div class="ladder-step-container">
-        <p class="ladder-step-text">
-          <span class="lead">These run on the same infrastructure behind Punkolink L7.</span>
-          Start small here — and when a project outgrows a single container and needs a core
-          that's watched, the way up is the same platform, not a migration to a stranger.
-        </p>
+        <div class="section-marker">Mechanics</div>
+        <h2 class="section-title">How credits work</h2>
+
+        <ul class="pricing-list">
+          <li>A credit is a unit of account — prepayment for Punkolink services. It is not a payment instrument, not e-money, and not a stored balance of funds.</li>
+          <li>A credit corresponds to $1 for pricing purposes only.</li>
+          <li>Credits are spent as you use services — containers, databases, and other resources draw down your credit balance as they run.</li>
+          <li>Credits cannot be withdrawn, cashed out, transferred, or redeemed for money.</li>
+        </ul>
       </div>
     </section>
 
-    <section class="trial-cta">
-      <div class="trial-cta-box">
-        <h2 class="trial-cta-title">Ready To Spin One Up?</h2>
-        <p class="trial-cta-text">
-          Create an account and launch your first managed container in minutes.
-        </p>
-        <div class="ladder-step-actions trial-cta-actions">
-          <a href="https://cloud.punkolink.com" class="btn btn-primary">Join Us</a>
-          <a href="l7.html" class="btn btn-secondary">About L7</a>
+    <section class="ladder-step surface" id="beyond-the-platform">
+      <div class="ladder-step-container">
+        <div class="pricing-secondary">
+          <div class="section-marker">Beyond the platform</div>
+          <h3 class="pricing-secondary-title">Engineering, consulting &amp; support</h3>
+          <p class="ladder-step-text">
+            Beyond the platform, Punkolink provides engineering, consulting, and support services. These are
+            scoped and priced per case, not sold as credits. Not purchased on this page.
+          </p>
+          <div class="ladder-step-actions">
+            <a href="#" class="btn btn-secondary contact-sales-open">Talk to Sales</a>
+          </div>
         </div>
       </div>
     </section>
@@ -144,7 +123,7 @@
           <a href="pricing-policy.html">Pricing Policy</a>
         </div>
       </div>
-      <div class="footer-copy">© 2026 Punkolink — L7 routing, staffed.</div>
+      <div class="footer-copy">© 2026 Punkolink — L7 routing. Full stop.</div>
     </div>
   </footer>
 
@@ -267,14 +246,13 @@
     document.addEventListener('DOMContentLoaded', function () {
       var toggle = document.getElementById('navToggle');
       var nav = document.getElementById('mainNav');
-      if (toggle && nav) {
-        toggle.addEventListener('click', function () {
-          var open = nav.classList.toggle('open');
-          toggle.classList.toggle('open', open);
-          toggle.setAttribute('aria-expanded', String(open));
-          document.body.classList.toggle('nav-open', open);
-        });
-      }
+      if (!toggle || !nav) return;
+      toggle.addEventListener('click', function () {
+        var open = nav.classList.toggle('open');
+        toggle.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+        document.body.classList.toggle('nav-open', open);
+      });
     });
   </script>
 
