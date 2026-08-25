@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — Punkolink</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+  <div class="noise-overlay"></div>
+
+  <header class="header">
+    <a href="/index.html" class="logo">
+      <span class="logo-dot"></span>
+      punkolink
+    </a>
+    <nav class="nav" id="mainNav">
+      <a href="/l7.html">L7</a>
+      <a href="/saas.html">Cloud</a>
+      <a href="/service.html">Solutions</a>
+      <a href="/docs.html">Docs</a>
+      <a href="/blog.html">Blog</a>
+      <a href="https://cloud.punkolink.com" class="nav-cta">Sign In to Console</a>
+      <a href="https://cloud.punkolink.com" class="nav-cta nav-cta-primary">Join Us</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <main>
+    <div class="legal-page">
+      <div class="docs-content-header">
+        <h1 class="docs-content-title">Privacy Policy</h1>
+        <p class="docs-content-description">Last updated: 25 August 2026</p>
+      </div>
+
+      <div class="prose">
+        <p>
+          This Privacy Policy explains what personal data we collect when you use the
+          <strong>Punkolink</strong> service (the websites <code>punkolink.com</code> and
+          <code>cloud.punkolink.com</code> — together, the "Service"), for what purposes and
+          on what legal basis we process it, with whom we share it, and what rights you have
+          as a data subject. Processing is carried out in accordance with Regulation (EU)
+          2016/679 (GDPR).
+        </p>
+
+        <hr>
+
+        <h2>1. Who is responsible for processing your data (Controller)</h2>
+        <p>The controller of your personal data is:</p>
+        <ul>
+          <li><strong>Controller:</strong> Strizhkov Hlib (individual)</li>
+          <li><strong>Address:</strong> 61022, Kharkiv, Svobody Square, 5, Ukraine</li>
+          <li><strong>Privacy contact:</strong> support@punkolink.com</li>
+        </ul>
+        <p>
+          We have not appointed a Data Protection Officer (DPO), as we do not carry out
+          large-scale systematic monitoring and do not process special categories of data.
+          For any questions relating to the processing of your data or the exercise of your
+          rights, please contact us at the address above.
+        </p>
+
+        <hr>
+
+        <h2>2. What data we collect, for what purpose, and on what legal basis</h2>
+        <p>We process the minimum set of data necessary to operate your account.</p>
+
+        <h3>2.1. Email address</h3>
+        <ul>
+          <li><strong>What it is:</strong> your real email address. Stored in plain text.</li>
+          <li><strong>Purpose:</strong> creating your account, signing in, identifying you as a user, and sending service-related messages.</li>
+          <li><strong>Legal basis:</strong> Art. 6(1)(b) GDPR — processing is necessary for the performance of a contract (providing you access to the Service).</li>
+          <li><strong>Requirement:</strong> providing an email address is mandatory. Without it, creating an account and using the Service is not possible.</li>
+        </ul>
+
+        <h3>2.2. Password</h3>
+        <ul>
+          <li><strong>What it is:</strong> we <strong>do not store your password</strong>. Only its cryptographic hash (bcrypt algorithm) is stored in the database, from which the original password cannot be recovered.</li>
+          <li><strong>Purpose:</strong> authentication — verifying that it is indeed you accessing the account.</li>
+          <li><strong>Legal basis:</strong> Art. 6(1)(b) GDPR — performance of a contract.</li>
+        </ul>
+
+        <h3>2.3. Email verification token (email_verification_token)</h3>
+        <ul>
+          <li><strong>What it is:</strong> a temporary technical token sent to you to confirm ownership of the specified address.</li>
+          <li><strong>Lifetime:</strong> no more than 24 hours; deleted immediately after the address is confirmed.</li>
+          <li><strong>Purpose:</strong> confirming that the email address belongs to you and preventing registrations using other people's addresses.</li>
+          <li><strong>Legal basis:</strong> Art. 6(1)(b) GDPR (performance of a contract) — address confirmation is part of the registration process.</li>
+        </ul>
+
+        <hr>
+
+        <h2>3. What data we do NOT collect</h2>
+        <p>
+          In line with the data minimisation principle (Art. 5(1)(c) GDPR), we deliberately
+          <strong>do not collect or store</strong>:
+        </p>
+        <ul>
+          <li>full name;</li>
+          <li>phone number;</li>
+          <li>postal or physical address;</li>
+          <li>payment data (card number, payment details, etc.).</li>
+        </ul>
+
+        <hr>
+
+        <h2>4. With whom we share data</h2>
+        <p>We do not sell your data and share it with third parties only to the extent necessary to operate the Service.</p>
+
+        <h3>4.1. Brevo.com (SENDINBLUE) — processor. Hereinafter referred to as Brevo</h3>
+        <p>We use <strong>Brevo</strong> to send emails (in particular, the registration confirmation email).</p>
+        <ul>
+          <li><strong>What is shared:</strong> your email (as the recipient address) and a link containing the confirmation token in the body of the email.</li>
+          <li><strong>Role:</strong> Brevo acts as a <strong>processor</strong> on our behalf and in accordance with our instructions. A Data Processing Agreement has been concluded with Brevo in accordance with Art. 28 GDPR.</li>
+          <li><strong>Where data is processed:</strong> within the European Union.</li>
+          <li><strong>More information:</strong> Brevo Privacy Policy — <a href="https://www.brevo.com/legal/privacypolicy/" target="_blank" rel="noopener">https://www.brevo.com/legal/privacypolicy/</a></li>
+        </ul>
+
+        <h3>4.2. Paddle.com Market Ltd — independent controller (Merchant of Record). Hereinafter referred to as Paddle</h3>
+        <p>We use <strong>Paddle</strong> to process payments. It is important to understand the separation of roles:</p>
+        <ul>
+          <li><strong>What we share:</strong> only an internal user identifier (<code>user_id</code>), transmitted via the <code>customData</code> field. This is a pseudonymous technical identifier; it <strong>does not contain your email or payment data</strong>.</li>
+          <li><strong>What Paddle collects itself:</strong> Paddle collects your email and payment data (card details, etc.) <strong>directly from you</strong> at the time of payment, bypassing us. We neither receive nor store this data.</li>
+          <li><strong>Role:</strong> with respect to the payment data it collects, Paddle acts as an <strong>independent controller (Merchant of Record)</strong> and processes it under its own privacy policy.</li>
+          <li><strong>More information:</strong> Paddle Privacy Policy — <a href="https://www.paddle.com/legal/privacy" target="_blank" rel="noopener">https://www.paddle.com/legal/privacy</a></li>
+        </ul>
+
+        <hr>
+
+        <h2>5. International data transfers</h2>
+        <ul>
+          <li><strong>Brevo</strong> processes data within the EU, so there is no cross-border transfer of personal data outside the EU/EEA in this respect.</li>
+          <li><strong>Paddle:</strong> payment data is processed by Paddle as an independent controller. For information on the jurisdiction of processing and the cross-border transfer mechanisms applied (for example, Standard Contractual Clauses), see the Paddle Privacy Policy.</li>
+        </ul>
+
+        <hr>
+
+        <h2>6. Retention periods</h2>
+        <ul>
+          <li><strong>Email and password hash</strong> — stored for the entire duration of your account. After the account is deleted, the data is removed within a reasonable period, except where longer retention is required by law.</li>
+          <li><strong>Email verification token</strong> — no more than 24 hours; deleted immediately after the address is confirmed.</li>
+        </ul>
+
+        <hr>
+
+        <h2>7. Your rights</h2>
+        <p>Under the GDPR (Arts. 15–21), you have the right:</p>
+        <ul>
+          <li><strong>of access</strong> — to obtain confirmation of processing and a copy of your data;</li>
+          <li><strong>to rectification</strong> — to correct inaccurate or incomplete data;</li>
+          <li><strong>to erasure</strong> ("right to be forgotten") — to request the deletion of your data;</li>
+          <li><strong>to restriction of processing</strong> — in the cases provided for by law;</li>
+          <li><strong>to data portability</strong> — to receive your data in a structured, machine-readable format;</li>
+          <li><strong>to object</strong> to processing in the applicable cases.</li>
+        </ul>
+        <p>
+          To exercise any of these rights, write to us at support@punkolink.com. We will
+          respond within one month of receiving your request (this period may be extended
+          in the cases provided for by the GDPR, of which we will notify you).
+        </p>
+
+        <hr>
+
+        <h2>8. Right to lodge a complaint</h2>
+        <p>
+          If you believe that the processing of your data infringes the GDPR, you have the
+          right to lodge a complaint with a data protection supervisory authority — in
+          particular, with the supervisory authority of the EU Member State of your
+          habitual residence, place of work, or place of the alleged infringement. A list
+          of EU supervisory authorities is available on the website of the European Data
+          Protection Board (EDPB).
+        </p>
+
+        <hr>
+
+        <h2>9. Automated decision-making and profiling</h2>
+        <p>
+          We do <strong>not</strong> carry out automated decision-making producing legal
+          effects concerning you, and we do <strong>not</strong> carry out profiling within
+          the meaning of Art. 22 GDPR.
+        </p>
+
+        <hr>
+
+        <h2>10. Cookies and tracking</h2>
+        <p>
+          We use only strictly necessary (technical) cookies required to operate the
+          Service and to sign in to your account. We <strong>do not use</strong> analytics,
+          advertising, or any other trackers. Since strictly necessary cookies do not
+          require consent under the ePrivacy Directive, no cookie banner is used.
+        </p>
+
+        <hr>
+
+        <h2>11. Security and changes to this policy</h2>
+        <p>
+          <strong>Security.</strong> We apply technical and organisational measures to
+          protect data (Art. 32 GDPR), including password hashing (bcrypt) and encryption
+          of the data transmission channel (HTTPS/TLS).
+        </p>
+        <p>
+          <strong>Changes.</strong> We may update this Policy from time to time. The
+          current version is always available on this page; the date of the last revision
+          is indicated at the top of the document. In the event of material changes, we
+          will notify you by an available means.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="logo-dot"></span>
+        punkolink
+      </div>
+      <div class="footer-nav">
+        <div class="footer-links">
+          <a href="/l7.html">L7</a>
+          <a href="/service.html">Solutions</a>
+          <a href="/pricing.html">Pricing</a>
+          <a href="/docs.html">Docs</a>
+          <a href="/blog.html">Blog</a>
+        </div>
+        <div class="footer-links footer-links-legal">
+          <span class="footer-links-label">Legal</span>
+          <a href="/legal/terms-of-use.html">Terms of Use</a>
+          <a href="/legal/refund-policy.html">Refund Policy</a>
+          <a href="/legal/privacy-policy.html">Privacy Policy</a>
+          <a href="/legal/pricing-policy.html">Pricing Policy</a>
+        </div>
+      </div>
+      <div class="footer-copy">© 2026 Punkolink — L7 routing. Full stop.</div>
+    </div>
+  </footer>
+
+  <div class="modal-backdrop" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+    <div class="modal">
+      <button class="modal-close" id="contactModalClose" aria-label="Close">&times;</button>
+
+      <div class="modal-form-wrapper" id="contactFormWrapper">
+        <div class="modal-header">
+          <h2 id="contactModalTitle">Contact Sales</h2>
+          <p>Tell us what you're routing and at what scale. An engineer reads this, not a bot.</p>
+        </div>
+
+        <form id="contactForm" novalidate>
+          <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off">
+
+          <div class="form-group">
+            <label class="form-label" for="fieldCompany">Company Name</label>
+            <input
+              class="form-input"
+              type="text"
+              id="fieldCompany"
+              name="company"
+              autocomplete="organization"
+              placeholder="Acme Inc."
+            >
+            <span class="form-error" id="errCompany">Company name is required.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="fieldEmail">Contact Email</label>
+            <input
+              class="form-input"
+              type="email"
+              id="fieldEmail"
+              name="email"
+              autocomplete="email"
+              placeholder="you@company.com"
+            >
+            <span class="form-error" id="errEmail">Enter a valid email address.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="fieldPhone">
+              Phone Number
+              <span class="optional">(optional)</span>
+            </label>
+            <input
+              class="form-input"
+              type="tel"
+              id="fieldPhone"
+              name="phone"
+              autocomplete="tel"
+              placeholder="+1 555 000 0000"
+            >
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="fieldWebsite">
+              Website
+              <span class="optional">(optional)</span>
+            </label>
+            <input
+              class="form-input"
+              type="text"
+              id="fieldWebsite"
+              name="website"
+              autocomplete="url"
+              placeholder="company.com"
+            >
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="fieldRequest">What can we help with?</label>
+            <textarea
+              class="form-textarea"
+              id="fieldRequest"
+              name="request"
+              rows="4"
+              placeholder="What are you routing, at what scale, and what do you need from us?"
+            ></textarea>
+            <span class="form-error" id="errRequest">Let us know what you need help with.</span>
+          </div>
+
+          <div class="form-group form-checkbox-group">
+            <label class="form-checkbox-label">
+              <input
+                type="checkbox"
+                class="form-checkbox"
+                id="fieldConsent"
+                name="consent"
+              >
+              <span>
+                I agree to the <a href="/legal/terms-of-use.html" target="_blank" rel="noopener">Terms of Use</a>
+                and <a href="/legal/privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.
+              </span>
+            </label>
+            <span class="form-error" id="errConsent">Please accept the Terms of Use and Privacy Policy to continue.</span>
+          </div>
+
+          <div class="modal-footer">
+            <button type="submit" class="btn-submit" id="contactSubmit">Send to Sales</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-success" id="contactSuccess">
+        <div class="success-icon">
+          <span class="logo-dot"></span>
+          punkolink
+        </div>
+        <h3>Message sent.</h3>
+        <p>We'll get back to you at the email you gave us.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="/assets/contact-modal.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var toggle = document.getElementById('navToggle');
+      var nav = document.getElementById('mainNav');
+      if (!toggle || !nav) return;
+      toggle.addEventListener('click', function () {
+        var open = nav.classList.toggle('open');
+        toggle.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+        document.body.classList.toggle('nav-open', open);
+      });
+    });
+  </script>
+
+</body>
+</html>
