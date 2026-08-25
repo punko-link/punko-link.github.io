@@ -839,6 +839,10 @@ a {
   gap: var(--space-4);
 }
 
+.saas-detail-grid > *:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
 .saas-card,
 .saas-detail-card {
   padding: var(--space-4);
@@ -868,6 +872,17 @@ a {
 .saas-detail-card .solution-chips {
   margin-top: var(--space-4);
   margin-bottom: 0;
+}
+
+.saas-card-note {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: var(--space-4);
+}
+
+.saas-card-note a {
+  color: var(--accent);
+  text-decoration: underline;
 }
 
 .saas-disclaimer {
