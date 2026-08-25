@@ -4,10 +4,16 @@
     <loc>https://punkolink.com/</loc>
   </url>
   <url>
-    <loc>https://punkolink.com/service.html</loc>
+    <loc>https://punkolink.com/l7.html</loc>
   </url>
   <url>
     <loc>https://punkolink.com/saas.html</loc>
+  </url>
+  <url>
+    <loc>https://punkolink.com/service.html</loc>
+  </url>
+  <url>
+    <loc>https://punkolink.com/pricing.html</loc>
   </url>
   <url>
     <loc>https://punkolink.com/docs.html</loc>
@@ -19,7 +25,13 @@
     <loc>https://punkolink.com/legal/terms-of-use.html</loc>
   </url>
   <url>
+    <loc>https://punkolink.com/legal/refund-policy.html</loc>
+  </url>
+  <url>
     <loc>https://punkolink.com/legal/privacy-policy.html</loc>
+  </url>
+  <url>
+    <loc>https://punkolink.com/legal/pricing-policy.html</loc>
   </url>
   <url>
     <loc>https://punkolink.com/content/docs/pages/overview.md</loc>
