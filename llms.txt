@@ -1,35 +1,34 @@
 # Punkolink
 
-> Punkolink (L7) is a layer-7 router that sits at the core of your network — run the binary yourself, or hand it to the team that operates it and steps in, in minutes, when something breaks.
+> A cloud platform of equal building blocks — managed databases and search, an L7 router, and a place to run any container — assembled into a stack. Services run on DRP (Docker Run Platform), billed per minute in credits. When something breaks, the engineers who built the platform step in. Priced simply: credits at $1 each, 20 free to start, no card.
 
-## Services
-- [L7 router deployment into your core](https://punkolink.com/service.html#l7-router-deployment): A router installed and configured at the center of an existing network, wired to real services and routes, handed over in working order. Measured in days.
-- [Incident response](https://punkolink.com/service.html#incident-response): When something breaks, an engineer who already knows your system is in within minutes and acts mid-fire: reroutes around the failing node, isolates the segment, gracefully degrades the non-essential so the critical keeps running.
-- [Readiness, maintained](https://punkolink.com/service.html#readiness-maintained): Between incidents, a current map of the infrastructure and a response plan kept aligned with its changes — so when something fails, response is measured in minutes instead of starting from scratch.
-- [Degradation monitoring](https://punkolink.com/service.html#degradation-monitoring): Traffic observed at the routing layer to catch problems before they turn into downtime. The visible result: incidents that never reach users.
-- [Infrastructure & software work](https://punkolink.com/service.html#infrastructure-software-work): Correction, extension, and preparation of a system according to what it objectively requires — even where that means building less rather than more, never what deepens dependence on the provider.
-- [Peak-load preparation](https://punkolink.com/service.html#peak-load-preparation): Before a season or a launch, a system is stress-tested, its weak points found and hardened — so a surge doesn't cause failure at the most profitable moment.
-- [Abuse protection](https://punkolink.com/service.html#abuse-protection): Floods, bad bots, and abuse aimed at a set of services are absorbed, with a human on it when things escalate. Honest about scale: within the bounds of an organization's own infrastructure.
-- [Access management](https://punkolink.com/service.html#access-management): Order brought to who can reach what: roles, routes, and permissions configured so traffic reaches its intended place — and kept current.
-- [Cost audit](https://punkolink.com/service.html#cost-audit): What's actually flowing through an infrastructure — including runaway automated and AI traffic — rendered visible, with cost and load anomalies caught before they run for months.
-- [On-prem delivery of our software](https://punkolink.com/service.html#on-prem-delivery): For those who want to run the L7 router themselves: the software handed over to deploy on their side, with setup help and documentation. The tool without the on-call, for those who only need the tool.
+## Platform
 
-## Docs
-- [Overview](https://punkolink.com/docs.html#overview): What Punkolink L7 is, what it isn't, and where it sits in your stack.
-- [Quickstart](https://punkolink.com/docs.html#quickstart): Get a Punkolink instance routing real traffic in under five minutes.
-- [First Login](https://punkolink.com/docs.html#first-login): Securing the admin panel the first time you log in.
-- [New Route](https://punkolink.com/docs.html#new-route): Adding your first route from the admin panel.
-- [Servers](https://punkolink.com/docs.html#servers): Backends your router can forward traffic to.
-- [Pools](https://punkolink.com/docs.html#pools): Reusable server groups routes target.
-- [Roles](https://punkolink.com/docs.html#roles): Access policies routes can require.
-- [Routes](https://punkolink.com/docs.html#routes): The routing table — method, path, target, and access, row by row.
-- [Routers](https://punkolink.com/docs.html#routers): Switching between and managing isolated router instances.
-- [Settings](https://punkolink.com/docs.html#settings): Account, appearance, and gateway configuration.
-- [Cheat Sheet](https://punkolink.com/docs.html#cheat-sheet): The commands and config blocks you'll reach for most, in one place.
-- [Alternatives](https://punkolink.com/docs.html#alternatives): Battle-tested open-source options, for when Punkolink isn't the right fit.
+- [Managed containers and services](https://punkolink.com/saas.html): Managed Postgres, Redis, Meilisearch, and Qdrant, plus the L7 router and DRP — equal building blocks, not a hosting plan. Provisioned in minutes; run yourself or grow into a watched core.
+- [L7 router](https://punkolink.com/l7.html): A layer-7 router for the core of a network — load balancing, redundancy, rate limiting, bot and brute-force protection, layer-3 and layer-7 access control, monitoring, and a web GUI. Available as a managed service or run on your own infrastructure.
+- [DRP (Docker Run Platform)](https://punkolink.com/saas.html): Punkolink's system for running any container. The unit of billing is a DRP container, priced the same regardless of contents — a Punkolink image, an open-source image, or a customer-supplied one. Also available on its own, as an empty container the customer fills.
 
-## Blog
-- [I Spent Years Being the 3 A.M. Call for Companies That Couldn't Fix Their Own Networks](https://punkolink.com/blog.html#i-spent-years-being-the-3am): The engineer's-eye origin of the model behind Punkolink — infrastructure that comes with people, not a box you're left alone with when it breaks.
+## Solutions (engineering services)
 
-## Optional
-- [Home](https://punkolink.com/): Marketing homepage and contact sales.
+- [Solutions](https://punkolink.com/service.html): Concrete engineering work around the router — deployment, incident response, readiness upkeep, degradation monitoring, infrastructure and software work, peak-load preparation, abuse protection, access management, cost audit, and on-prem delivery. Scoped and priced per engagement; engaged one at a time as a system needs them.
+
+## Pricing
+
+- [Pricing](https://punkolink.com/pricing.html): One thing to buy — credits, priced at $1 each, sold in packs of 5. 20 free credits on signup, no card. Credits are spent as services run; a DRP instance costs about 5 credits per month.
+- [Pricing Policy](https://punkolink.com/legal/pricing-policy.html): The exact terms — a credit is a unit of account and prepayment for services, not a payment instrument, not e-money, not withdrawable. Per-minute rates, including the exact DRP rate, are set out here.
+
+## Docs and writing
+
+- [Docs](https://punkolink.com/docs.html): Technical documentation for L7 and the platform.
+- [Blog](https://punkolink.com/blog.html): Field notes on L7 routing, incident response, and running a staffed core.
+
+## Legal
+
+- [Terms of Use](https://punkolink.com/legal/terms-of-use.html)
+- [Privacy Policy](https://punkolink.com/legal/privacy-policy.html)
+- [Refund Policy](https://punkolink.com/legal/refund-policy.html)
+- [Pricing Policy](https://punkolink.com/legal/pricing-policy.html)
+
+## Get started
+
+- [Console](https://cloud.punkolink.com): Create an account, claim 20 free credits, and spin up a container. No card required.
