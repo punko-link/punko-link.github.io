@@ -874,6 +874,17 @@ a {
   margin-bottom: 0;
 }
 
+.saas-card-bridge {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: var(--space-4);
+}
+
+.saas-card-bridge a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
 .saas-disclaimer {
   font-size: 12px;
   color: var(--text-muted);
