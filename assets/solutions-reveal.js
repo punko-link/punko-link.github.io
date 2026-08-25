@@ -31,15 +31,24 @@
 
     grid.classList.add('solrev-armed');
 
-    var observer = new IntersectionObserver(function (entries) {
+    // Hysteresis via two independent observers, each with its own rootMargin,
+    // so a small scroll wobble near one threshold can't flip the state back
+    // and forth: "gather" fires once the block is well inside the viewport,
+    // "scatter" only fires once it has retreated well past that point.
+    var gatherObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        grid.classList.add('solrev-in');
-        observer.unobserve(entry.target);
+        if (entry.isIntersecting) grid.classList.add('solrev-in');
       });
-    }, { rootMargin: '0px 0px -35% 0px', threshold: 0 });
+    }, { rootMargin: '0px 0px -40% 0px', threshold: 0 });
 
-    observer.observe(section);
+    var scatterObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) grid.classList.remove('solrev-in');
+      });
+    }, { rootMargin: '0px 0px -15% 0px', threshold: 0 });
+
+    gatherObserver.observe(section);
+    scatterObserver.observe(section);
   }
 
   if (document.readyState === 'loading') {

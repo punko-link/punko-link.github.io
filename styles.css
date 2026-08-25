@@ -1616,6 +1616,7 @@ a {
   font-size: var(--text-body);
   color: var(--text-muted);
   max-width: 640px;
+  margin-bottom: var(--space-6);
 }
 
 /* ── blog.css ─────────── */
@@ -2001,99 +2002,6 @@ body.page-service .blog-section {
 
 .more-posts-list a:hover {
   color: var(--color-red);
-}
-
-/* ── cookie-banner.css ─────────── */
-.cookie-banner {
-  position: fixed;
-  left: var(--space-6);
-  right: var(--space-6);
-  bottom: var(--space-6);
-  z-index: 600;
-  max-width: 640px;
-  margin: 0 auto;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  padding: var(--space-4);
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity var(--transition), transform var(--transition);
-  pointer-events: none;
-}
-
-.cookie-banner.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: all;
-}
-
-.cookie-banner-content p {
-  font-size: var(--text-secondary);
-  line-height: 1.6;
-  color: var(--text-muted);
-  margin-bottom: var(--space-3);
-}
-
-.cookie-banner-content a {
-  color: var(--text);
-  border-bottom: 1px solid var(--border);
-  transition: color var(--transition), border-color var(--transition);
-}
-
-.cookie-banner-content a:hover {
-  color: var(--accent);
-  border-color: var(--accent);
-}
-
-.cookie-banner-actions {
-  display: flex;
-  gap: var(--space-3);
-  justify-content: flex-end;
-}
-
-.cookie-btn {
-  padding: 8px 18px;
-  font-family: var(--font-sans);
-  font-size: var(--text-secondary);
-  font-weight: var(--weight-bold);
-  letter-spacing: .04em;
-  text-transform: uppercase;
-  cursor: pointer;
-  border: 1px solid var(--border);
-  background: none;
-  color: var(--text-muted);
-  transition: background-color var(--transition), border-color var(--transition), color var(--transition);
-}
-
-.cookie-btn-decline:hover {
-  color: var(--text);
-  border-color: var(--text-muted);
-}
-
-.cookie-btn-accept {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--accent-contrast);
-}
-
-.cookie-btn-accept:hover {
-  background: var(--accent-dark);
-}
-
-@media (max-width: 480px) {
-  .cookie-banner {
-    left: var(--space-3);
-    right: var(--space-3);
-    bottom: var(--space-3);
-  }
-
-  .cookie-banner-actions {
-    flex-direction: column;
-  }
-
-  .cookie-btn {
-    width: 100%;
-  }
 }
 
 /* ── legal.css ─────────── */
@@ -2872,6 +2780,10 @@ body.page-service .blog-section {
 .solrev-grid.solrev-armed.solrev-in .solution-card {
   opacity: 1;
   transform: translate(0, 0);
+}
+
+#solutions-preview .ladder-step-actions {
+  justify-content: center;
 }
 
 .solrev-grid.solrev-armed .solution-card:nth-child(1)  { transition-delay: 0ms; }
