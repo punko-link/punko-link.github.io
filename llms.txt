@@ -17,9 +17,8 @@
 - [Pricing](https://punkolink.com/pricing.html): One thing to buy — credits, priced at $1 each, sold in packs of 5. 20 free credits on signup, no card. Credits are spent as services run; a DRP instance costs about 5 credits per month.
 - [Pricing Policy](https://punkolink.com/legal/pricing-policy.html): The exact terms — a credit is a unit of account and prepayment for services, not a payment instrument, not e-money, not withdrawable. Per-minute rates, including the exact DRP rate, are set out here.
 
-## Docs and writing
+## Writing
 
-- [Docs](https://punkolink.com/docs.html): Technical documentation for L7 and the platform.
 - [Blog](https://punkolink.com/blog.html): Field notes on L7 routing, incident response, and running a staffed core.
 
 ## Legal

@@ -2231,77 +2231,7 @@ body.page-service .blog-section {
   font-style: italic;
 }
 
-.l7-docs-link {
-  display: inline-block;
-  margin-top: var(--space-4);
-  color: var(--accent);
-  font-size: var(--text-secondary);
-  font-weight: var(--weight-medium);
-}
-
-.l7-docs-link:hover {
-  color: var(--accent-dark);
-}
-
-/* ── docs.css ─────────── */
-.docs-layout {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: calc(var(--space-3xl) + var(--space-lg)) var(--space-lg) var(--space-3xl);
-  display: grid;
-  /* sidebar | content | phantom spacer matching the sidebar's width, so the
-     content column lands on the true page center instead of leaning right */
-  grid-template-columns: 240px minmax(0, 760px) 240px;
-  justify-content: center;
-  gap: var(--space-2xl);
-  align-items: start;
-}
-
-.docs-sidebar {
-  position: sticky;
-  top: calc(var(--space-3xl) + var(--space-sm));
-}
-
-.docs-mobile-toggle {
-  display: none;
-}
-
-.docs-nav-group {
-  margin-bottom: var(--space-lg);
-}
-
-.docs-nav-group-title {
-  font-family: var(--font-display);
-  font-size: .75rem;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  color: var(--color-text-muted);
-  margin-bottom: var(--space-sm);
-}
-
-.docs-nav-link {
-  display: block;
-  font-size: .875rem;
-  color: var(--color-text-muted);
-  padding: 6px 0 6px var(--space-sm);
-  border-left: 2px solid var(--color-border);
-  transition: all var(--transition);
-}
-
-.docs-nav-link:hover {
-  color: var(--color-text);
-  border-left-color: var(--color-text-muted);
-}
-
-.docs-nav-link.active {
-  color: var(--color-red);
-  border-left-color: var(--color-red);
-}
-
-.docs-content {
-  min-width: 0;
-}
-
+/* ── docs.css (shared long-form header, used by legal pages) ─────────── */
 .docs-content-header {
   margin-bottom: var(--space-lg);
   padding-bottom: var(--space-lg);
@@ -2317,39 +2247,6 @@ body.page-service .blog-section {
 .docs-content-description {
   color: var(--color-text-muted);
   font-size: 1.0625rem;
-}
-
-.docs-next {
-  margin-top: var(--space-2xl);
-  padding-top: var(--space-lg);
-  border-top: 1px solid var(--color-border);
-  display: flex;
-  justify-content: flex-end;
-}
-
-.docs-next a {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  border: 1px solid var(--color-red);
-  padding: var(--space-sm) var(--space-md);
-  font-size: .8125rem;
-  text-transform: uppercase;
-  letter-spacing: .06em;
-  transition: all var(--transition);
-}
-
-.docs-next a:hover {
-  background: var(--color-red);
-  color: var(--color-bg);
-  box-shadow: 0 0 20px var(--color-red-glow);
-}
-
-.docs-next-label {
-  color: var(--color-text-muted);
-  text-transform: none;
-  letter-spacing: 0;
-  margin-right: 4px;
 }
 
 /* ── sandbox.css ─────────── */
@@ -2466,16 +2363,6 @@ body.page-service .blog-section {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .docs-layout {
-    max-width: var(--content-max);
-    grid-template-columns: 1fr;
-    justify-content: stretch;
-  }
-
-  .docs-sidebar {
-    position: static;
-  }
-
   .sandbox-section {
     grid-template-columns: 1fr;
   }
@@ -2491,28 +2378,6 @@ body.page-service .blog-section {
     align-items: stretch;
   }
 
-  .docs-mobile-toggle {
-    display: block;
-    width: 100%;
-    padding: var(--space-sm) var(--space-md);
-    margin-bottom: var(--space-md);
-    background: var(--color-bg-elevated);
-    border: 1px solid var(--color-border);
-    color: var(--color-text);
-    font-family: var(--font-mono);
-    font-size: .8125rem;
-    text-transform: uppercase;
-    letter-spacing: .05em;
-    cursor: pointer;
-  }
-
-  .docs-sidebar {
-    display: none;
-  }
-
-  .docs-sidebar.open {
-    display: block;
-  }
 }
 
 /* ── l7-demo.css (isolated: routing console showcase panel) ─────────── */
