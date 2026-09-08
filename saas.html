@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Managed Containers — Punkolink</title>
-  <meta name="description" content="Managed Postgres, Redis, Meilisearch, and Qdrant containers on Punkolink infrastructure — provisioned in minutes, cheap enough to experiment with.">
+  <title>The Punkolink Cloud — Building Blocks</title>
+  <meta name="description" content="The Punkolink cloud in detail: Network (the L7 router), Executable (run your container), DRP, In-memory (Valkey), and Database (Postgres with Apache AGE, ParadeDB, and pgvector).">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="page-cloud">
 
   <div class="noise-overlay"></div>
 
@@ -17,9 +17,8 @@
       punkolink
     </a>
     <nav class="nav" id="mainNav">
-      <a href="l7.html">L7</a>
-      <a href="saas.html" class="active">Cloud</a>
-      <a href="service.html">Solutions</a>
+      <a href="index.html" class="active">Cloud</a>
+      <a href="pricing.html">Pricing</a>
       <a href="blog.html">Blog</a>
       <a href="https://cloud.punkolink.com" class="nav-cta">Sign In to Console</a>
       <a href="https://cloud.punkolink.com" class="nav-cta nav-cta-primary">Join Us</a>
@@ -33,107 +32,264 @@
 
   <main>
     <section class="page-hero">
-      <div class="page-hero-tag">Managed Containers</div>
-      <h1 class="page-hero-title">Managed Containers</h1>
+      <div class="page-hero-tag">The Punkolink Cloud</div>
+      <h1 class="page-hero-title">The cloud, block by block</h1>
       <p class="page-hero-description">
-        Databases and search engines running on our infrastructure — provisioned in minutes,
-        cheap enough to experiment with, and yours to grow from.
+        Five building blocks that run on one platform and bill the same way. Take one, or
+        assemble all five into the stack your application needs. Provisioned in minutes,
+        priced by the minute.
       </p>
       <div class="hero-actions">
         <a href="https://cloud.punkolink.com" class="btn btn-primary">Try It Out</a>
+        <a href="pricing.html" class="btn btn-secondary">See Pricing</a>
       </div>
     </section>
 
-    <section class="ladder-step surface" id="services">
+    <section class="ladder-step surface" id="blocks">
       <div class="ladder-step-container">
-        <h2 class="section-title">What We Host</h2>
+        <div class="section-marker">The five blocks</div>
+        <h2 class="section-title">What You Can Run</h2>
 
         <div class="saas-detail-grid">
-          <div class="saas-detail-card">
-            <h3>Postgres</h3>
-            <p>The default relational database for most projects. A managed PostgreSQL instance is provisioned and kept running, so a small project or prototype gets a real database without operating one.</p>
+          <a class="saas-detail-card" href="#network">
+            <h3>Network</h3>
+            <p>Punkolink L7, our layer-7 router. Routing, load balancing, access control, and protection at the edge of your stack — run as a managed block, or taken as a binary and run yourself.</p>
             <div class="solution-chips">
-              <span class="chip">Application data</span>
-              <span class="chip">Prototypes</span>
-              <span class="chip">Side projects</span>
+              <span class="chip">Routing &amp; load balancing</span>
+              <span class="chip">Access control</span>
+              <span class="chip">Rate limiting &amp; bot protection</span>
             </div>
-          </div>
+          </a>
 
-          <div class="saas-detail-card">
-            <h3>Redis</h3>
-            <p>An in-memory store for the jobs a relational database is wrong for. A managed Redis instance handles caching, session state, queues, and rate counters.</p>
+          <a class="saas-detail-card" href="#executable">
+            <h3>Executable</h3>
+            <p>Bring a container image and run it. Your code, your runtime, your dependencies — running next to your databases and in-memory store, on the same network, billed the same way.</p>
+            <div class="solution-chips">
+              <span class="chip">Your application or API</span>
+              <span class="chip">A background worker</span>
+              <span class="chip">A scheduled job</span>
+            </div>
+          </a>
+
+          <a class="saas-detail-card" href="#drp">
+            <h3>DRP</h3>
+            <p>Docker Run Platform. It takes a container and keeps it running — scheduling, restarts, per-minute accounting. Use it directly when what you need is a supervised container and nothing else.</p>
+            <div class="solution-chips">
+              <span class="chip">A plain supervised container</span>
+              <span class="chip">Per-minute runtime</span>
+            </div>
+          </a>
+
+          <a class="saas-detail-card" href="#in-memory">
+            <h3>In-memory</h3>
+            <p>Managed Valkey. A single-digit-millisecond store for the work a relational database is the wrong tool for: caching, session state, queues, and rate counters.</p>
             <div class="solution-chips">
               <span class="chip">Caching</span>
-              <span class="chip">Background job queues</span>
-              <span class="chip">Ephemeral state</span>
+              <span class="chip">Sessions</span>
+              <span class="chip">Queues &amp; counters</span>
             </div>
-          </div>
+          </a>
 
-          <div class="saas-detail-card">
-            <h3>DRP — run your own container</h3>
-            <p>DRP (Docker Run Platform) runs a container you bring — the same platform the managed services run on, available directly. Package your application as a container image and run it alongside your databases and search, in one place, billed the same way as everything else.</p>
+          <a class="saas-detail-card" href="#database">
+            <h3>Database</h3>
+            <p>Managed Postgres, with the extensions that let one database cover more ground — Apache AGE for graph, ParadeDB for search and analytics, pgvector for embeddings.</p>
             <div class="solution-chips">
-              <span class="chip">Your own application or API</span>
-              <span class="chip">A background worker</span>
-              <span class="chip">A service we don't offer managed</span>
+              <span class="chip">Application data</span>
+              <span class="chip">Graph &middot; search &middot; vectors</span>
+              <span class="chip">One instance to back up</span>
             </div>
-          </div>
+          </a>
+        </div>
+      </div>
+    </section>
 
-          <div class="saas-detail-card">
-            <h3>Meilisearch</h3>
-            <p>A search engine built for speed and forgiving queries. A managed Meilisearch instance adds fast, typo-tolerant full-text search to a project without running search infrastructure.</p>
-            <div class="solution-chips">
-              <span class="chip">Site and docs search</span>
-              <span class="chip">Autocomplete</span>
-              <span class="chip">Product search</span>
+    <section class="ladder-step" id="network">
+      <div class="ladder-step-container">
+        <div class="section-marker">Block 01 — Network</div>
+        <h2 class="section-title">Network</h2>
+        <p class="ladder-step-text">
+          <span class="lead">Network is Punkolink L7, our layer-7 router.</span>
+          It sits at the edge of your stack — the point every request passes through — and
+          gives you one place to route, balance, secure, and observe traffic. Run it as a
+          managed block here, or take the single binary and run it on your own
+          infrastructure. The router is the same either way.
+        </p>
+
+        <div class="feature-group">
+          <div class="feature-group-title">Routing &amp; Reliability</div>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h3>Load balancing</h3>
+              <p>Traffic is distributed across multiple backend servers rather than concentrated on one. This keeps any single node from becoming a bottleneck under load, and lets capacity be added by attaching more backends behind the same route.</p>
             </div>
-          </div>
-
-          <div class="saas-detail-card">
-            <h3>L7 — the router, in the cloud</h3>
-            <p>Our layer-7 router, spun up in the cloud like any other service — routing, access control, rate limiting, and protection at the application layer. Try it yourself, wire it to your services, and see how it works before it ever touches production.</p>
-            <div class="solution-chips">
-              <span class="chip">Routing and access rules for your services</span>
-              <span class="chip">A place to try L7 hands-on</span>
-              <span class="chip">A proxy in front of your own containers</span>
+            <div class="feature-card">
+              <h3>Redundancy</h3>
+              <p>When a backend fails, traffic is redirected to the ones still healthy, so the loss of a single server does not take the service down. Failover is handled at the router, without the client noticing which node answered.</p>
             </div>
-            <p class="saas-card-bridge">This is L7 to run yourself. For a core that's watched — with the engineers who built it stepping in when it breaks — <a href="l7.html">see L7</a>.</p>
-          </div>
-
-          <div class="saas-detail-card">
-            <h3>Qdrant</h3>
-            <p>A vector database for similarity and embeddings. A managed Qdrant instance stores and searches vectors for semantic and AI-driven features.</p>
-            <div class="solution-chips">
-              <span class="chip">Semantic search</span>
-              <span class="chip">Recommendations</span>
-              <span class="chip">Retrieval for AI features</span>
+            <div class="feature-card">
+              <h3>Availability monitoring</h3>
+              <p>The router continuously checks the health of the resources it forwards to, so a failing backend is detected as it degrades rather than when a user reports it. Unhealthy nodes are taken out of rotation until they recover.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Status reporting</h3>
+              <p>The state of routed resources is compiled into reports, giving a record of what was healthy, what failed, and when — the raw material for understanding an incident after it happens and for spotting patterns before one does.</p>
             </div>
           </div>
         </div>
 
-        <p class="saas-disclaimer">Postgres, Redis, Meilisearch, and Qdrant are trademarks of their respective owners. We provide managed hosting of these open-source projects and are not affiliated with or endorsed by them.</p>
+        <div class="feature-group">
+          <div class="feature-group-title">Access &amp; Protection</div>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h3>Layer-7 access control</h3>
+              <p>Access is defined per route, at the application layer, using role-based rules. Rather than an all-or-nothing gate, each route can require the specific role appropriate to it, so the right traffic reaches the right service with the right permission.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Layer-3 access control</h3>
+              <p>Traffic is filtered by IP address through allow and deny lists, at the network layer. This is the coarse first line — admitting known-good sources or excluding known-bad ones before finer rules apply.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Rate limiting</h3>
+              <p>The rate of requests is capped so that a burst — whether an abusive client or an unexpected spike — cannot overwhelm a backend. Limits are applied at the router, protecting services that have no rate control of their own.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Brute-force protection</h3>
+              <p>Repeated credential-guessing attempts against a login or endpoint are detected and blocked, so an automated attack cannot grind against authentication indefinitely.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Bot protection</h3>
+              <p>Automated bot traffic is identified and filtered away from services, separating real users from scripts, scrapers, and probing tools before they reach the backend.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Graphical challenge</h3>
+              <p>A CAPTCHA-style visual challenge can be interposed to separate human users from automated traffic, used where a request pattern is suspicious enough to warrant proof that a person is behind it.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-group">
+          <div class="feature-group-title">Operations</div>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h3>Static file storage</h3>
+              <p>Static assets — for example a site's static markup — can be served directly from the router, without routing those requests to a separate backend at all.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Web GUI</h3>
+              <p>The router is administered through a browser-based panel, so routes, access rules, and backends can be managed without working solely from the command line.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="ladder-step" id="bridge">
+    <section class="ladder-step surface" id="executable">
       <div class="ladder-step-container">
+        <div class="section-marker">Block 02 — Executable</div>
+        <h2 class="section-title">Executable</h2>
         <p class="ladder-step-text">
-          <span class="lead">These run on the same infrastructure behind Punkolink L7.</span>
-          Start small here — and when a project outgrows a single container and needs a core
-          that's watched, the way up is the same platform, not a migration to a stranger.
+          <span class="lead">Bring a container image and run it.</span>
+          Executable takes your build — code, runtime, dependencies — and runs it alongside
+          your databases and in-memory store, on the same private network, billed the same
+          way as everything else. There is no proprietary packaging format and no rewrite:
+          if it runs in a container, it runs here.
         </p>
+        <div class="solution-chips">
+          <span class="chip">Your application or API</span>
+          <span class="chip">A background worker</span>
+          <span class="chip">A scheduled job</span>
+          <span class="chip">Anything you'd put in a Dockerfile</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="ladder-step" id="drp">
+      <div class="ladder-step-container">
+        <div class="section-marker">Block 03 — DRP</div>
+        <h2 class="section-title">DRP</h2>
+        <p class="ladder-step-text">
+          <span class="lead">DRP — the Docker Run Platform — takes a container and keeps it running.</span>
+          Scheduling, restarts, and per-minute accounting, with nothing else attached. It is
+          available directly for the case where what you need is simply a container under
+          supervision. It is also the runtime the other blocks are built on, which is why a
+          DRP instance and any managed service are priced the same way.
+        </p>
+        <div class="solution-chips">
+          <span class="chip">A plain supervised container</span>
+          <span class="chip">Per-minute runtime</span>
+          <span class="chip">The same primitive under every block</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="ladder-step surface" id="in-memory">
+      <div class="ladder-step-container">
+        <div class="section-marker">Block 04 — In-memory</div>
+        <h2 class="section-title">In-memory</h2>
+        <p class="ladder-step-text">
+          <span class="lead">In-memory is managed Valkey.</span>
+          A single-digit-millisecond store for the work a relational database is the wrong
+          tool for: caching, session state, job queues, rate counters, and other short-lived
+          data. Provisioned and kept running, so you get the store without operating it.
+        </p>
+        <div class="solution-chips">
+          <span class="chip">Caching</span>
+          <span class="chip">Sessions</span>
+          <span class="chip">Queues</span>
+          <span class="chip">Rate limiting</span>
+          <span class="chip">Ephemeral state</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="ladder-step" id="database">
+      <div class="ladder-step-container">
+        <div class="section-marker">Block 05 — Database</div>
+        <h2 class="section-title">Database</h2>
+        <p class="ladder-step-text">
+          <span class="lead">Database is managed Postgres.</span>
+          A relational database for application data — and, with three extensions enabled,
+          a database that covers ground you'd otherwise split across separate systems. One
+          instance, one connection string, one thing to back up.
+        </p>
+
+        <div class="feature-group">
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h3>Apache AGE — graph</h3>
+              <p>Property-graph queries (openCypher) inside Postgres, for connected data — relationships, paths, networks — that you would otherwise move into a dedicated graph database.</p>
+            </div>
+            <div class="feature-card">
+              <h3>ParadeDB — search &amp; analytics</h3>
+              <p>Full-text search and fast analytical queries over your existing tables, without standing up a separate search cluster or analytics store to keep in sync.</p>
+            </div>
+            <div class="feature-card">
+              <h3>pgvector — vectors</h3>
+              <p>Vector storage and similarity search for embeddings and retrieval, kept next to the rows they belong to rather than in a separate vector service.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="solution-chips">
+          <span class="chip">Application data</span>
+          <span class="chip">Graph (AGE)</span>
+          <span class="chip">Search &amp; analytics (ParadeDB)</span>
+          <span class="chip">Vectors (pgvector)</span>
+        </div>
+
+        <p class="saas-disclaimer">Postgres and PostgreSQL are trademarks of the PostgreSQL Community Association. Valkey is a trademark of the Linux Foundation. Apache AGE is a trademark of the Apache Software Foundation. ParadeDB and pgvector are the marks of their respective owners. Punkolink provides managed hosting of these open-source projects and is not affiliated with or endorsed by them.</p>
       </div>
     </section>
 
     <section class="trial-cta">
       <div class="trial-cta-box">
-        <h2 class="trial-cta-title">Ready To Spin One Up?</h2>
+        <h2 class="trial-cta-title">Start With One Block</h2>
         <p class="trial-cta-text">
-          Create an account and launch your first managed container in minutes.
+          Create an account, claim 20 free credits, and provision your first block in minutes.
         </p>
         <div class="ladder-step-actions trial-cta-actions">
           <a href="https://cloud.punkolink.com" class="btn btn-primary">Join Us</a>
-          <a href="l7.html" class="btn btn-secondary">About L7</a>
+          <a href="pricing.html" class="btn btn-secondary">See Pricing</a>
         </div>
       </div>
     </section>
@@ -147,8 +303,7 @@
       </div>
       <div class="footer-nav">
         <div class="footer-links">
-          <a href="l7.html">L7</a>
-          <a href="service.html">Solutions</a>
+          <a href="index.html">Cloud</a>
           <a href="pricing.html">Pricing</a>
           <a href="blog.html">Blog</a>
         </div>
@@ -160,7 +315,7 @@
           <a href="legal/pricing-policy.html">Pricing Policy</a>
         </div>
       </div>
-      <div class="footer-copy">© 2026 Punkolink — L7 routing, staffed.</div>
+      <div class="footer-copy">© 2026 Punkolink — the cloud to build on.</div>
     </div>
   </footer>
 
