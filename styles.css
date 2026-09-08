@@ -2848,7 +2848,7 @@ a {
   }
 }
 
-/* ── cloud page (saas.html): block sections ─── */
+/* ── cloud page (cloud.html): block sections ─── */
 .page-cloud .ladder-step[id],
 #l7-demo,
 #blocks {
@@ -2865,4 +2865,148 @@ a.saas-detail-card {
 
 a.saas-detail-card:hover {
   border-color: var(--accent);
+}
+
+/* inline link inside a building-block card (e.g. DRP → "see how it works") */
+.blockreel-card p a {
+  color: var(--accent);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.blockreel-card p a:hover {
+  text-decoration: underline;
+}
+
+/* ── Executable → DRP flow diagram (cloud.html) ─── */
+.exec-flow {
+  margin: var(--space-8) 0 0;
+}
+
+.exec-flow-track {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: var(--space-2);
+  list-style: none;
+}
+
+.exec-flow-node {
+  flex: 1 1 150px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-3);
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+.exec-flow-node-live {
+  border-color: var(--accent);
+}
+
+.exec-flow-kind {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.exec-flow-node-live .exec-flow-kind {
+  color: var(--accent);
+}
+
+.exec-flow-label {
+  font-size: var(--text-secondary);
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* connector between nodes: a horizontal rule + arrowhead on desktop */
+.exec-flow-step {
+  flex: 0 0 32px;
+  align-self: center;
+  position: relative;
+  height: 1px;
+  background: var(--border);
+}
+
+.exec-flow-step::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-top: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+/* the "Run" connector carries a label and reads as the trigger */
+.exec-flow-step-run {
+  flex-basis: 56px;
+  background: var(--accent);
+}
+
+.exec-flow-step-run::after {
+  border-color: var(--accent);
+}
+
+.exec-flow-step-run span {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 4px);
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.exec-flow figcaption {
+  margin-top: var(--space-4);
+  font-size: var(--text-secondary);
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .exec-flow-track {
+    flex-direction: column;
+  }
+
+  .exec-flow-node,
+  .exec-flow-step {
+    flex: none;
+    width: 100%;
+  }
+
+  /* stacked layout: connectors become short vertical rules with a down arrow */
+  .exec-flow-step {
+    height: 20px;
+    width: 1px;
+    margin: 0 auto;
+    align-self: center;
+  }
+
+  .exec-flow-step::after {
+    right: 50%;
+    top: auto;
+    bottom: 0;
+    transform: translateX(50%) rotate(135deg);
+  }
+
+  .exec-flow-step-run {
+    height: 28px;
+  }
+
+  .exec-flow-step-run span {
+    left: calc(100% + 6px);
+    bottom: 50%;
+    transform: translateY(50%);
+    white-space: nowrap;
+  }
 }

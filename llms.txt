@@ -1,10 +1,10 @@
 # Punkolink
 
-> A cloud platform of five equal building blocks — Network, Executable, DRP, In-memory, and Database — that run on one platform and assemble into a stack. Every block runs on DRP (Docker Run Platform) and is billed by the minute in credits. Priced simply: credits at $1 each, 20 free to start, no card.
+> A cloud platform of five equal building blocks — Network, Executable, DRP, In-memory, and Database — that run on one platform and assemble into a stack. Workloads run on DRP (Docker Run Platform) and are billed by the minute in credits. Priced simply: credits at $1 each, 20 free to start, no card.
 
 ## The cloud
 
-- [The Punkolink Cloud](https://punkolink.com/saas.html): The five building blocks in detail — Network (the Punkolink L7 router: routing, load balancing, layer-3 and layer-7 access control, rate limiting, bot and brute-force protection, availability monitoring, web GUI), Executable (bring a container image and run it), DRP (a supervised container, kept running and billed by the minute; also the runtime the other blocks are built on), In-memory (managed Valkey for caching, sessions, queues, and counters), and Database (managed Postgres with Apache AGE for graph, ParadeDB for search and analytics, and pgvector for embeddings).
+- [Cloud](https://punkolink.com/cloud.html): The five building blocks in detail — Network (the Punkolink L7 router: routing, load balancing, layer-3 and layer-7 access control, rate limiting, bot and brute-force protection, availability monitoring, web GUI), Executable (upload a compiled binary or a Node.js project; it is stored inert and nothing is billed until you start it), DRP (where an Executable runs — on start, DRP wraps it in a container with the right environment and brings it up; it also places workloads across the cloud's machines and can bring up isolated Linux environments), In-memory (managed Valkey, an open-source in-memory data store, for caching, session state, job queues, and rate-limit counters), and Database (one managed Postgres instance with three extensions on it — Apache AGE for graph, ParadeDB for search and analytics, pgvector for vectors — not four separate services).
 
 ## Pricing
 

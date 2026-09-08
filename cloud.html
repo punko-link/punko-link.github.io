@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Punkolink Cloud — Building Blocks</title>
-  <meta name="description" content="The Punkolink cloud in detail: Network (the L7 router), Executable (run your container), DRP, In-memory (Valkey), and Database (Postgres with Apache AGE, ParadeDB, and pgvector).">
+  <title>Cloud — Punkolink</title>
+  <meta name="description" content="The Punkolink cloud in detail: Network (the L7 router), Executable (upload a binary or Node.js project), DRP (where Executables run), In-memory (managed Valkey), and Database (managed Postgres with Apache AGE, ParadeDB, and pgvector).">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="page-cloud">
@@ -63,19 +63,20 @@
 
           <a class="saas-detail-card" href="#executable">
             <h3>Executable</h3>
-            <p>Bring a container image and run it. Your code, your runtime, your dependencies — running next to your databases and in-memory store, on the same network, billed the same way.</p>
+            <p>Bring your own code. Upload a binary or a Node.js project — it's stored and ready, sitting inert until you start it. Nothing runs, and nothing is billed, until you do.</p>
             <div class="solution-chips">
-              <span class="chip">Your application or API</span>
-              <span class="chip">A background worker</span>
-              <span class="chip">A scheduled job</span>
+              <span class="chip">A compiled binary</span>
+              <span class="chip">A Node.js project</span>
+              <span class="chip">Stored until you start it</span>
             </div>
           </a>
 
           <a class="saas-detail-card" href="#drp">
             <h3>DRP</h3>
-            <p>Docker Run Platform. It takes a container and keeps it running — scheduling, restarts, per-minute accounting. Use it directly when what you need is a supervised container and nothing else.</p>
+            <p>Where your Executables run. Start one and DRP wraps it in a container with the right environment and brings it up, alongside your databases and the rest of your stack.</p>
             <div class="solution-chips">
-              <span class="chip">A plain supervised container</span>
+              <span class="chip">Container + environment per run</span>
+              <span class="chip">Isolated Linux environments</span>
               <span class="chip">Per-minute runtime</span>
             </div>
           </a>
@@ -188,18 +189,42 @@
         <div class="section-marker">Block 02 — Executable</div>
         <h2 class="section-title">Executable</h2>
         <p class="ladder-step-text">
-          <span class="lead">Bring a container image and run it.</span>
-          Executable takes your build — code, runtime, dependencies — and runs it alongside
-          your databases and in-memory store, on the same private network, billed the same
-          way as everything else. There is no proprietary packaging format and no rewrite:
-          if it runs in a container, it runs here.
+          <span class="lead">Bring your own code.</span>
+          Upload a compiled binary or a Node.js project. The artifact is stored as-is and
+          sits inert — nothing is executed, and nothing is billed, until you start it. An
+          Executable is a place your workload waits; DRP is where it runs.
         </p>
         <div class="solution-chips">
-          <span class="chip">Your application or API</span>
-          <span class="chip">A background worker</span>
-          <span class="chip">A scheduled job</span>
-          <span class="chip">Anything you'd put in a Dockerfile</span>
+          <span class="chip">A compiled binary</span>
+          <span class="chip">A Node.js project</span>
+          <span class="chip">Stored, inert, until you start it</span>
+          <span class="chip">Billed only while running</span>
         </div>
+
+        <figure class="exec-flow" aria-label="How an Executable becomes a running instance">
+          <ol class="exec-flow-track">
+            <li class="exec-flow-node">
+              <span class="exec-flow-kind">Upload</span>
+              <span class="exec-flow-label">Binary or Node.js project</span>
+            </li>
+            <li class="exec-flow-step" aria-hidden="true"></li>
+            <li class="exec-flow-node">
+              <span class="exec-flow-kind">Executable</span>
+              <span class="exec-flow-label">Stored, inert — nothing billed</span>
+            </li>
+            <li class="exec-flow-step exec-flow-step-run"><span>Run</span></li>
+            <li class="exec-flow-node">
+              <span class="exec-flow-kind">DRP</span>
+              <span class="exec-flow-label">Container + environment</span>
+            </li>
+            <li class="exec-flow-step" aria-hidden="true"></li>
+            <li class="exec-flow-node exec-flow-node-live">
+              <span class="exec-flow-kind">Running instance</span>
+              <span class="exec-flow-label">Live, billed per minute</span>
+            </li>
+          </ol>
+          <figcaption>An Executable waits in storage until you start it. On start, DRP builds the container and brings it up.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -208,16 +233,21 @@
         <div class="section-marker">Block 03 — DRP</div>
         <h2 class="section-title">DRP</h2>
         <p class="ladder-step-text">
-          <span class="lead">DRP — the Docker Run Platform — takes a container and keeps it running.</span>
-          Scheduling, restarts, and per-minute accounting, with nothing else attached. It is
-          available directly for the case where what you need is simply a container under
-          supervision. It is also the runtime the other blocks are built on, which is why a
-          DRP instance and any managed service are priced the same way.
+          <span class="lead">Where your Executables run.</span>
+          Start an Executable and DRP wraps it in a container with the right environment and
+          brings it up, next to your databases and the rest of your stack — with scheduling,
+          restarts, and per-minute accounting. Behind that, DRP also places workloads across
+          the machines the cloud runs on, so our own services, managed open-source, and your
+          code share them without getting in each other's way.
+        </p>
+        <p class="ladder-step-text">
+          DRP can also bring up an isolated Linux environment — a small instance that's yours
+          to work in, when you need a machine rather than a single service.
         </p>
         <div class="solution-chips">
-          <span class="chip">A plain supervised container</span>
+          <span class="chip">Container + environment per run</span>
+          <span class="chip">Isolated Linux environments</span>
           <span class="chip">Per-minute runtime</span>
-          <span class="chip">The same primitive under every block</span>
         </div>
       </div>
     </section>
@@ -228,16 +258,17 @@
         <h2 class="section-title">In-memory</h2>
         <p class="ladder-step-text">
           <span class="lead">In-memory is managed Valkey.</span>
-          A single-digit-millisecond store for the work a relational database is the wrong
-          tool for: caching, session state, job queues, rate counters, and other short-lived
-          data. Provisioned and kept running, so you get the store without operating it.
+          Valkey is an open-source in-memory data store — it keeps its data in RAM, so reads
+          and writes return in well under a millisecond. Use it for the work where speed
+          matters and a relational database is the wrong tool: a cache in front of Postgres,
+          session state, job queues, rate-limit counters, and other short-lived data.
+          Provisioned and kept running, so you get the store without operating it.
         </p>
         <div class="solution-chips">
-          <span class="chip">Caching</span>
-          <span class="chip">Sessions</span>
-          <span class="chip">Queues</span>
-          <span class="chip">Rate limiting</span>
-          <span class="chip">Ephemeral state</span>
+          <span class="chip">Cache in front of your database</span>
+          <span class="chip">Session state</span>
+          <span class="chip">Job queues</span>
+          <span class="chip">Rate-limit counters</span>
         </div>
       </div>
     </section>
@@ -247,31 +278,36 @@
         <div class="section-marker">Block 05 — Database</div>
         <h2 class="section-title">Database</h2>
         <p class="ladder-step-text">
-          <span class="lead">Database is managed Postgres.</span>
-          A relational database for application data — and, with three extensions enabled,
-          a database that covers ground you'd otherwise split across separate systems. One
-          instance, one connection string, one thing to back up.
+          <span class="lead">Database is managed Postgres, plus three extensions on the same instance.</span>
+          Postgres is the relational core — application data, transactions, the default home
+          for anything structured. The extensions are enabled on that one managed instance:
+          one database, one connection string, one thing to back up — several capabilities,
+          not four separate services to run and keep in sync.
         </p>
 
         <div class="feature-group">
           <div class="feature-grid">
             <div class="feature-card">
+              <h3>Postgres — relational core</h3>
+              <p>A managed PostgreSQL instance for application data and transactions. The default place to put structured data, and the base the three extensions below run on.</p>
+            </div>
+            <div class="feature-card">
               <h3>Apache AGE — graph</h3>
-              <p>Property-graph queries (openCypher) inside Postgres, for connected data — relationships, paths, networks — that you would otherwise move into a dedicated graph database.</p>
+              <p>Graph queries (openCypher) inside the same database, for data with strong connectivity — relationships, paths, networks — that you would otherwise move into a dedicated graph database.</p>
             </div>
             <div class="feature-card">
               <h3>ParadeDB — search &amp; analytics</h3>
-              <p>Full-text search and fast analytical queries over your existing tables, without standing up a separate search cluster or analytics store to keep in sync.</p>
+              <p>Full-text search and analytical queries directly in Postgres, over your existing tables, without standing up a separate search cluster or analytics store to keep in sync.</p>
             </div>
             <div class="feature-card">
               <h3>pgvector — vectors</h3>
-              <p>Vector storage and similarity search for embeddings and retrieval, kept next to the rows they belong to rather than in a separate vector service.</p>
+              <p>Vector storage and similarity search for embeddings and AI features, kept next to the rows they belong to rather than in a separate vector service.</p>
             </div>
           </div>
         </div>
 
         <div class="solution-chips">
-          <span class="chip">Application data</span>
+          <span class="chip">Application data &amp; transactions</span>
           <span class="chip">Graph (AGE)</span>
           <span class="chip">Search &amp; analytics (ParadeDB)</span>
           <span class="chip">Vectors (pgvector)</span>
