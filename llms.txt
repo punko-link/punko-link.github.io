@@ -1,25 +1,19 @@
 # Punkolink
 
-> A cloud platform of equal building blocks — managed databases and search, an L7 router, and a place to run any container — assembled into a stack. Services run on DRP (Docker Run Platform), billed per minute in credits. When something breaks, the engineers who built the platform step in. Priced simply: credits at $1 each, 20 free to start, no card.
+> A cloud platform of five equal building blocks — Network, Executable, DRP, In-memory, and Database — that run on one platform and assemble into a stack. Every block runs on DRP (Docker Run Platform) and is billed by the minute in credits. Priced simply: credits at $1 each, 20 free to start, no card.
 
-## Platform
+## The cloud
 
-- [Managed containers and services](https://punkolink.com/saas.html): Managed Postgres, Redis, Meilisearch, and Qdrant, plus the L7 router and DRP — equal building blocks, not a hosting plan. Provisioned in minutes; run yourself or grow into a watched core.
-- [L7 router](https://punkolink.com/l7.html): A layer-7 router for the core of a network — load balancing, redundancy, rate limiting, bot and brute-force protection, layer-3 and layer-7 access control, monitoring, and a web GUI. Available as a managed service or run on your own infrastructure.
-- [DRP (Docker Run Platform)](https://punkolink.com/saas.html): Punkolink's system for running any container. The unit of billing is a DRP container, priced the same regardless of contents — a Punkolink image, an open-source image, or a customer-supplied one. Also available on its own, as an empty container the customer fills.
-
-## Solutions (engineering services)
-
-- [Solutions](https://punkolink.com/service.html): Concrete engineering work around the router — deployment, incident response, readiness upkeep, degradation monitoring, infrastructure and software work, peak-load preparation, abuse protection, access management, cost audit, and on-prem delivery. Scoped and priced per engagement; engaged one at a time as a system needs them.
+- [The Punkolink Cloud](https://punkolink.com/saas.html): The five building blocks in detail — Network (the Punkolink L7 router: routing, load balancing, layer-3 and layer-7 access control, rate limiting, bot and brute-force protection, availability monitoring, web GUI), Executable (bring a container image and run it), DRP (a supervised container, kept running and billed by the minute; also the runtime the other blocks are built on), In-memory (managed Valkey for caching, sessions, queues, and counters), and Database (managed Postgres with Apache AGE for graph, ParadeDB for search and analytics, and pgvector for embeddings).
 
 ## Pricing
 
-- [Pricing](https://punkolink.com/pricing.html): One thing to buy — credits, priced at $1 each, sold in packs of 5. 20 free credits on signup, no card. Credits are spent as services run; a DRP instance costs about 5 credits per month.
+- [Pricing](https://punkolink.com/pricing.html): One thing to buy — credits, priced at $1 each, sold in packs of 5. 20 free credits on signup, no card. Credits are spent by the minute as blocks run; a DRP instance costs about 5 credits per month.
 - [Pricing Policy](https://punkolink.com/legal/pricing-policy.html): The exact terms — a credit is a unit of account and prepayment for services, not a payment instrument, not e-money, not withdrawable. Per-minute rates, including the exact DRP rate, are set out here.
 
 ## Writing
 
-- [Blog](https://punkolink.com/blog.html): Field notes on L7 routing, incident response, and running a staffed core.
+- [Blog](https://punkolink.com/blog.html): Field notes from building the Punkolink cloud — the building blocks and the runtime underneath them.
 
 ## Legal
 
@@ -30,4 +24,4 @@
 
 ## Get started
 
-- [Console](https://cloud.punkolink.com): Create an account, claim 20 free credits, and spin up a container. No card required.
+- [Console](https://cloud.punkolink.com): Create an account, claim 20 free credits, and provision your first block. No card required.

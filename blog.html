@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title id="pageTitle">Blog — Punkolink</title>
-  <meta name="description" content="Field notes on L7 routing, incident response, and running a boring, staffed core — from the team that builds Punkolink.">
+  <meta name="description" content="Field notes from building the Punkolink cloud — the building blocks, the runtime underneath, and what it takes to keep them boring.">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,9 +17,8 @@
       punkolink
     </a>
     <nav class="nav" id="mainNav">
-      <a href="l7.html">L7</a>
-      <a href="saas.html">Cloud</a>
-      <a href="service.html">Solutions</a>
+      <a href="index.html">Cloud</a>
+      <a href="pricing.html">Pricing</a>
       <a href="blog.html" class="active">Blog</a>
       <a href="https://cloud.punkolink.com" class="nav-cta">Sign In to Console</a>
       <a href="https://cloud.punkolink.com" class="nav-cta nav-cta-primary">Join Us</a>
@@ -34,8 +33,8 @@
   <main>
     <section class="blog-section" id="blogList">
       <div class="section-marker">Blog</div>
-      <h1 class="section-title">Field Notes From The Core</h1>
-      <p class="approach-intro">Writing on L7 routing, incident response, and what it actually takes to keep a routing layer boring.</p>
+      <h1 class="section-title">Field Notes</h1>
+      <p class="approach-intro">Writing on the building blocks, the runtime underneath them, and what it actually takes to keep infrastructure boring.</p>
 
       <div class="blog-toolbar">
         <div class="blog-search-wrap">
@@ -64,8 +63,7 @@
       </div>
       <div class="footer-nav">
         <div class="footer-links">
-          <a href="l7.html">L7</a>
-          <a href="service.html">Solutions</a>
+          <a href="index.html">Cloud</a>
           <a href="pricing.html">Pricing</a>
           <a href="blog.html">Blog</a>
         </div>
@@ -77,7 +75,7 @@
           <a href="legal/pricing-policy.html">Pricing Policy</a>
         </div>
       </div>
-      <div class="footer-copy">© 2026 Punkolink — L7 routing. Full stop.</div>
+      <div class="footer-copy">© 2026 Punkolink — the cloud to build on.</div>
     </div>
   </footer>
 
@@ -104,15 +102,46 @@
       var posts = [];
       var fileBySlug = {};
       var searchTerm = '';
+      var currentSlug = null;
+
+      // Display names for language codes used in a post's `translations` map.
+      var LANG_NAMES = {
+        en: 'English',
+        uk: 'Українська',
+        ru: 'Русский',
+        de: 'Deutsch',
+        fr: 'Français',
+        es: 'Español',
+        pl: 'Polski'
+      };
 
       function slugify(file) {
         return file.replace(/\.md$/, '');
       }
 
-      function formatDate(iso) {
+      // A post can carry a `translations` map: { langCode: "file.md", ... }.
+      // Returns that map, or a single-entry fallback built from `file`/`lang`
+      // so the rest of the code can treat every post uniformly.
+      function translationsOf(post) {
+        if (post && post.translations && Object.keys(post.translations).length) {
+          return post.translations;
+        }
+        var map = {};
+        map[(post && post.lang) || 'en'] = post ? post.file : '';
+        return map;
+      }
+
+      function defaultLangOf(post, translations) {
+        if (post && post.lang && translations[post.lang]) return post.lang;
+        return Object.keys(translations)[0];
+      }
+
+      var DATE_LOCALES = { en: 'en-US', uk: 'uk-UA', ru: 'ru-RU', de: 'de-DE', fr: 'fr-FR', es: 'es-ES', pl: 'pl-PL' };
+
+      function formatDate(iso, lang) {
         var d = new Date(iso + 'T00:00:00');
         if (isNaN(d.getTime())) return iso;
-        return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        return d.toLocaleDateString(DATE_LOCALES[lang] || 'en-US', { month: 'short', day: 'numeric', year: 'numeric' });
       }
 
       function postCardHtml(post) {
@@ -163,6 +192,7 @@
       }
 
       function showList() {
+        currentSlug = null;
         articleSection.style.display = 'none';
         listSection.style.display = '';
         document.getElementById('pageTitle').textContent = 'Blog — Punkolink';
@@ -170,18 +200,43 @@
         window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
       }
 
-      function showArticle(slug) {
+      function langSwitcherHtml(slug, translations, activeLang) {
+        var codes = Object.keys(translations);
+        if (codes.length < 2) return '';
+        var buttons = codes.map(function (code) {
+          var label = LANG_NAMES[code] || code.toUpperCase();
+          var isActive = code === activeLang;
+          return '<button type="button" data-lang="' + PunkoMarkdown.escapeHtml(code) + '"' +
+            (isActive ? ' aria-current="true"' : '') +
+            ' aria-label="' + PunkoMarkdown.escapeHtml(label) + '" title="' + PunkoMarkdown.escapeHtml(label) + '">' +
+            PunkoMarkdown.escapeHtml(code.toUpperCase()) +
+            '</button>';
+        }).join('');
+        return '<div class="article-langs" role="group" aria-label="Article language">' + buttons + '</div>';
+      }
+
+      function showArticle(slug, lang) {
         listSection.style.display = 'none';
         articleSection.style.display = '';
-        articleBodyEl.innerHTML = '<div class="blog-state">Loading article…</div>';
+        var sameArticle = currentSlug === slug;
+        if (!sameArticle) {
+          articleBodyEl.innerHTML = '<div class="blog-state">Loading article…</div>';
+        }
 
         var meta = posts.filter(function (p) { return slugify(p.file) === slug; })[0];
-        var file = fileBySlug[slug];
 
-        if (!file) {
+        if (!meta && !fileBySlug[slug]) {
+          currentSlug = null;
           articleBodyEl.innerHTML = '<div class="blog-state">That article doesn\'t exist. Pick another one from the <a href="blog.html">blog</a>.</div>';
           return;
         }
+
+        var translations = translationsOf(meta);
+        var defaultLang = defaultLangOf(meta, translations);
+        var activeLang = (lang && translations[lang]) ? lang : defaultLang;
+        var file = translations[activeLang] || fileBySlug[slug];
+
+        currentSlug = slug;
 
         fetch('content/blog/pages/' + file)
           .then(function (res) {
@@ -202,14 +257,30 @@
               '<div class="article-header">' +
                 (tag ? '<span class="post-tag">' + PunkoMarkdown.escapeHtml(tag) + '</span>' : '') +
                 '<h1 class="article-title">' + PunkoMarkdown.escapeHtml(data.title || '') + '</h1>' +
-                '<div class="article-meta">' + (date ? formatDate(date) + ' &middot; ' : '') + PunkoMarkdown.escapeHtml(author) + (readingTime ? ' &middot; ' + PunkoMarkdown.escapeHtml(readingTime) : '') + '</div>' +
+                '<div class="article-meta">' + (date ? formatDate(date, activeLang) + ' &middot; ' : '') + PunkoMarkdown.escapeHtml(author) + (readingTime ? ' &middot; ' + PunkoMarkdown.escapeHtml(readingTime) : '') + '</div>' +
+                (data.subtitle ? '<p class="article-deck">' + PunkoMarkdown.escapeHtml(data.subtitle) + '</p>' : '') +
+                langSwitcherHtml(slug, translations, activeLang) +
               '</div>' +
               '<div class="prose">' + PunkoMarkdown.renderMarkdown(parsed.content) + '</div>';
 
-            window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+            var langsEl = articleBodyEl.querySelector('.article-langs');
+            if (langsEl) {
+              langsEl.addEventListener('click', function (ev) {
+                var btn = ev.target.closest('button[data-lang]');
+                if (!btn) return;
+                var code = btn.getAttribute('data-lang');
+                if (code === activeLang) return;
+                location.hash = code === defaultLang ? slug : slug + '/' + code;
+              });
+            }
+
+            if (!sameArticle) {
+              window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+            }
           })
           .catch(function (err) {
             console.error(err);
+            currentSlug = null;
             articleBodyEl.innerHTML = '<div class="blog-state">Couldn\'t load that article. Pick another one from the <a href="blog.html">blog</a>.</div>';
           });
       }
@@ -217,7 +288,9 @@
       function route() {
         var hash = location.hash.replace('#', '');
         if (hash) {
-          showArticle(hash);
+          // hash is "<slug>" or "<slug>/<langCode>"
+          var parts = hash.split('/');
+          showArticle(parts[0], parts[1] || '');
         } else {
           showList();
         }

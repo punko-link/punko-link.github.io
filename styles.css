@@ -1874,22 +1874,6 @@ a {
   padding: calc(var(--space-3xl) + var(--space-lg)) var(--space-lg) var(--space-3xl);
 }
 
-/* service.html only: the article section also holds the related-services
-   row, which reads as a cramped single column at the blog's 760px reading
-   width. Widen it to ~70% / 15% side margins instead. */
-body.page-service .article-section,
-body.page-service .blog-section {
-  max-width: none;
-  width: 70%;
-}
-
-@media (max-width: 1024px) {
-  body.page-service .article-section,
-  body.page-service .blog-section {
-    width: 100%;
-  }
-}
-
 .back-link {
   display: inline-flex;
   align-items: center;
