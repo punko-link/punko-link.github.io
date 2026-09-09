@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cloud — Punkolink</title>
-  <meta name="description" content="The Punkolink cloud in detail: Network (the L7 router), Executable (upload a binary or Node.js project), DRP (where Executables run), In-memory (managed Valkey), and Database (managed Postgres with Apache AGE, ParadeDB, and pgvector).">
+  <meta name="description" content="The Punkolink cloud in detail, layer by layer: Network (rented IPv4/IPv6, L3 forwarding & firewall, the L7 router), Executable (upload an aarch64 binary or a Node.js project), DRP (where Executables run, plus Isolated Linux), In-memory (managed Valkey), and Database (one managed PostgreSQL with Apache AGE, ParadeDB, and pgvector).">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="page-cloud">
@@ -33,11 +33,11 @@
   <main>
     <section class="page-hero">
       <div class="page-hero-tag">The Punkolink Cloud</div>
-      <h1 class="page-hero-title">The cloud, block by block</h1>
+      <h1 class="page-hero-title">The cloud, layer by layer</h1>
       <p class="page-hero-description">
-        Five building blocks that run on one platform and bill the same way. Take one, or
-        assemble all five into the stack your application needs. Provisioned in minutes,
-        priced by the minute.
+        Five layers on one platform, from the network edge down to the database core.
+        Take one, or stack them into the shape your application needs. Provisioned in
+        minutes, priced by the minute.
       </p>
       <div class="hero-actions">
         <a href="https://cloud.punkolink.com" class="btn btn-primary">Try It Out</a>
@@ -47,57 +47,59 @@
 
     <section class="ladder-step surface" id="blocks">
       <div class="ladder-step-container">
-        <div class="section-marker">The five blocks</div>
-        <h2 class="section-title">What You Can Run</h2>
+        <div class="section-marker">The catalog</div>
+        <h2 class="section-title">Five Layers</h2>
+        <p class="ladder-step-text">Ordered from the network edge down to the database core. Each one is independent — take a single layer, or stack them.</p>
 
         <div class="saas-detail-grid">
           <a class="saas-detail-card" href="#network">
-            <h3>Network</h3>
-            <p>Punkolink L7, our layer-7 router. Routing, load balancing, access control, and protection at the edge of your stack — run as a managed block, or taken as a binary and run yourself.</p>
+            <h3>01 — Network</h3>
+            <p>The outward-facing surface of your stack: a rented IPv4 or IPv6 address, L3 forwarding and firewall in front of your services, and our L7 application-level router for routing, access, and protection.</p>
             <div class="solution-chips">
-              <span class="chip">Routing &amp; load balancing</span>
-              <span class="chip">Access control</span>
-              <span class="chip">Rate limiting &amp; bot protection</span>
+              <span class="chip">Rent IPv4 / IPv6</span>
+              <span class="chip">L3 — forwarding &amp; firewall</span>
+              <span class="chip">L7 — routing &amp; protection</span>
             </div>
           </a>
 
           <a class="saas-detail-card" href="#executable">
-            <h3>Executable</h3>
-            <p>Bring your own code. Upload a binary or a Node.js project — it's stored and ready, sitting inert until you start it. Nothing runs, and nothing is billed, until you do.</p>
+            <h3>02 — Executable</h3>
+            <p>Bring your own code. Upload an aarch64 binary or a Node.js project — it's stored and ready, sitting inert until you start it. Nothing runs, and nothing is billed, until you do.</p>
             <div class="solution-chips">
-              <span class="chip">A compiled binary</span>
-              <span class="chip">A Node.js project</span>
+              <span class="chip">Binary (aarch64)</span>
+              <span class="chip">Node.js</span>
               <span class="chip">Stored until you start it</span>
             </div>
           </a>
 
           <a class="saas-detail-card" href="#drp">
-            <h3>DRP</h3>
-            <p>Where your Executables run. Start one and DRP wraps it in a container with the right environment and brings it up, alongside your databases and the rest of your stack.</p>
+            <h3>03 — DRP</h3>
+            <p>Where your Executables run. Hit Run and DRP wraps the artifact in a container with the right environment and brings it up. It can also bring up an isolated Linux instance to work in.</p>
             <div class="solution-chips">
-              <span class="chip">Container + environment per run</span>
-              <span class="chip">Isolated Linux environments</span>
+              <span class="chip">Run — start an Executable</span>
+              <span class="chip">Isolated Linux</span>
               <span class="chip">Per-minute runtime</span>
             </div>
           </a>
 
           <a class="saas-detail-card" href="#in-memory">
-            <h3>In-memory</h3>
-            <p>Managed Valkey. A single-digit-millisecond store for the work a relational database is the wrong tool for: caching, session state, queues, and rate counters.</p>
+            <h3>04 — In-memory</h3>
+            <p>Managed Valkey, an open-source in-memory data store. Sub-millisecond reads and writes for caching, session state, job queues, and rate-limit counters.</p>
             <div class="solution-chips">
-              <span class="chip">Caching</span>
+              <span class="chip">Cache</span>
               <span class="chip">Sessions</span>
-              <span class="chip">Queues &amp; counters</span>
+              <span class="chip">Queues &amp; rate counters</span>
             </div>
           </a>
 
           <a class="saas-detail-card" href="#database">
-            <h3>Database</h3>
-            <p>Managed Postgres, with the extensions that let one database cover more ground — Apache AGE for graph, ParadeDB for search and analytics, pgvector for embeddings.</p>
+            <h3>05 — Database</h3>
+            <p>One managed PostgreSQL instance with three extensions on top: Apache AGE for graph, ParadeDB for search and analytics, and pgvector for vectors. One database, several capabilities — not four services to wire together.</p>
             <div class="solution-chips">
-              <span class="chip">Application data</span>
-              <span class="chip">Graph &middot; search &middot; vectors</span>
-              <span class="chip">One instance to back up</span>
+              <span class="chip">Apache AGE — graph</span>
+              <span class="chip">ParadeDB — search &amp; analytics</span>
+              <span class="chip">pgvector — vectors</span>
+              <span class="chip">PostgreSQL — relational core</span>
             </div>
           </a>
         </div>
@@ -106,18 +108,39 @@
 
     <section class="ladder-step" id="network">
       <div class="ladder-step-container">
-        <div class="section-marker">Block 01 — Network</div>
+        <div class="section-marker">Layer 01 — Network</div>
         <h2 class="section-title">Network</h2>
         <p class="ladder-step-text">
-          <span class="lead">Network is Punkolink L7, our layer-7 router.</span>
-          It sits at the edge of your stack — the point every request passes through — and
-          gives you one place to route, balance, secure, and observe traffic. Run it as a
-          managed block here, or take the single binary and run it on your own
-          infrastructure. The router is the same either way.
+          <span class="lead">Network is the outward-facing layer.</span>
+          The address your users reach, the forwarding and filtering in front of your
+          services, and our application-level router — four services, from a raw IP address
+          up to per-route application control.
         </p>
 
         <div class="feature-group">
-          <div class="feature-group-title">Routing &amp; Reliability</div>
+          <div class="feature-group-title">The Network layer</div>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h3>Rent IPv4</h3>
+              <p>A dedicated IPv4 address, rented as the fixed entry point to your stack. Traffic arrives here before any forwarding or routing rules apply.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Rent IPv6</h3>
+              <p>A dedicated IPv6 address, for reaching your services over IPv6 or offering an IPv6 endpoint alongside IPv4.</p>
+            </div>
+            <div class="feature-card">
+              <h3>L3 — Forwarding and Firewall</h3>
+              <p>Forwarding by IP and port, with packet filtering at the network layer. Allow and deny rules decide what reaches your services before any application-level logic runs.</p>
+            </div>
+            <div class="feature-card">
+              <h3>L7 — Application-level network control</h3>
+              <p>Punkolink L7, our layer-7 router: routing, load balancing, access control, rate limiting, and protection, per route. Run it as a managed service here, or take the single binary and run it on your own infrastructure. Its full feature set is below.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-group">
+          <div class="feature-group-title">Inside L7 — Routing &amp; Reliability</div>
           <div class="feature-grid">
             <div class="feature-card">
               <h3>Load balancing</h3>
@@ -139,7 +162,7 @@
         </div>
 
         <div class="feature-group">
-          <div class="feature-group-title">Access &amp; Protection</div>
+          <div class="feature-group-title">Inside L7 — Access &amp; Protection</div>
           <div class="feature-grid">
             <div class="feature-card">
               <h3>Layer-7 access control</h3>
@@ -169,7 +192,7 @@
         </div>
 
         <div class="feature-group">
-          <div class="feature-group-title">Operations</div>
+          <div class="feature-group-title">Inside L7 — Operations</div>
           <div class="feature-grid">
             <div class="feature-card">
               <h3>Static file storage</h3>
@@ -186,17 +209,29 @@
 
     <section class="ladder-step surface" id="executable">
       <div class="ladder-step-container">
-        <div class="section-marker">Block 02 — Executable</div>
+        <div class="section-marker">Layer 02 — Executable</div>
         <h2 class="section-title">Executable</h2>
         <p class="ladder-step-text">
           <span class="lead">Bring your own code.</span>
-          Upload a compiled binary or a Node.js project. The artifact is stored as-is and
+          Upload an aarch64 binary or a Node.js project. The artifact is stored as-is and
           sits inert — nothing is executed, and nothing is billed, until you start it. An
           Executable is a place your workload waits; DRP is where it runs.
         </p>
+        <div class="feature-group">
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h3>Binary (aarch64)</h3>
+              <p>A compiled binary built for the aarch64 (ARM64) architecture. Other architectures are not accepted — build for aarch64 or use the Node.js option.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Node.js</h3>
+              <p>A Node.js project, uploaded as its source. The runtime is provided when it starts, so there is nothing to compile ahead of time.</p>
+            </div>
+          </div>
+        </div>
         <div class="solution-chips">
-          <span class="chip">A compiled binary</span>
-          <span class="chip">A Node.js project</span>
+          <span class="chip">Binary (aarch64)</span>
+          <span class="chip">Node.js</span>
           <span class="chip">Stored, inert, until you start it</span>
           <span class="chip">Billed only while running</span>
         </div>
@@ -205,7 +240,7 @@
           <ol class="exec-flow-track">
             <li class="exec-flow-node">
               <span class="exec-flow-kind">Upload</span>
-              <span class="exec-flow-label">Binary or Node.js project</span>
+              <span class="exec-flow-label">aarch64 binary / Node.js project</span>
             </li>
             <li class="exec-flow-step" aria-hidden="true"></li>
             <li class="exec-flow-node">
@@ -230,23 +265,33 @@
 
     <section class="ladder-step" id="drp">
       <div class="ladder-step-container">
-        <div class="section-marker">Block 03 — DRP</div>
+        <div class="section-marker">Layer 03 — DRP</div>
         <h2 class="section-title">DRP</h2>
         <p class="ladder-step-text">
           <span class="lead">Where your Executables run.</span>
-          Start an Executable and DRP wraps it in a container with the right environment and
+          Hit Run and DRP wraps the artifact in a container with the right environment and
           brings it up, next to your databases and the rest of your stack — with scheduling,
           restarts, and per-minute accounting. Behind that, DRP also places workloads across
           the machines the cloud runs on, so our own services, managed open-source, and your
           code share them without getting in each other's way.
         </p>
-        <p class="ladder-step-text">
-          DRP can also bring up an isolated Linux environment — a small instance that's yours
-          to work in, when you need a machine rather than a single service.
-        </p>
+
+        <div class="feature-group">
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h3>Run</h3>
+              <p>Start an Executable. DRP builds a container with the right runtime and dependencies for the artifact, brings it up, and keeps it running — restarting it if it exits. Billing starts when it does and stops when you stop it.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Isolated Linux</h3>
+              <p>Need a machine, not just a service? DRP can bring up an isolated Linux environment — a small instance that's yours to work in, with its own filesystem and shell.</p>
+            </div>
+          </div>
+        </div>
+
         <div class="solution-chips">
-          <span class="chip">Container + environment per run</span>
-          <span class="chip">Isolated Linux environments</span>
+          <span class="chip">Run — start an Executable</span>
+          <span class="chip">Isolated Linux</span>
           <span class="chip">Per-minute runtime</span>
         </div>
       </div>
@@ -254,7 +299,7 @@
 
     <section class="ladder-step surface" id="in-memory">
       <div class="ladder-step-container">
-        <div class="section-marker">Block 04 — In-memory</div>
+        <div class="section-marker">Layer 04 — In-memory</div>
         <h2 class="section-title">In-memory</h2>
         <p class="ladder-step-text">
           <span class="lead">In-memory is managed Valkey.</span>
@@ -275,22 +320,18 @@
 
     <section class="ladder-step" id="database">
       <div class="ladder-step-container">
-        <div class="section-marker">Block 05 — Database</div>
+        <div class="section-marker">Layer 05 — Database</div>
         <h2 class="section-title">Database</h2>
         <p class="ladder-step-text">
-          <span class="lead">Database is managed Postgres, plus three extensions on the same instance.</span>
-          Postgres is the relational core — application data, transactions, the default home
-          for anything structured. The extensions are enabled on that one managed instance:
-          one database, one connection string, one thing to back up — several capabilities,
-          not four separate services to run and keep in sync.
+          <span class="lead">Database is one managed PostgreSQL instance, with three capabilities enabled on top of it.</span>
+          Graph, search, and vectors are extensions on that single instance — one database,
+          one connection string, one thing to back up. Several capabilities, not four
+          separate services to run and keep in sync. PostgreSQL itself is the foundation the
+          other three rest on.
         </p>
 
         <div class="feature-group">
           <div class="feature-grid">
-            <div class="feature-card">
-              <h3>Postgres — relational core</h3>
-              <p>A managed PostgreSQL instance for application data and transactions. The default place to put structured data, and the base the three extensions below run on.</p>
-            </div>
             <div class="feature-card">
               <h3>Apache AGE — graph</h3>
               <p>Graph queries (openCypher) inside the same database, for data with strong connectivity — relationships, paths, networks — that you would otherwise move into a dedicated graph database.</p>
@@ -303,25 +344,29 @@
               <h3>pgvector — vectors</h3>
               <p>Vector storage and similarity search for embeddings and AI features, kept next to the rows they belong to rather than in a separate vector service.</p>
             </div>
+            <div class="feature-card">
+              <h3>PostgreSQL — relational core</h3>
+              <p>The managed instance itself: application data, transactions, and the default home for anything structured. The base that Apache AGE, ParadeDB, and pgvector all run on.</p>
+            </div>
           </div>
         </div>
 
         <div class="solution-chips">
-          <span class="chip">Application data &amp; transactions</span>
           <span class="chip">Graph (AGE)</span>
           <span class="chip">Search &amp; analytics (ParadeDB)</span>
           <span class="chip">Vectors (pgvector)</span>
+          <span class="chip">Relational core (PostgreSQL)</span>
         </div>
 
-        <p class="saas-disclaimer">Postgres and PostgreSQL are trademarks of the PostgreSQL Community Association. Valkey is a trademark of the Linux Foundation. Apache AGE is a trademark of the Apache Software Foundation. ParadeDB and pgvector are the marks of their respective owners. Punkolink provides managed hosting of these open-source projects and is not affiliated with or endorsed by them.</p>
+        <p class="saas-disclaimer">PostgreSQL, Apache AGE, ParadeDB, pgvector, and Valkey are trademarks or marks of their respective owners. Punkolink provides managed hosting of these open-source projects and is not affiliated with or endorsed by them.</p>
       </div>
     </section>
 
     <section class="trial-cta">
       <div class="trial-cta-box">
-        <h2 class="trial-cta-title">Start With One Block</h2>
+        <h2 class="trial-cta-title">Start With One Layer</h2>
         <p class="trial-cta-text">
-          Create an account, claim 20 free credits, and provision your first block in minutes.
+          Create an account, claim 20 free credits, and provision your first layer in minutes.
         </p>
         <div class="ladder-step-actions trial-cta-actions">
           <a href="https://cloud.punkolink.com" class="btn btn-primary">Join Us</a>

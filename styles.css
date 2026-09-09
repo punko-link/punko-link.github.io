@@ -389,20 +389,20 @@ a {
 
 /* ── hero.css ─────────── */
 .hero {
-  min-height: 86vh;
+  min-height: min(90vh, 940px);
   max-width: var(--content-max);
   margin: 0 auto;
   display: flex;
   align-items: center;
-  padding: var(--space-24) var(--space-4);
+  padding: clamp(var(--space-16), 12vh, var(--space-24)) var(--space-4);
   position: relative;
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: 1.1fr 0.9fr;
   align-items: center;
-  gap: var(--space-16);
+  gap: clamp(var(--space-8), 5vw, var(--space-16));
   width: 100%;
 }
 
@@ -430,9 +430,9 @@ a {
 }
 
 .hero-title {
-  font-size: clamp(2rem, 3.4vw, 2.75rem);
-  line-height: 1.1;
-  letter-spacing: -.02em;
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  line-height: 1.06;
+  letter-spacing: -.025em;
   margin-bottom: var(--space-6);
 }
 
@@ -443,8 +443,10 @@ a {
 }
 
 .hero-description {
-  font-size: var(--text-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
   color: var(--text-muted);
+  max-width: 46ch;
   margin-bottom: var(--space-8);
 }
 
@@ -458,6 +460,11 @@ a {
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-4);
+}
+
+.hero-actions .btn {
+  padding: var(--space-4) var(--space-6);
+  font-size: var(--text-body);
 }
 
 .hero-promo {
@@ -495,19 +502,148 @@ a {
   width: 100%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 860px) {
+  .hero {
+    min-height: 0;
+  }
+
   .hero-grid {
     grid-template-columns: 1fr;
     gap: var(--space-8);
   }
 
   .hero-intro,
-  .hero-promo {
+  .pk-cube-stage {
     max-width: 560px;
   }
+}
 
-  .hero-promo {
-    padding: var(--space-6);
+/* ── hero: rotating cube — six sides of the cloud ───────────
+   Native CSS 3D + a little JS (see index.html). Decorative: the stage
+   is aria-hidden and every face's tech is also real text in THE CATALOG
+   below, so nothing is lost when the cube is frozen. Face panels use the
+   L7-demo token set — dark surface, hairline border, big mono label. */
+.pk-cube-stage {
+  position: relative;
+  z-index: 1;
+  perspective: clamp(900px, 120vw, 1500px);
+  display: grid;
+  place-items: center;
+  min-height: clamp(320px, 42vw, 480px);
+  touch-action: pan-y;               /* keep vertical page scroll on touch */
+}
+
+.pk-cube-shadow {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(8px, 4vw, 40px);
+  width: clamp(200px, 22vw, 300px);
+  height: 46px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, .6), rgba(0, 0, 0, 0) 70%);
+  filter: blur(7px);
+  pointer-events: none;
+}
+
+.pk-cube {
+  --size: clamp(240px, 26vw, 360px);
+  width: var(--size);
+  height: var(--size);
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform var(--dur, 1.2s) cubic-bezier(.6, .02, .2, 1);
+  transform: rotateX(0deg) rotateY(0deg);
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.pk-cube.is-dragging {
+  transition: none;                  /* follow the pointer without easing lag */
+  cursor: grabbing;
+}
+
+.pk-face {
+  position: absolute;
+  inset: 0;
+  width: var(--size);
+  height: var(--size);
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: border-color var(--transition);
+}
+
+/* soft directional shading for volume */
+.pk-face::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(150deg, rgba(255, 255, 255, .05), rgba(0, 0, 0, .34));
+  pointer-events: none;
+}
+
+.pk-face > * {
+  position: relative;
+  z-index: 1;
+}
+
+.pk-face-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.pk-face-name {
+  font-family: var(--font-mono);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: var(--weight-bold);
+  letter-spacing: -.01em;
+  color: var(--text);
+}
+
+.pk-face-note {
+  font-size: var(--text-secondary);
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* face currently pointed at the viewer */
+.pk-face.is-active {
+  border-color: var(--accent);
+}
+
+.pk-face.is-active::after {
+  background: linear-gradient(150deg, rgba(59, 130, 246, .1), rgba(0, 0, 0, .16));
+}
+
+/* face placement — half = size / 2 */
+.f-l7     { transform: translateZ(calc(var(--size) / 2)); }
+.f-exec   { transform: rotateY(90deg)  translateZ(calc(var(--size) / 2)); }
+.f-drp    { transform: rotateY(180deg) translateZ(calc(var(--size) / 2)); }
+.f-valkey { transform: rotateY(-90deg) translateZ(calc(var(--size) / 2)); }
+.f-pg     { transform: rotateX(90deg)  translateZ(calc(var(--size) / 2)); }
+.f-pgv    { transform: rotateX(-90deg) translateZ(calc(var(--size) / 2)); }
+
+@media (max-width: 768px) {
+  .pk-cube-stage {
+    min-height: clamp(260px, 66vw, 340px);
+  }
+
+  .pk-cube {
+    --size: clamp(200px, 58vw, 280px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pk-cube {
+    transition: none;
   }
 }
 
@@ -3008,5 +3144,248 @@ a.saas-detail-card:hover {
     bottom: 50%;
     transform: translateY(50%);
     white-space: nowrap;
+  }
+}
+
+/* ── catalog stack (index.html #blocks) ───────────
+   A stack of five slabs read top (outward edge) to bottom (data core).
+   Depth is carried by tone: each slab sits a step darker than the one
+   above, with a left rail that fades from light at the surface to near-
+   black at the core. Click a slab to reveal its services (accordion).
+   Tokens and interaction register are lifted from the L7 demo panel. */
+.stack {
+  margin-top: var(--space-8);
+  border: 1px solid var(--border);
+}
+
+.slab {
+  position: relative;
+  border-top: 1px solid var(--border);
+}
+
+.slab:first-child {
+  border-top: none;
+}
+
+/* tonal descent, surface -> core (interpolates --surface-2 #161616 -> --bg #080808) */
+.slab:nth-child(1) { background: #161616; }
+.slab:nth-child(2) { background: #121212; }
+.slab:nth-child(3) { background: #0f0f0f; }
+.slab:nth-child(4) { background: #0b0b0b; }
+.slab:nth-child(5) { background: #080808; }
+
+/* left depth rail: bright at the outward edge, dark toward the core */
+.slab::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--border);
+  transition: background-color var(--transition);
+}
+
+.slab:nth-child(1)::before { background: #7a7a7a; }
+.slab:nth-child(2)::before { background: #565656; }
+.slab:nth-child(3)::before { background: #3c3c3c; }
+.slab:nth-child(4)::before { background: #2a2a2a; }
+.slab:nth-child(5)::before { background: #1c1c1c; }
+
+.slab[data-open="true"]::before {
+  background: var(--accent);
+}
+
+.slab-head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: var(--space-3) var(--space-4);
+  width: 100%;
+  padding: var(--space-4);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: var(--text);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.slab-head:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: -1px;
+}
+
+.slab-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  transition: color var(--transition);
+}
+
+.slab[data-open="true"] .slab-num {
+  color: var(--accent);
+}
+
+.slab-headings {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.slab-name {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-h3);
+  line-height: 1.2;
+}
+
+.slab-note {
+  font-size: var(--text-secondary);
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.slab-count {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* +/- toggle, built like the site's nav cross: horizontal bar always,
+   vertical bar collapses when the slab is open */
+.slab-toggle {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.slab-toggle::before,
+.slab-toggle::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 12px;
+  height: 1px;
+  background: var(--text-muted);
+  transform: translate(-50%, -50%);
+  transition: transform var(--transition), background-color var(--transition), opacity var(--transition);
+}
+
+.slab-toggle::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.slab-head:hover .slab-toggle::before,
+.slab-head:hover .slab-toggle::after {
+  background: var(--text);
+}
+
+.slab[data-open="true"] .slab-toggle::before,
+.slab[data-open="true"] .slab-toggle::after {
+  background: var(--accent);
+}
+
+.slab[data-open="true"] .slab-toggle::after {
+  transform: translate(-50%, -50%) rotate(90deg) scaleX(0);
+  opacity: 0;
+}
+
+/* expanding panel: grid-rows 0fr -> 1fr keeps the motion smooth without
+   measuring heights in JS */
+.slab-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .18s ease;
+}
+
+.slab[data-open="true"] .slab-panel {
+  grid-template-rows: 1fr;
+}
+
+.slab-panel-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.slab-svc {
+  list-style: none;
+  padding: 0 var(--space-4);
+}
+
+.slab-svc li {
+  display: grid;
+  grid-template-columns: minmax(0, 34%) minmax(0, 1fr);
+  gap: var(--space-4);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--border);
+  line-height: 1.5;
+}
+
+.slab-svc-name {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text);
+}
+
+.slab-svc-blurb {
+  font-size: var(--text-secondary);
+  color: var(--text-muted);
+}
+
+.slab-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.slab-link:hover {
+  text-decoration: underline;
+}
+
+.slab-link-arrow {
+  transition: transform var(--transition);
+}
+
+.slab-link:hover .slab-link-arrow {
+  transform: translateX(3px);
+}
+
+@media (max-width: 768px) {
+  .slab-head {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: var(--space-3);
+  }
+
+  .slab-count {
+    display: none;
+  }
+
+  .slab-svc li {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slab-panel,
+  .slab-toggle::before,
+  .slab-toggle::after,
+  .slab-link-arrow,
+  .slab::before {
+    transition: none;
   }
 }
