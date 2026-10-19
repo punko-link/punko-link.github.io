@@ -1,5 +1,20 @@
 [
   {
+    "file": "interconnected-cyclical-loops.md",
+    "title": "Interconnected Cyclical Loops as a Method for Constructing Artificial Subjectivity",
+    "description": "The first post in a series on applying neurobiological patterns to the design of computational systems — a simple concept for building systems whose behavior looks subjective to an observer.",
+    "tag": "Bionics",
+    "date": "2026-10-19",
+    "author": "Glab Strizhkov",
+    "readingTime": "5 min read",
+    "featured": true,
+    "lang": "en",
+    "translations": {
+      "en": "interconnected-cyclical-loops.md",
+      "uk": "interconnected-cyclical-loops.uk.md"
+    }
+  },
+  {
     "file": "gigabyte-for-fifty-megabytes.md",
     "title": "A Gigabyte for Fifty Megabytes",
     "description": "Data centers are more expensive than ever before — and it's not just about the money. How much of that rented capacity is actually doing useful work?",
@@ -7,7 +22,7 @@
     "date": "2026-09-08",
     "author": "Glab Strizhkov",
     "readingTime": "7 min read",
-    "featured": true,
+    "featured": false,
     "lang": "en",
     "translations": {
       "en": "gigabyte-for-fifty-megabytes.md",
