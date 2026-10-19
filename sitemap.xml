@@ -1,42 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://punkolink.com/</loc>
+    <lastmod>2026-09-09</lastmod>
   </url>
   <url>
     <loc>https://punkolink.com/cloud.html</loc>
+    <lastmod>2026-09-09</lastmod>
   </url>
   <url>
     <loc>https://punkolink.com/pricing.html</loc>
+    <lastmod>2026-09-09</lastmod>
   </url>
   <url>
     <loc>https://punkolink.com/blog.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://punkolink.com/legal/terms-of-use.html</loc>
+    <lastmod>2026-09-08</lastmod>
   </url>
   <url>
     <loc>https://punkolink.com/legal/refund-policy.html</loc>
+    <lastmod>2026-09-08</lastmod>
   </url>
   <url>
     <loc>https://punkolink.com/legal/privacy-policy.html</loc>
+    <lastmod>2026-09-08</lastmod>
   </url>
   <url>
     <loc>https://punkolink.com/legal/pricing-policy.html</loc>
-  </url>
-  <url>
-    <loc>https://punkolink.com/content/blog/pages/gigabyte-for-fifty-megabytes.md</loc>
-  </url>
-  <url>
-    <loc>https://punkolink.com/content/blog/pages/gigabyte-for-fifty-megabytes.uk.md</loc>
-  </url>
-  <url>
-    <loc>https://punkolink.com/content/blog/pages/i-spent-years-being-the-3am.md</loc>
+    <lastmod>2026-09-08</lastmod>
   </url>
   <url>
     <loc>https://punkolink.com/content/blog/pages/interconnected-cyclical-loops.md</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://punkolink.com/content/blog/pages/interconnected-cyclical-loops.md"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://punkolink.com/content/blog/pages/interconnected-cyclical-loops.uk.md"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://punkolink.com/content/blog/pages/interconnected-cyclical-loops.md"/>
   </url>
   <url>
     <loc>https://punkolink.com/content/blog/pages/interconnected-cyclical-loops.uk.md</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://punkolink.com/content/blog/pages/interconnected-cyclical-loops.md"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://punkolink.com/content/blog/pages/interconnected-cyclical-loops.uk.md"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://punkolink.com/content/blog/pages/interconnected-cyclical-loops.md"/>
+  </url>
+  <url>
+    <loc>https://punkolink.com/content/blog/pages/gigabyte-for-fifty-megabytes.md</loc>
+    <lastmod>2026-09-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://punkolink.com/content/blog/pages/gigabyte-for-fifty-megabytes.md"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://punkolink.com/content/blog/pages/gigabyte-for-fifty-megabytes.uk.md"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://punkolink.com/content/blog/pages/gigabyte-for-fifty-megabytes.md"/>
+  </url>
+  <url>
+    <loc>https://punkolink.com/content/blog/pages/gigabyte-for-fifty-megabytes.uk.md</loc>
+    <lastmod>2026-09-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://punkolink.com/content/blog/pages/gigabyte-for-fifty-megabytes.md"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://punkolink.com/content/blog/pages/gigabyte-for-fifty-megabytes.uk.md"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://punkolink.com/content/blog/pages/gigabyte-for-fifty-megabytes.md"/>
+  </url>
+  <url>
+    <loc>https://punkolink.com/content/blog/pages/i-spent-years-being-the-3am.md</loc>
+    <lastmod>2026-07-01</lastmod>
   </url>
 </urlset>
